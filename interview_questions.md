@@ -202,4 +202,104 @@ public class Demo {
 + Is not reachable from any part of the code
 
 
+# 🟢 Basic Java Variable & Data Type Questions
+## 13. What is a variable in Java?
+Answer:
++ A variable is a name given to a memory location used to store data. It can hold different types of values depending on its data type.
+
+## 14. What are the types of variables in Java?
+Answer:
+
+Local variables – Declared inside methods.
+
+Instance variables – Non-static variables declared in a class.
+
+Static variables – Declared using static keyword, shared among all objects.
+
+## 15. What is a data type in Java?
+Answer:
+A data type defines what kind of data a variable can hold, like integers, decimals, characters, etc.
+
+## 16. What are the two categories of data types in Java?
+Answer:
+
++ `Primitive data types`  – int, float, char, boolean, etc.
+
++ `Non-primitive` (Reference) data types – String, Arrays, Objects, Classes, etc.
+
+## 17. List all 8 primitive data types in Java.
+|Data Type|	Size	|Example|
+|----------|-----|---------|
+|byte	|1 byte|	127|
+|short	|2 bytes	|32000|
+|int	|4 bytes	|100000|
+|long|	8 bytes	|1234567890L|
+|float	|4 bytes|	3.14f|
+|double	8 bytes	|3.14159|
+|char|	2 bytes|	'A'|
+|boolean|	1 bit|	true/false|
+
+## 🟡 Intermediate Questions
+### 18. What is the default value of primitive data types?
+Answer:
+
+|Type|	Default Value|
+|-----|-----|-------|
+|int|	0|
+|boolean|	false|
+|char	|'\u0000'|
+|Object|	null|
+
+### 19. What is the difference between float and double?
+Answer:
+
++ float: 4 bytes, less precision (3.14f)
+
++ double: 8 bytes, more precision (3.1415926535)
+
+### 20. What is typecasting in Java?
+Answer:
++ Typecasting is converting one data type into another.
+
++ `Implicit1` (Widening) – smaller → larger (e.g., `int` to` double`)
+
++ `Explicit` (Narrowing) – larger → smaller (e.g., `double` to` int`)
+```
+int a = 10;
+double b = a;          // Widening
+int c = (int) b;       // Narrowing
+```
+
+### 21. Can we store char in an int?
+Answer:
+Yes, because char is internally stored as a Unicode integer value.
+```
+char ch = 'A';
+int num = ch;   // num will be 65
+```
+## 🔴 Advanced & Tricky Questions
+### 22. Can a local variable have a default value?
+Answer:
++ ❌ `No`. Local variables must be initialized before use, or you'll get a compile-time error.
+
+### 23. What is the size of a boolean in Java?
+Answer:
++ Technically, it uses 1 bit, but the JVM uses 1 byte for storage (cannot address less than 1 byte in memory).
+
+### 24. Can you store a float value in a long variable directly?
+Answer:
+No. You need explicit casting:
+```
+float f = 10.5f;
+long l = (long) f;  // Narrowing conversion
+```
+### 25. Is String a primitive data type?
+Answer:
++ ❌ No. String is a non-primitive (reference) type. It is a class in Java.
+
+### 26. What is the range of int in Java?
+Answer:
++ int is 4 bytes → range is:
++ -2,147,483,648 to 2,147,483,647
+
 
