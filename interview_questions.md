@@ -303,3 +303,25 @@ Answer:
 + -2,147,483,648 to 2,147,483,647
 
 
+🔥 List of Useful Java Escape Sequences
+Escape Sequence	Description	Example Output
+\n	New Line	Moves to next line
+\t	Tab (horizontal space)	Adds a tab space
+\\	Backslash (\)	Prints \
+\"	Double quote (")	Prints "Text"
+\'	Single quote (')	Prints 'Text'
+\b	Backspace	Deletes one character (varies)
+\r	Carriage return (rarely used)	Moves to start of the line
+
+🧪 Example Code:
+java
+Copy
+Edit
+public class EscapeDemo {
+    public static void main(String[] args) {
+        System.out.println("Line1\nLine2");
+        System.out.println("Tabbed\tText");
+        System.out.println("Quote: \"Hello Chirag\"");
+        System.out.println("Backslash: \\Java\\DSA");
+    }
+}
