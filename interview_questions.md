@@ -103,35 +103,56 @@ javac Hello.java
 ```
 .java → [JDK: javac] → .class → [JRE: JVM] → machine code → output
 ```
-##  What are the different types of memory areas allocated by JVM?
--`Method Area:`
-Stores class metadata, constants, static variables, and method code.
--` Heap: `
-Used for dynamic memory allocation; stores objects and JRE classes.
--` Stack:`
-Each thread has its own stack. It stores method call frames, local variables, and partial results.
--`Program Counter Register:`
-A small memory area that holds the address of the currently executing Java bytecode instruction.
--`Native Method Stack:`
-Stores data for native (non-Java) methods used in the application.
-## What is JIT compiler?
-`JIT (Just-In-Time) Compiler:`
 
-A part of the JVM that improves the performance of Java applications by compiling bytecode into native machine code at runtime.
-Converts frequently executed bytecode into machine code for faster execution.
-Operates in parallel with the interpreter.
+## 11. Heap memory and stack memory
+### 🟩 Heap Memory – "Big Storage Area"
+#### ✅ What goes into Heap?
++ All objects
 
++ Instance variables (from new)
 
++ Classes like Student` s = new Student();`
 
+### 🔁 Shared by all threads.
+### ❌ Garbage collected:
++ When no reference to an object exists, it's eligible for garbage collection.
 
-## . Difference between Heap and Stack Memory in java. And how java utilizes this.
+📌 Example:
 ```
-Stack memory is the portion of memory that was assigned to every individual program.
-And it was fixed. On the other hand, Heap memory is the portion that was not allocated to the java program
-but it will be available for use by the java program when it is required, mostly during the runtime of the program.
+Student s1 = new Student(); // s1 (in stack), new Student() (in heap)
+```
+### 🟦 Stack Memory – "Method & Variable Area"
+#### ✅ What goes into Stack?
++ Local variables (int x = 10)
+
++ Method calls (each method has its own frame)
+
++ Reference variables (not objects themselves)
+
+### 🔁 One stack per thread (not shared)
+#### ⛔ Automatically deleted after method call ends
+📌 Example:
+```
+public void show() {
+    int a = 5;         // 'a' is in stack
+    Student s = new Student(); // 's' in stack, object in heap
+}
+```
+### 🔄 Diagram (Mental Model)
+```
+JVM Memory
+├── Stack (Thread 1)
+│   ├── Method: main()
+│   │   ├── int x = 10;
+│   │   ├── Student s1 → 📍
+│
+├── Heap
+│   ├── 📍 Student object (s1)
+│   ├── 📍 String object
+
 ```
 
-## ♻️ What is Garbage Collection in Java?
+## 12.♻️ What is Garbage Collection in Java?
 Garbage Collection is a process in Java that:
 
 + ✅ Automatically removes objects from memory `(heap)`  that are no longer being used — so you don’t have to delete them manually.
