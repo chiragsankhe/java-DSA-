@@ -497,3 +497,95 @@ public class InterfaceCheck {
     }
 }
 ```
+
+# Candition statement 
+
+### ✅ 30 . What is a conditional statement in Java?
+Answer:
++ Conditional statements in Java are used to make decisions based on certain conditions.
++ These statements execute different blocks of code depending on whether a condition is true or false.
++ Examples include if, if-else, if-else if, switch, and the ternary operator.
+
+### ✅ 31. What's the difference between if and if-else?
+Answer:
+
++ `if`  executes a block only if the condition is true.
+
++ `if-else1` provides an alternative block to execute when the condition is false.
+```
+if (x > 10) {
+    // only runs if x > 10
+} else {
+    // runs if x <= 10
+}
+```
+### ✅ 32. When do you use if-else if-else ladder?
+Answer:
+Use it when you have multiple conditions to check one after another.
+```
+if (score >= 90) {
+    // Grade A
+} else if (score >= 75) {
+    // Grade B
+} else {
+    // Grade C
+}
+``
+## ✅ 33. What is a nested if statement?
+Answer:
+An if statement inside another if. It's used when one condition depends on another.
+```
+if (age >= 18) {
+    if (hasID) {
+        System.out.println("You can vote.");
+    }
+}
+```
+
+### ✅ 34. What is the switch statement in Java?
+Answer:
++ The switch statement allows you to test a variable against multiple values.
+```
+int day = 2;
+switch(day) {
+    case 1: System.out.println("Monday"); break;
+    case 2: System.out.println("Tuesday"); break;
+    default: System.out.println("Invalid day");
+}
+```
+### ✅ 35. Can we use switch with String in Java?
+Answer:
+_+ ✅ Yes, from Java 7 onwards, switch supports String.
+
+```
+String role = "admin";
+
+switch(role) {
+    case "admin": System.out.println("Welcome Admin!"); break;
+    case "user": System.out.println("Welcome User!"); break;
+    default: System.out.println("Unknown role");
+}
+```
+### ✅ 36. Can a condition be more than one line in an if statement?
+Answer:
+Yes. Complex conditions using logical operators (&&, ||, !) are allowed.
+```
+if (age >= 18 && hasLicense && !isSuspended) {
+    System.out.println("You can drive.");
+}
+```
+### ✅ 37. What happens if you forget the break in a switch case?
+Answer:
++ It causes fall-through, meaning the code continues executing the next cases until it hits a break or the end of the switch block.
+
+### ✅ 38. Can we write if without curly braces {}?
+Answer:
++ `Yes, but only one statement can be executed. For multiple statements, {} is required.
+```
+if (x > 10)
+    System.out.println("X is big");  // okay
+// Not okay:
+//     System.out.println("Line 1");
+//     System.out.println("Line 2");
+
+```
