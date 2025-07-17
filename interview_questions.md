@@ -303,20 +303,19 @@ Answer:
 + -2,147,483,648 to 2,147,483,647
 
 
-🔥 List of Useful Java Escape Sequences
-Escape Sequence	Description	Example Output
-\n	New Line	Moves to next line
-\t	Tab (horizontal space)	Adds a tab space
-\\	Backslash (\)	Prints \
-\"	Double quote (")	Prints "Text"
-\'	Single quote (')	Prints 'Text'
-\b	Backspace	Deletes one character (varies)
-\r	Carriage return (rarely used)	Moves to start of the line
+## 26. 🔥 List of Useful Java Escape Sequences
+|Escape Sequence|	Description|	Example Output|
+|---------------|-------------|--------------|
+| \n	|New Line	| Moves to next line|
+| \t	|Tab (horizontal space)|	Adds a tab space|
+| \\	|Backslash |(\)	Prints \|
+| \"	|Double quote (")|	Prints "Text"|
+| \'	|Single quote (')	|Prints 'Text'|
+| \b	|Backspace|	Deletes one character (varies)|
+| \r	|Carriage return (rarely used)|	Moves to start of the line|
 
 🧪 Example Code:
-java
-Copy
-Edit
+```
 public class EscapeDemo {
     public static void main(String[] args) {
         System.out.println("Line1\nLine2");
@@ -324,4 +323,86 @@ public class EscapeDemo {
         System.out.println("Quote: \"Hello Chirag\"");
         System.out.println("Backslash: \\Java\\DSA");
     }
+}
+```
+## 27 Operations 
+
+### 🔹 1. Arithmetic Operations
+These perform basic math operations.
+
+|Operator|	Meaning|	Example|
+|-------|----------|----------|
+| + |	Addition|	a + b|
+| - |	Subtraction	|a - b|
+| *	| Multiplication	|a * b| 
+| / |	Division	|a / b| 
+| % |	Modulus |	a % b|
+
+🔹 2. Relational / Comparison Operations
+Used to compare two values.
+
+Operator	Meaning	Example
+==	Equal to	a == b
+!=	Not equal to	a != b
+>	Greater than	a > b
+<	Less than	a < b
+>=	Greater than or equal to	a >= b
+<=	Less than or equal to	a <= b
+
+🔹 3. Logical Operations
+Used to combine multiple conditions.
+
+Operator	Meaning	Example
+&&	Logical AND	a > 5 && b < 10
+`		`
+!	Logical NOT	!(a > 5)
+
+🔹 4. Assignment Operations
+Used to assign values to variables.
+
+Operator	Meaning	Example
+=	Assignment	a = 10
++=	Add and assign	a += 5 → a = a + 5
+-=	Subtract and assign	a -= 5
+*=	Multiply and assign	a *= 2
+/=	Divide and assign	a /= 2
+%=	Modulus and assign	a %= 3
+
+🔹 5. Unary Operations
+Operate on a single operand.
+
+Operator	Meaning	Example
++	Unary plus	+a
+-	Unary minus	-a
+++	Increment	a++, ++a
+--	Decrement	a--, --a
+!	Logical NOT	!true
+
+🔹 6. Bitwise Operations
+Operate on bits and perform bit-by-bit operations.
+
+Operator	Meaning	Example
+&	Bitwise AND	a & b
+`	`	Bitwise OR
+^	Bitwise XOR	a ^ b
+~	Bitwise Complement	~a
+<<	Left shift	a << 2
+>>	Right shift	a >> 2
+>>>	Unsigned right shift	a >>> 2
+
+🔹 7. Ternary Operation
+Used as a shortcut for if-else.
+
+java
+Copy
+Edit
+int result = (a > b) ? a : b;
+🔹 8. Instanceof Operation
+Checks if an object is an instance of a specific class or subclass.
+
+java
+Copy
+Edit
+if (obj instanceof String) {
+    // do something
 }
