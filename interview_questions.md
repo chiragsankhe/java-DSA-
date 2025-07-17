@@ -1080,7 +1080,7 @@ System.out.println(Arrays.toString(arr));
 |Performance| 	Faster |	Slightly slower|
 |Methods| 	Limited |Rich (add, remove) |
 
-✅ String to Primitive Data Type Conversion Table
+### 61.✅ String to Primitive Data Type Conversion Table
 |Data Type |	Conversion | Method	Example |
 |---------|-----------|------------------|
 |int|	Integer.parseInt(String)	|int i = Integer.parseInt("123");|
@@ -1091,3 +1091,37 @@ System.out.println(Arrays.toString(arr));
 |short|	Short.parseShort(String)	|short s = Short.parseShort("10");|
 |byte|	Byte.parseByte(String) |	byte b = Byte.parseByte("5");|
 
+
+
+### 62. 🔁 Reverse: Primitive → String
+You can also convert back using String.valueOf() or concatenation.
+```
+int x = 100;
+String str = String.valueOf(x);       // "100"
+
+double d = 5.75;
+String str2 = d + "";                 // "5.75" (shortcut)
+```
+
+### 63🔍 Why is String non-primitive?
++ It's actually a class in Java (java.lang.String).
+
++ That means a String is an object, not a simple data value.
+
++ It comes with built-in methods like:
+```
+name.length();
+name.toUpperCase();
+name.charAt(0);
+```
+Primitive types like int, float, boolean, etc., do not have methods — they hold simple values only.
+
+### 64.✅ 1. String.valueOf() → Converts any data type into a String
+🔸 Usage:
+```
+String s1 = String.valueOf(100);           // int to String
+String s2 = String.valueOf(3.14);          // double to String
+String s3 = String.valueOf(true);          // boolean to String
+String s4 = String.valueOf('A');           // char to String
+String s5 = String.valueOf(new int[]{1,2}); // object to String (prints memory ref)
+```
