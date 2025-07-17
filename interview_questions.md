@@ -1080,3 +1080,14 @@ System.out.println(Arrays.toString(arr));
 |Performance| 	Faster |	Slightly slower|
 |Methods| 	Limited |Rich (add, remove) |
 
+✅ String to Primitive Data Type Conversion Table
+|Data Type |	Conversion | Method	Example |
+|---------|-----------|------------------|
+|int|	Integer.parseInt(String)	|int i = Integer.parseInt("123");|
+|double|	Double.parseDouble(String)|	double d = Double.parseDouble("12.5");|
+|float|	Float.parseFloat(String)|	float f = Float.parseFloat("3.14");|
+|long|	Long.parseLong(String)|	long l = Long.parseLong("100000");|
+|boolean|	Boolean.parseBoolean(String)|	boolean b = Boolean.parseBoolean("true");|
+|short|	Short.parseShort(String)	|short s = Short.parseShort("10");|
+|byte|	Byte.parseByte(String) |	byte b = Byte.parseByte("5");|
+
