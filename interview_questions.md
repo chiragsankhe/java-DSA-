@@ -759,5 +759,88 @@ Explanation:
 Loop stops when i++ < 3 becomes false
 
 
+🔧 What is a Function (Method) in Java?
+A function (or method) in Java is a block of code that performs a specific task. It can be called multiple times to reuse logic and avoid code duplication.
 
+# function 
 
+###  ✅ Types of Methods in Java:
+Type	Description
++ `Predefined Methods`	Built-in, like System.out.println()
++ `User-defined Methods	` Created by the programmer
+
+### 🧱 Basic Structure of a Method:
+```
+returnType methodName(parameters) {
+    // code block
+    return value;
+}
+```
+🔰 Example: Simple Method
+```
+public class MyClass {
+
+    // user-defined method
+    static void greet() {
+        System.out.println("Hello, Chirag!");
+    }
+
+    public static void main(String[] args) {
+        greet();  // calling the method
+    }
+}
+```
+### ⚙️ Method with Parameters and Return Value
+```
+public class Calculator {
+
+    static int add(int a, int b) {
+        return a + b;
+    }
+
+    public static void main(String[] args) {
+        int result = add(5, 3);
+        System.out.println("Sum = " + result);
+    }
+}
+```
+
+### 🔷 1. What is a static method in Java?
++ A static method belongs to the ` class itself`, not the object.
++ You can call it without creating an object.
+
+✅ Example:
+```
+public class Demo {
+    static void greet() {
+        System.out.println("Hello from static method!");
+    }
+
+    public static void main(String[] args) {
+        greet();  // ✅ No need to create an object
+    }
+}
+```
+🧠 Key Points:
+```
+Use ClassName.methodName() or just methodName() from inside main.
+```
+Common use: main() method is static!
+
+### 🔶 2. What is a non-static method in Java?
++ A non-static method belongs to an object, not the class.
++ You must create an object to call it.
+
+✅ Example:
+```
+public class Demo {
+    void sayHi() {
+        System.out.println("Hi from non-static method!");
+    }
+
+    public static void main(String[] args) {
+        Demo obj = new Demo();  // ✅ object creation
+        obj.sayHi();            // calling non-static method
+    }
+}
+```
