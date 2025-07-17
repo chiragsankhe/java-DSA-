@@ -338,71 +338,162 @@ These perform basic math operations.
 | / |	Division	|a / b| 
 | % |	Modulus |	a % b|
 
-🔹 2. Relational / Comparison Operations
+### 🔹 2. Relational / Comparison Operations
 Used to compare two values.
 
-Operator	Meaning	Example
-==	Equal to	a == b
-!=	Not equal to	a != b
->	Greater than	a > b
-<	Less than	a < b
->=	Greater than or equal to	a >= b
-<=	Less than or equal to	a <= b
+|Operator	|Meaning	|Example|
+|-------|-----------|---------|
+| == | 	Equal to | 	a == b  |
+| !=  |Not equal to | 	a != b |
+| >	  | Greater than	 | a > b  |
+| <	 | Less than | 	a <  b  |
+| >=	 | Greater than or equal to	 | a >= b | 
+| <=	 | Less than or equal to	 | a<= b |
 
-🔹 3. Logical Operations
+### 🔹 3. Logical Operations
 Used to combine multiple conditions.
 
-Operator	Meaning	Example
-&&	Logical AND	a > 5 && b < 10
+| Operator| 	Meaning| 	Example| 
+|----------|------|-----------|
+|&& |	Logical AND |	a > 5 && b < 10 |
 `		`
-!	Logical NOT	!(a > 5)
+| !	 | Logical NOT | 	!(a > 5) | 
 
 🔹 4. Assignment Operations
 Used to assign values to variables.
 
-Operator	Meaning	Example
-=	Assignment	a = 10
-+=	Add and assign	a += 5 → a = a + 5
--=	Subtract and assign	a -= 5
-*=	Multiply and assign	a *= 2
-/=	Divide and assign	a /= 2
-%=	Modulus and assign	a %= 3
+|Operator | 	Meaning | 	Example |
+| =	 |Assignment  |	a = 10 | 
+| += | 	Add and assign| 	a += 5 → a = a + 5 |
+| -= | 	Subtract and assign|	a -= 5|
+| *= | 	Multiply and assign|	a *= 2|
+| /= |	Divide and assign|	a /= 2|
+| %=	| Modulus and assign|	a %= 3|
 
 🔹 5. Unary Operations
 Operate on a single operand.
 
-Operator	Meaning	Example
-+	Unary plus	+a
--	Unary minus	-a
-++	Increment	a++, ++a
---	Decrement	a--, --a
-!	Logical NOT	!true
+|Operator|	Meaning|	Example|
+|------|---------|---------|
+|+|	Unary plus|	+a|
+|-	|Unary minus|	-a|
+|++	|Increment|	a++, ++a|
+|--	|Decrement	|a--, --a|
+|!	|Logical NOT|	!true|
 
-🔹 6. Bitwise Operations
+### 🔹 6. Bitwise Operations
 Operate on bits and perform bit-by-bit operations.
 
-Operator	Meaning	Example
-&	Bitwise AND	a & b
-`	`	Bitwise OR
-^	Bitwise XOR	a ^ b
-~	Bitwise Complement	~a
-<<	Left shift	a << 2
->>	Right shift	a >> 2
->>>	Unsigned right shift	a >>> 2
+|Operator	| Meaning	| Example| 
+|&|	Bitwise AND|	a & b|
+| `	` | 	Bitwise OR  |  |
+| ^ |	Bitwise XOR| 	a ^ b| 
+| ~	| Bitwise Complement| 	~a|
+| <<	| Left shift	| a << 2 |
+| >>| 	Right shift| 	a >> 2| 
+| >>>| 	Unsigned right shift| 	a >>> 2| 
 
-🔹 7. Ternary Operation
-Used as a shortcut for if-else.
+## 28✅ Ternary Operator Syntax:
+```
+condition ? expression_if_true : expression_if_false;
+```
+🔰 Example: Check if a person is eligible to vote
+```
+public class TernaryExample {
+    public static void main(String[] args) {
+        int age = 20;
 
-java
-Copy
-Edit
-int result = (a > b) ? a : b;
-🔹 8. Instanceof Operation
-Checks if an object is an instance of a specific class or subclass.
+        String result = (age >= 18) ? "✅ Eligible to vote" : "❌ Not eligible to vote";
 
-java
-Copy
-Edit
-if (obj instanceof String) {
-    // do something
+        System.out.println(result);
+    }
 }
+```
+#### 🧠 Explanation:
++ (age >= 18) is the condition.
+
++ If it's true, it returns "✅ Eligible to vote".
+
++ If it's false, it returns "❌ Not eligible to vote".
+
+The result is stored in the variable result and then printed.
+
+🧪 Another Example: Find the maximum of two numbers
+```
+public class MaxExample {
+    public static void main(String[] args) {
+        int a = 10, b = 15;
+
+        int max = (a > b) ? a : b;
+
+        System.out.println("Maximum is: " + max);
+    }
+}
+```
+
+## 29.🔍 What is instanceof?
+The instanceof operator checks whether an object is an instance of a specific class or implements a specific interface.
+
+✅ Syntax:
+```
+object instanceof ClassName
+```
+Returns true if object is an instance of ClassName, otherwise false.
+
+### 🔰 Example: Animal 🐾 - Dog 🐶 - Cat 🐱
+```
+class Animal {}
+
+class Dog extends Animal {}
+
+class Cat extends Animal {}
+
+public class InstanceOfExample {
+    public static void main(String[] args) {
+        Animal a = new Dog();  // upcasting
+
+        // Check object type
+        System.out.println("a instanceof Animal: " + (a instanceof Animal)); // true
+        System.out.println("a instanceof Dog: " + (a instanceof Dog));       // true
+        System.out.println("a instanceof Cat: " + (a instanceof Cat));       // false
+    }
+}
+```
+🧠 Explanation:
++ a is a reference of type Animal pointing to a Dog object.
+
++ a instanceof Animal → ✅ true (because Dog is an Animal)
+
++ a instanceof Dog → ✅ true (because it’s actually a Dog)
+
++ a instanceof Cat → ❌ false (because it’s not a Cat)
+
+### 💡 Real Use Case: Safe Downcasting
++ Use instanceof to safely type cast an object.
+
+```
+if (a instanceof Dog) {
+    Dog d = (Dog) a;  // safe downcasting
+    System.out.println("Dog object found!");
+}
+```
++ This avoids ClassCastException at runtime.
+
+❌ Without instanceof (Dangerous):
+```
+Dog d = (Dog) a; // May throw ClassCastException if 'a' is not actually a Dog
+```
+### 📦 Bonus: instanceof with interfaces
+```
+interface Drawable {}
+
+class Circle implements Drawable {}
+
+public class InterfaceCheck {
+    public static void main(String[] args) {
+        Drawable d = new Circle();
+        System.out.println(d instanceof Circle);     // true
+        System.out.println(d instanceof Drawable);   // true
+    }
+}
+```
