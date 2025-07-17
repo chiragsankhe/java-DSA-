@@ -996,3 +996,87 @@ Answer:
 + Constructors are used to create objects, and static methods belong to the class, not instances.
 + So it doesn't make sense for constructors to be static.
 
+# Array
+
+### 54🧠 What is an Array in Java?
++ An array is a collection of elements of the same data type stored in a contiguous block of memory.
+
++ Think of it like a row of lockers 📦 where each locker holds one value.
+
+✅ Array Syntax in Java
+```
+datatype[] arrayName = new datatype[size];
+```
+📌 Example:
+```
+int[] numbers = new int[5]; // creates array of 5 integers
+```
+You can also initialize it directly:
+```
+int[] numbers = {10, 20, 30, 40, 50};
+```
+### 🔁 Accessing Array Elements
+Arrays are zero-indexed (starts at index 0).
+
+```
+System.out.println(numbers[0]); // 10
+numbers[2] = 100;
+```
+        // Change value at index 2
+✅ Full Example
+```
+public class MyArray {
+    public static void main(String[] args) {
+        int[] marks = {95, 88, 76, 64, 100};
+
+        for (int i = 0; i < marks.length; i++) {
+            System.out.println("Mark " + (i+1) + ": " + marks[i]);
+        }
+    }
+}
+```
+### 55. ✅ Types of Arrays in Java
++ `One-dimensional array` 
+→ int[] arr = new int[5];
+
++ `Two-dimensional array`  (matrix)
+→ int[][] matrix = new int[3][3];
+
++ Multidimensional arrays
+→ Like 3D or more, rarely used directly.
+
+
+### 56. What is the default value of an array element in Java?
+Depends on type:
+
++ int → 0
+
++ boolean → false
+
++ String or objects → null
+
+### 57. How to find the length of an array?
+```
+int[] arr = {1, 2, 3};
+System.out.println(arr.length); // Output: 3
+```
+### 58. Can you increase the size of an array?
++ ❌ No. Java arrays are fixed size.
++ ✅ But you can use ArrayList to handle dynamic resizing.
+
+### 59. How to sort an array?
+```
+import java.util.Arrays;
+
+int[] arr = {5, 1, 3, 2};
+Arrays.sort(arr);
+System.out.println(Arrays.toString(arr));
+```
+// [1, 2, 3, 5]
+### 60.. What is the difference between array and ArrayList?
+|Feature	|Array|	ArrayList|
+|-----------|----------|----------|
+|Size	| Fixed	DynamicType	Can be primitive |	Only objects|
+|Performance| 	Faster |	Slightly slower|
+|Methods| 	Limited |Rich (add, remove) |
+
