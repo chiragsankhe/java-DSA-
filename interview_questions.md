@@ -844,3 +844,155 @@ public class Demo {
     }
 }
 ```
+
+### ❓ Can a static method access a non-static method?
++ ✅ Yes — but only by creating an object of the class.
+Because:
+
++ static methods belong to the class
+
+ +non-static methods belong to the object (instance)
+
++ So inside a static method like main(), you cannot directly access non-static methods or variables.
+
+🔧 Example
+```
+public class Demo {
+
+    // non-static method
+    void show() {
+        System.out.println("Non-static method called");
+    }
+
+    // static method
+    public static void main(String[] args) {
+        // Cannot call show(); directly ❌
+
+        // ✅ Create an object to call non-static method
+        Demo obj = new Demo();
+        obj.show();  // Now it's valid ✅
+    }
+}
+```
+
+
+## 45: What is the difference between static and non-static methods?
+Answer:
+
+|Feature|	Static Method |	Non-Static Method|
+|-------|-------------|-----------------------|
+|Belongs| to	Class|	Object|
+|Called by|	ClassName.method()|	object.method()|
+|Object needed?	|❌ No|	✅ Yes|
+|Example	|main(),  utility methods |	getName(), display() etc.|
+
+
+
+
+
+
+###  46. What is public in Java?
++ public is an access modifier — it means the class or method is accessible from anywhere.
+
+✅ Example:
+```
+public class Car {
+    public void start() {
+        System.out.println("Car started");
+    }
+}
+```
+You can use start() method from any other class or package if the method is public.
+
+###  47. What is private in Java?
++ private means the method/variable is only accessible inside the same class. No other class can access it directly.
+
+✅ Example:
+```
+public class Secret {
+    private void secretMessage() {
+        System.out.println("This is private");
+    }
+
+    public static void main(String[] args) {
+        Secret s = new Secret();
+        s.secretMessage(); // ✅ Allowed here
+    }
+}
+```
+```
+public class Outside {
+    public static void main(String[] args) {
+        Secret s = new Secret();
+        // s.secretMessage(); ❌ Error: not accessible here
+    }
+}
+```
+
+###  48. Can a static method access non-static variables or methods?
+Answer:
+❌ No, not directly.
+✅ But you can access them by creating an object.
+
+```
+class Demo {
+    int x = 10;
+    static void show() {
+        // System.out.println(x); ❌ error
+        Demo d = new Demo();      // ✅
+        System.out.println(d.x);
+    }
+}
+```
+### ✅ 49. Can private methods be accessed outside the class?
+Answer:
+❌ No.
+They can only be accessed within the same class.
+```
+class Secret {
+    private void show() {
+        System.out.println("Private");
+    }
+
+    public static void main(String[] args) {
+        Secret s = new Secret();
+        s.show();  // ✅ allowed here
+    }
+}
+```
+### ✅ 50. What is an object in Java? How is it created?
+Answer:
+An object is an instance of a class. You create it using the new keyword.
+```
+class Dog {
+    void bark() {
+        System.out.println("Woof!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog d = new Dog(); // Object created
+        d.bark();
+    }
+}
+```
+### 52. Difference between class and object?
+### Class	Object
++ Blueprint/template	Instance of a class
++ No memory until object created	Takes memory when created
++ Example: Car	Car c1 = new Car();
+
+### ✅ 52. What happens if you call a non-static method from static without object?
+Answer:
++ You get a compile-time error:
+
+```
+Non-static method cannot be referenced from a static context.
+```
+### ✅ 53. Can a constructor be static?
+Answer:
++ ❌ No.
++ Constructors are used to create objects, and static methods belong to the class, not instances.
++ So it doesn't make sense for constructors to be static.
+
