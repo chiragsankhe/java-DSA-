@@ -589,3 +589,175 @@ if (x > 10)
 //     System.out.println("Line 2");
 
 ```
+
+# loop 
+
+### 🔁 What is a Loop in Java?
++ A loop is used to execute a block of code repeatedly as long as a condition is true.
+
+### ✅ Types of Loops in Java:
+###  1.` for loop `
+  Used when you know how many times you want to run the loop.
+```
+for (int i = 1; i <= 5; i++) {
+    System.out.println("i = " + i);
+}
+```
+🧠 Output:
+```
+i = 1  
+i = 2  
+i = 3  
+i = 4  
+i = 5
+```
+### 2. `while loop` 
+Used when you don’t know how many times you want to run the loop, but only need a condition.
+```
+int i = 1;
+while (i <= 5) {
+    System.out.println("i = " + i);
+    i++;
+}
+```
+### 3. do-while loop
+Like while, but it executes at least once, even if the condition is false.
+```
+int i = 1;
+do {
+    System.out.println("i = " + i);
+    i++;
+} while (i <= 5);
+```
+### 4. for-each loop (Enhanced for loop)
+Used to iterate over arrays or collections.
+```
+int[] numbers = {10, 20, 30};
+
+for (int num : numbers) {
+    System.out.println(num);
+}
+```
+### ⛔ Loop Control Statements:
+#### 🔹 break
+Stops the loop entirely.
+```
+for (int i = 1; i <= 5; i++) {
+    if (i == 3) break;
+    System.out.println(i); // prints 1, 2
+}
+
+```
+#### 🔹 continue
+Skips the current iteration and continues with the next.
+```
+for (int i = 1; i <= 5; i++) {
+    if (i == 3) continue;
+    System.out.println(i); // prints 1, 2, 4, 5
+}
+```
+📦 Real-World Example: Sum of numbers from 1 to 10
+```
+int sum = 0;
+for (int i = 1; i <= 10; i++) {
+    sum += i;
+}
+```
+System.out.println("Sum = " + sum); // Output: Sum = 55
+
+
+
+### ✅ Basic Interview Questions on Loops
+### 39. What are the different types of loops in Java?
+Answer:
+
++ for loop – used when the number of iterations is known.
+
++ while loop – used when the number of iterations is unknown, but condition-based.
+
++ do-while loop – same as while, but executes at least once.
+
++ for-each loop – used to iterate through arrays or collections.
+
+### 40. What is the difference between while and do-while loop?
+Answer:
+
+|while loop| 	do-while loop |
+|--------|-----------|
+|Condition is checked before loop body|	Condition is checked after loop body|
+|May never execute if condition is false |	Executes at least once, even if condition is false|
+```
+int x = 10;
+
+while (x < 5) {
+    System.out.println("This won't print");
+}
+
+```
+```
+do {
+    System.out.println("This will print once");
+} while (x < 5);
+```
+### 41. How does the for-each loop work in Java?
+Answer:
++ The enhanced for loop (for-each) is used to iterate over arrays and collections without using an index.
+```
+int[] nums = {10, 20, 30};
+for (int n : nums) {
+    System.out.println(n);
+}
+```
+It doesn't allow you to modify elements or access index directly.
+
+### 42. What is an infinite loop? How to avoid it?
+Answer:
+An infinite loop is a loop that never terminates because its condition always evaluates to true.
+```
+while (true) {
+    System.out.println("Infinite");
+}
+```
+#### Avoid it by:
+
++ Ensuring proper condition
+
++ Updating loop variable
+
++ Adding a break condition when needed
+
+### 43. What is the use of break and continue in loops?
+Answer:
+
++ `break1` : Exits the loop immediately.
+
++ `continue` : Skips the current iteration and proceeds to the next.
+```
+for (int i = 1; i <= 5; i++) {
+    if (i == 3) continue;
+    System.out.println(i);  // prints 1, 2, 4, 5
+}
+```
+
+## 44. What will be the output of this code?
+```
+int i = 1;
+while (i++ < 3) {
+    System.out.print(i + " ");
+}
+```
+Answer:
+```
+Output: 2 3
+```
+Explanation:
+
+1st iteration: i = 2 (prints 2)
+
+2nd iteration: i = 3 (prints 3)
+
+Loop stops when i++ < 3 becomes false
+
+
+
+
