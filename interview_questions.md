@@ -530,7 +530,7 @@ if (score >= 90) {
 } else {
     // Grade C
 }
-``
+```
 ## ✅ 33. What is a nested if statement?
 Answer:
 An if statement inside another if. It's used when one condition depends on another.
