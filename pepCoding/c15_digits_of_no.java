@@ -1,6 +1,6 @@
 import java .util.*;
 
-public class c15_digits_of_no
+public class C15_digits_of_no
 {
     
     public static void main(String args[])
@@ -22,7 +22,7 @@ public class c15_digits_of_no
 
       
       
-        System.out.println(dig);
+        System.out.println(nod);
  
     
 
