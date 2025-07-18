@@ -1,4 +1,4 @@
-public class C4_datatypesvariable{
+public class C04_datatypesvariable{
     public static void main(String args[]){
     
         // variable
