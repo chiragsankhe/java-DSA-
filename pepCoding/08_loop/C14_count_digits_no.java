@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class c14_count_digits_no
+public class C14_count_digits_no
 {
     public static void main(String args[])
     {

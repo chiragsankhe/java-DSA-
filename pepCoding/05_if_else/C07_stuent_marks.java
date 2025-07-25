@@ -1,5 +1,5 @@
 import java.util.*;
-public class C7_stuent_marks
+public class C07_stuent_marks
 {
     public static void main(String args[])
     {

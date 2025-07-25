@@ -1,7 +1,7 @@
 import java.util.*;
 
 
-public class C8_loops_1
+public class C08_loops_1
 {
     public static void main(String args[]){
 

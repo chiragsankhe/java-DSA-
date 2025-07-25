@@ -1,4 +1,4 @@
-public class C6_if_else_2
+public class C06_if_else_2
 {
     public static void main(String args[])
     {

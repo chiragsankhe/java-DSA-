@@ -1,6 +1,6 @@
 import java .util.*;
 
-public class C9_user_input
+public class C09_user_input
 {
     public static void main(String args[])
     {
