@@ -32,50 +32,53 @@ public class C56_diff_of_sum
         int j = a2.length - 1;
         int k = diff.length - 1;
 
-
-        
-        while(k >= 0){
-            int d = 0;
-
-         
-            int a1v = i >= 0? a1[i]: 0 ;
-
-        if(a2[j] + c  >= a1v){
-           
-            d = (a2[j] + c - a1v) ;
-            c = 0;
-
-        }else
+        while(k>=0)
         {
-          
-            d = (a2[j] + c + 10  - a1v) ;
-            c = -1;
-          
+            int d = 0 ;
+
+            int a1v = i>=0? a1[i] : 0;
+
+            if( a2[j] + c >= a1v)
+            {
+                d = (a2[j] + c ) - a1v;
+                c = 0;
+            }
+            else{
+                d = (a2[j] + c + 10 )- a1v;
+                c= -1;
+            }
+            diff[k] = d;
+
+            i--;
+            j--;
+            k--;
         }
 
-        diff[k] = d;
-        i--;
-        j--;
-        k--; 
-        }
-
+           // Skip leading zeros
         int idx = 0;
-        while(idx < diff.length)
-        {
-            if(diff[idx] == 0){
+        while (idx < diff.length && diff[idx] == 0) {
+            idx++;
+        }
+
+        if (idx == diff.length) {
+            System.out.println(0);  // If all are zeros
+        } else {
+            while (idx < diff.length) {
+                System.out.print(diff[idx]);
                 idx++;
-            }else{
-                break;
             }
         }
-
-        while(idx < diff.length){
-           System.out.println( diff[idx]);
-        }
-
-        
-
-    
-
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
