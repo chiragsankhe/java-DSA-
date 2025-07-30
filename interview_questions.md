@@ -1125,3 +1125,109 @@ String s3 = String.valueOf(true);          // boolean to String
 String s4 = String.valueOf('A');           // char to String
 String s5 = String.valueOf(new int[]{1,2}); // object to String (prints memory ref)
 ```
+## stack 
+### 65. 📘 What is a Stack?
++ Stack is a `LIFO` (Last In First Out) data structure.
+
++ The last item added is the first one to be removed.
+
+Operations:
+
++ `push()` → Add item
+
++ `pop()` → Remove top item
+
++ `peek()` → See top item
+
++ `isEmpty()` → Check if stack is empty
+
+#### ✅ 1. Java Built-in Stack (java.util.Stack)
+```
+import java.util.Stack;
+
+public class StackDemo {
+    public static void main(String[] args) {
+        Stack<Integer> stack = new Stack<>();
+
+        // Push elements
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+
+        // Peek at top
+        System.out.println("Top: " + stack.peek()); // 30
+
+        // Pop element
+        System.out.println("Popped: " + stack.pop()); // 30
+
+        // Check if empty
+        System.out.println("Is empty? " + stack.isEmpty()); // false
+
+        // Print stack
+        System.out.println("Stack: " + stack); // [10, 20]
+    }
+}
+```
+### 🛠️ 2. Custom Stack Implementation
+```
+class MyStack {
+    int[] stack;
+    int top;
+    int capacity;
+
+    MyStack(int size) {
+        stack = new int[size];
+        top = -1;
+        capacity = size;
+    }
+
+    void push(int value) {
+        if (top == capacity - 1) {
+            System.out.println("Stack Overflow");
+            return;
+        }
+        stack[++top] = value;
+    }
+
+    int pop() {
+        if (top == -1) {
+            System.out.println("Stack Underflow");
+            return -1;
+        }
+        return stack[top--];
+    }
+
+    int peek() {
+        if (top == -1) {
+            System.out.println("Stack is empty");
+            return -1;
+        }
+        return stack[top];
+    }
+
+    boolean isEmpty() {
+        return top == -1;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyStack st = new MyStack(5);
+        st.push(10);
+        st.push(20);
+        System.out.println(st.peek());  // 20
+        st.pop();
+        System.out.println(st.peek());  // 10
+    }
+}
+```
+#### 🧠 Use Cases of Stack:
++ Undo feature in editors
+
++ Balanced parentheses check
+
++ Backtracking (e.g., maze, recursion)
+
++ Browser history navigation
+
+
