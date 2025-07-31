@@ -1,51 +1,40 @@
 import java.util.*;
-import java.io.*;
 
-public class C62_next_greater_ele
-{
-    public static void display(int[] a){
-        StringBuilder sb = new StringBuilder();
+public class C62_next_greater_ele {
+    public static void main(String args[]) {
+        Scanner scn = new Scanner(System.in);
 
-        for(int val: a){
-            sb.append(val + "\n");
+        int n = scn.nextInt();
+        int arr[] = new int[n];
+
+        for(int i = 0; i < n; i++) {
+            arr[i] = scn.nextInt(); 
         }
-        System.out.println(sb);
-    }
-    public static void main(String[] args) throws Exception 
-    {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        int n = Integer.parseInt(br.readLine());
-        int[] a = new int[n];
-        for(int i = 0 ; i < n ; i++){
-            a[i] = Integer.parseInt(br.readLine());
-        }
-        int[] nge = solve(a);
-        display(nge);
-    }
-
-    public static int[] solve(int[] arr){
-        int[] nge = new int[arr.length];
 
         Stack<Integer> st = new Stack<>();
+        int result[] = new int[n];
 
-        st.push(arr[arr.length - 1]);
-        nge[arr.length - 1 ] = -1;
-        for(int i = arr.length - 2; i >= 0 ; i--){
+        st.push(arr[n - 1]);
+        result[n - 1] = -1;
 
-            while(st.size() > 0 && arr[i] >= st.peek()){
+        for(int i = n - 2; i >= 0; i--) {
+            int val = arr[i];
+
+            while (!st.isEmpty() && val >= st.peek()) {
                 st.pop();
             }
 
-            if(st.size() == 0){
-                nge[i] = -1; 
-
-            }else{
-                nge[i] = st.peek();
+            if (st.isEmpty()) {
+                result[i] = -1;
+            } else {
+                result[i] = st.peek(); 
             }
 
-           st.push(arr[i]);
+            st.push(val);
         }
-         return nge;
+
+        for (int i = 0; i < n; i++) {
+            System.out.println(result[i]);
+        }
     }
 }
