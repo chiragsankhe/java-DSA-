@@ -1230,4 +1230,42 @@ public class Main {
 
 + Browser history navigation
 
+## 66.🔸 Scanner vs BufferedReader
+|Feature|	Scanner|	BufferedReader|
+|--------|-----------|--------------|
+|Package|	java.util |	java.io|
+|Ease of use	Very easy |— supports methods like nextInt(), nextLine(), etc.|	More manual — you only get strings via readLine()|
+|Input type|	Parses input types directly (int, long, etc.)	|Always returns String, you have to manually parse|
+|Performance|	Slower (internally does more work like parsing, tokenizing)|	Faster (uses a buffer — good for large input)|
+|Best for |	Simple input (like coding interviews or small programs)	|Fast input needs (like competitive programming or file reading)|
+
+#### ✅ Example using Scanner
+```
+Scanner sc = new Scanner(System.in);
+int a = sc.nextInt();
+String name = sc.next();
+```
+#### ✅ Example using BufferedReader
+```
+BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+String line = br.readLine();         // Reads a whole line
+int a = Integer.parseInt(line);      // Manual conversion
+
+#### 🔑 When to Use What?
++ Use Case	Recommended
++ Quick and easy input	✅ Scanner
++ Competitive programming / performance critical	✅ BufferedReader
+
+
+
+
+
+
+
+
+
+
+
+Ask ChatGPT
+
 
