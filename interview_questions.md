@@ -1250,13 +1250,236 @@ String name = sc.next();
 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 String line = br.readLine();         // Reads a whole line
 int a = Integer.parseInt(line);      // Manual conversion
-
+```
 #### 🔑 When to Use What?
 + Use Case	Recommended
 + Quick and easy input	✅ Scanner
 + Competitive programming / performance critical	✅ BufferedReader
 
 
+## time and space Complecity 
+### 67. What is Time Complexity?
+Answer:
++ Time complexity is a measure of the amount of time an algorithm takes to complete as a function of the input size (n). It helps estimate how efficiently an algorithm performs as input grows.
+
+ ### 68  What is Space Complexity?
+Answer:
++ Space complexity measures the amount of memory (RAM) used by an algorithm as a function of the input size. It includes the space for input, output, and auxiliary variables or data structures used.
+
+#### ✅ 1. Linear Search → O(n)
++ 🔹 What:
+Linear search checks each element one-by-one until it finds the target or reaches the end.
+
+ +🔹 Time Complexity:
++ `Best case`: O(1) → if the element is the first one
+
++ `Worst case`: O(n) → if the element is last or not present
+
+🔹 Example:
+```
+int[] arr = {10, 20, 30, 40};
+int x = 30;
+for (int i = 0; i < arr.length; i++) {
+    if (arr[i] == x) {
+        // found
+        break;
+    }
+}
+```
++ 🔹 Why O(n)?
++ Because in the worst case, we check all n elements.
+
+### ✅ 2. Binary Search → O(log n)
++ 🔹 What:
+Binary search divides the array in half at every step, only works on sorted arrays.
+
++ 🔹 Time Complexity:
+Always O(log n)
+
+🔹 Example:
+```
+int[] arr = {10, 20, 30, 40, 50}; // sorted
+int low = 0, high = arr.length - 1;
+int x = 40;
+while (low <= high) {
+    int mid = (low + high) / 2;
+    if (arr[mid] == x) {
+        break;
+    } else if (x < arr[mid]) {
+        high = mid - 1;
+    } else {
+        low = mid + 1;
+    }
+}
+```
+🔹 Why O(log n)?
+Because each step halves the input, like:
+
+Step 1: n
+
+Step 2: n/2
+
+Step 3: n/4
+
+... until 1 element remains
+
+So total steps ≈ log₂(n)
+
+#### ✅ 3. Constant Time → O(1)
+🔹 What:
+Operations that take the same time regardless of input size.
+
+🔹 Example:
+```
+int[] arr = {10, 20, 30, 40};
+System.out.println(arr[2]); // Accessing index 2 directly
+```
+🔹 Why O(1)?
+Because accessing any element by index in an array takes constant time.
+
+
+
+### ✅ Most common Big O complexities
+|Big O|	Name|	Example algorithm|
+|-------|-----------------|----------|
+|O(1) |	Constant |time	Array element access|
+|O(log n)	| Logarithmic| time	Binary Search|
+|O(n)	| Linear time |	Linear Search, traversing an array|
+|O(n log n) |	Linearithmic |time	Merge Sort, Heap Sort|
+|O(n²) |	Quadratic | time	Bubble Sort, simple nested loops|
+|O(n³) |	Cubic  |time	Triple nested loops|
+|O(2ⁿ)	| Exponential |time	Recursive Fibonacci|
+|O(n!) |	Factorial| time	Solving traveling salesman brute force|
+
+
+### ✅ Explained with examples
+#### ✅ O(1) — Constant Time
+
+Takes same time regardless of input size.
+```
+System.out.println(arr[5]);   // direct access
+```
+#### ✅ O(log n) — Logarithmic Time
+
++ Problem size halves every step.
+
++ Example: `binary search`.
+
+#### ✅ O(n) — Linear Time
+
+Process all n elements once.
+
+```
+for(int i=0; i<n; i++) { ... }
+```
+#### ✅ O(n log n) — Linearithmic Time
+
+Logarithmic behavior for each of n items.
+
+Classic example: merge sort, heap sort.
+
+```
+// divide + conquer merge sort
+```
+#### ✅ O(n²) — Quadratic Time
+```
+for(int i=0; i<n; i++)
+   for(int j=0; j<n; j++)
+```
++ Bubble sort, selection sort, insertion sort worst-case.
+
+#### ✅ O(n³) — Cubic Time
+```
+for(int i=0; i<n; i++)
+  for(int j=0; j<n; j++)
+    for(int k=0; k<n; k++)
+```
+#### ✅ O(2ⁿ) — Exponential Time
+
++ Time doubles with each extra input.
+
+Brute-force recursion
+
+
+// naive fibonacci
+#### ✅ O(n!) — Factorial Time
+
+all permutations of n items
+
+e.g. traveling salesman problem brute force
+
+
+
+⏱️ Time Complexity Ranking (Best ➜ Worst):
+
++ O(1)        → Constant time         ✅ Best
++ O(log n)    → Logarithmic time      ✅ Very Good
++ O(n)        → Linear time           👍 Acceptable
++ O(n log n)  → Linearithmic time     👍 Good (e.g., efficient sorting)
++ O(n²)       → Quadratic time        ⚠️ Only okay for small input
++ O(2ⁿ)       → Exponential time      ❌ Very slow (avoid if possible)
++ O(n!)       → Factorial time        ❌ Extremely slow (brute-force)
+
+
+
+
+
+
+### 🔹 69. What is the time complexity of Binary Search?
+Answer:
+O(log n) — because the input size is halved in each step.
+
+### 🔹 70. What is the time and space complexity of Linear Search?
+Answer:
+
+Time: O(n)
+
+Space: O(1) (no extra space needed)
+
+### 🔹 71. What is the time complexity of Bubble Sort?
+Answer:
+
+Worst & Average case: O(n²)
+
+Best case (if array is already sorted): O(n)
+
+###  72. What is Big O, Big Ω (Omega), and Big Θ (Theta)?
+Answer:
+
+O(f(n)): Worst-case complexity
+
+Ω(f(n)): Best-case complexity
+
+Θ(f(n)): Average-case or exact complexity
+
+### 🔹 73. Can you give the time complexity of common operations in an array?
+Operation	Time Complexity
+Access (by index)	O(1)
+Search (unsorted)	O(n)
+Insert (at end)	O(1) (amortized)
+Delete (from index)	O(n)
+
+### 🔹 74. What is the space complexity of recursive functions?
+Answer:
++ It's equal to the maximum depth of the recursive call stack.
++ E.g., for a function that recurses n times: Space = O(n)
+
+### 🔹 75. What is the time complexity of Merge Sort?
+Answer:
+
++ Time: O(n log n) — because the array is split log(n) times, and each split takes O(n) to merge.
+
++ Space: O(n) — because of the auxiliary arrays used.
+
+### 🔹 76. What is the space and time complexity of DFS (Depth First Search) in a graph?
+Answer:
+
++ Time: O(V + E)
+
++ Space: O(V) for visited array and call stack
++ Where V = number of vertices, E = number of edges
+
++ Let me know if you want visual charts, MCQs, or DSA-specific complexity Q&A next.
 
 
 
@@ -1264,8 +1487,5 @@ int a = Integer.parseInt(line);      // Manual conversion
 
 
 
-
-
-Ask ChatGPT
 
 
