@@ -2422,3 +2422,269 @@ To prevent instantiation from outside the class, such as in:
 * Singleton pattern
 * Utility/helper classes
 
+### 🔐 Encapsulation in Java – Explained
+
+#### ✅ What is Encapsulation?
+
+Encapsulation is one of the four fundamental Object-Oriented Programming (OOP) concepts in Java. It refers to **wrapping data (variables) and code (methods) together into a single unit**, i.e., a class, and **restricting direct access** to some of the object's components.
+
+In simple terms, **encapsulation = data hiding**.
+
+---
+### 🔐 Encapsulation in Java – Explained
+
+#### ✅ What is Encapsulation?
+
+Encapsulation is one of the four fundamental Object-Oriented Programming (OOP) concepts in Java. It refers to **wrapping data (variables) and code (methods) together into a single unit**, i.e., a class, and **restricting direct access** to some of the object's components.
+
+In simple terms, **encapsulation = data hiding**.
+
+---
+
+#### ✅ Why Use Encapsulation?
+
+1. **Protects data from unauthorized access.**
+2. **Increases security** by controlling access through getters/setters.
+3. **Improves maintainability** by isolating internal code from external changes.
+4. **Helps in achieving loose coupling** between components of the system.
+
+---
+
+#### ✅ How is Encapsulation Achieved in Java?
+
+1. Declare variables of a class as `private`.
+2. Provide `public` getter and setter methods to access and update the value of private variables.
+
+---
+
+#### 𞲾 Example:
+
+```java
+public class Student {
+    // Step 1: private data members
+    private String name;
+    private int age;
+
+    // Step 2: public getter and setter methods
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        if(age > 0) {
+            this.age = age;
+        }
+    }
+}
+```
+
+#### 🔍 Usage:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Student s = new Student();
+        s.setName("Chirag");
+        s.setAge(25);
+
+        System.out.println("Name: " + s.getName());
+        System.out.println("Age: " + s.getAge());
+    }
+}
+```
+
+---
+
+#### ✅ Advantages of Encapsulation:
+
+* Protects the integrity of the data.
+* Makes code more flexible and easier to manage.
+* Simplifies unit testing.
+* Provides control over data via business logic inside setters.
+
+---
+
+#### 📌 Real-life Analogy:
+
+Think of a **capsule** – it contains medicine inside a shell. You can only access the medicine in a controlled way. Similarly, in Java, an object encapsulates data and restricts direct access to it.
+
+---
+
+### 🧩 Abstraction in Java – Explained
+
+#### ✅ What is Abstraction?
+
+**Abstraction** is an OOP concept that focuses on hiding complex implementation details and showing only the **essential features** of an object.
+
+It allows us to **focus on what an object does** instead of how it does it.
+
+---
+
+#### ✅ Why Use Abstraction?
+
+1. **Reduces complexity** by hiding internal implementation.
+2. **Improves code reusability** and scalability.
+3. **Supports loose coupling**.
+4. **Enhances maintainability and flexibility**.
+
+---
+
+#### ✅ How is Abstraction Achieved in Java?
+
+1. Using **Abstract Classes**
+2. Using **Interfaces**
+
+---
+
+#### 𞲾 Example Using Abstract Class:
+
+```java
+abstract class Animal {
+    abstract void makeSound();
+
+    public void eat() {
+        System.out.println("This animal eats food.");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void makeSound() {
+        System.out.println("Bark");
+    }
+}
+```
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Animal myDog = new Dog();
+        myDog.makeSound();  // Bark
+        myDog.eat();        // This animal eats food.
+    }
+}
+```
+
+---
+
+#### ✅ Example Using Interface:
+
+```java
+interface Vehicle {
+    void drive();
+}
+
+class Car implements Vehicle {
+    public void drive() {
+        System.out.println("Car is driving");
+    }
+}
+```
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Vehicle car = new Car();
+        car.drive();  // Car is driving
+    }
+}
+```
+
+---
+
+#### ✅ Why Use Abstract Methods If Users Don't See Them?
+
+Even though **users don't directly see** or interact with methods like `abstract void makeSound();`, these methods are **crucial for developers** designing reusable, flexible systems.
+
+##### 🔧 Developer’s View:
+
+An **abstract method**:
+
+* Forces subclasses (like `Dog`, `Cat`) to **implement behavior**.
+* Provides a **common interface or contract** so that objects can be treated uniformly.
+
+##### 🧑‍💻 User’s View:
+
+A user (or another part of the code) might only see:
+
+```java
+Animal animal = new Dog();
+animal.makeSound();  // Output: Bark
+```
+
+They **don't care** about `abstract void makeSound();` — they just know the `Dog` makes a sound.
+
+##### ✅ Why It's Useful:
+
+* Encourages **consistency** in child classes.
+* Enables **polymorphism**: code can use `Animal` references to call methods, even if it doesn’t know the specific subclass.
+* Separates **what should happen** from **how it happens** — a core principle of **abstraction**.
+
+---
+
+#### ✅ Key Differences Between Abstraction and Encapsulation:
+
+| Feature          | Abstraction                       | Encapsulation                      |
+| ---------------- | --------------------------------- | ---------------------------------- |
+| Purpose          | Hides implementation details      | Hides internal data (data hiding)  |
+| Achieved through | Abstract classes and interfaces   | Access modifiers + getters/setters |
+| Focus            | What an object does               | How data is accessed/modified      |
+| Example          | Animal abstraction, Vehicle, etc. | Private fields with public methods |
+
+---
+
+#### 📌 Real-life Analogy:
+
+Think of a **TV remote** – you can press buttons to change channels or adjust volume, but you don’t know or care how the circuit inside works. That’s abstraction!
+
+---
+
+### 🧠 Interview Questions on Abstraction
+
+1. **What is abstraction in Java?**
+
+   * Abstraction is a concept that hides internal implementation details and shows only the essential features to the user.
+
+2. **How is abstraction implemented in Java?**
+
+   * Using abstract classes and interfaces.
+
+3. **Why do we use abstract methods if users never directly call them?**
+
+   * Abstract methods provide a standard structure for subclasses to implement. They help enforce consistency and enable polymorphism.
+
+4. **What is the difference between abstract class and interface?**
+
+   * Abstract class can have both abstract and concrete methods, while interfaces can only have abstract methods (prior to Java 8). From Java 8 onward, interfaces can have default and static methods.
+
+5. **Can we create an object of an abstract class?**
+
+   * No, we cannot instantiate an abstract class directly.
+
+6. **Can an abstract class have a constructor?**
+
+   * Yes, it can. The constructor is called when a subclass is instantiated.
+
+7. **When should you use an abstract class over an interface?**
+
+   * Use abstract classes when you want to share code among closely related classes. Use interfaces to define a contract for unrelated classes.
+
+8. **Can a class be both abstract and final?**
+
+   * No, an abstract class must be extended, while a final class cannot be extended. Hence, they are contradictory.
+
+9. **Can we have an abstract method in a non-abstract class?**
+
+   * No, if a class contains an abstract method, it must be declared abstract.
+
+10. **What happens if a subclass does not implement all abstract methods of the parent abstract class?**
+
+* Then the subclass must also be declared abstract.
