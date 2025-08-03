@@ -2140,16 +2140,175 @@ class B {
 
 ### 9. Interview Questions
 
-1. What is inheritance in Java and why is it used?
-2. Explain different types of inheritance in Java.
-3. Why multiple inheritance is not supported in Java?
-4. How is multiple inheritance achieved in Java?
-5. What is method overriding and how does it relate to inheritance?
-6. What is the role of `super` in inheritance?
-7. How do access modifiers affect inheritance?
-8. What happens if no constructor is defined in a subclass?
-9. Can constructors be inherited in Java?
-10. What is the purpose of the `final` keyword with respect to inheritance?
+**Java Inheritance - Interview Questions and Answers**
+
+---
+
+### 1. What is inheritance in Java and why is it used?
+
+Inheritance is a feature of object-oriented programming where a class (child/subclass) inherits fields and methods from another class (parent/superclass).
+
+**Why it's used:**
+
+* Code **reusability**
+* Improves **maintainability**
+* Promotes **hierarchical classification**
+* Enables **polymorphism**
+
+Example:
+
+```java
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Dog barks");
+    }
+}
+```
+
+---
+
+### 2. Explain different types of inheritance in Java.
+
+| Type             | Description                                | Supported in Java        |
+| ---------------- | ------------------------------------------ | ------------------------ |
+| **Single**       | One subclass inherits one superclass       | Yes                      |
+| **Multilevel**   | A subclass inherits another subclass       | Yes                      |
+| **Hierarchical** | Multiple subclasses inherit one superclass | Yes                      |
+| **Multiple**     | One class inherits from multiple classes   | No                       |
+| **Hybrid**       | Combination of above types                 | Partially via interfaces |
+
+---
+
+### 3. Why multiple inheritance is not supported in Java?
+
+Java doesn't support multiple inheritance using **classes** to avoid **ambiguity/conflicts**, especially with the **Diamond Problem**.
+
+---
+
+### 4. How is multiple inheritance achieved in Java?
+
+Through **interfaces**. Interfaces only define method signatures (no implementation), hence no conflict arises.
+
+Example:
+
+```java
+interface A {
+    void show();
+}
+
+interface B {
+    void show();
+}
+
+class C implements A, B {
+    public void show() {
+        System.out.println("Multiple inheritance using interfaces");
+    }
+}
+```
+
+---
+
+### 5. What is method overriding and how does it relate to inheritance?
+
+Method overriding is when a subclass **provides a specific implementation** of a method already defined in the superclass.
+
+Example:
+
+```java
+class Animal {
+    void sound() {
+        System.out.println("Animal sound");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Meow");
+    }
+}
+```
+
+---
+
+### 6. What is the role of `super` in inheritance?
+
+* Access **parent class methods/variables**
+* Call **parent class constructor**
+
+Example:
+
+```java
+class Animal {
+    Animal() {
+        System.out.println("Animal constructor");
+    }
+}
+
+class Dog extends Animal {
+    Dog() {
+        super(); // Calls Animal constructor
+        System.out.println("Dog constructor");
+    }
+}
+```
+
+---
+
+### 7. How do access modifiers affect inheritance?
+
+| Modifier    | Inherited? | Accessible in subclass?        |
+| ----------- | ---------- | ------------------------------ |
+| `public`    | Yes        | Yes                            |
+| `protected` | Yes        | Yes (same package or subclass) |
+| `default`   | Yes        | Yes (only in same package)     |
+| `private`   | No         | No                             |
+
+---
+
+### 8. What happens if no constructor is defined in a subclass?
+
+If a subclass doesn't define a constructor, Java automatically inserts a **default no-arg constructor** and calls the **superclass’s no-arg constructor**.
+
+---
+
+### 9. Can constructors be inherited in Java?
+
+No, constructors are **not inherited** in Java. However, a subclass can call a superclass constructor using `super()`.
+
+---
+
+### 10. What is the purpose of the `final` keyword with respect to inheritance?
+
+* `final` **class**: Cannot be extended
+
+```java
+final class A { }
+class B extends A { } // Error
+```
+
+* `final` **method**: Cannot be overridden
+
+```java
+class A {
+    final void show() { }
+}
+class B extends A {
+    void show() { } // Error
+}
+```
+
+---
+
+**End of Document**
+
 
 ---
 
