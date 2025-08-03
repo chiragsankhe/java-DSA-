@@ -1483,7 +1483,679 @@ Answer:
 
 
 
+#  Java OOPs 
 
+
+Ii# ☕ Java OOPs Concepts - Classes, Objects, Constructors, Methods & `this` Keyword
+
+This document explains the core **Object-Oriented Programming (OOP)** concepts in Java:
+
+* ✅ Classes
+* ✅ Objects
+* ✅ Constructors (Default, Parameterized, Copy)
+* ✅ Methods (Instance, Static, Overloading)
+* ✅ `this` Keyword
+
+> Learn the theory and implementation of Java fundamentals with clean, well-structured examples.
+
+---
+
+## 📌 Table of Contents
+
+* [📌 Table of Contents](#-table-of-contents)
+* [📘 What is a Class?](#-what-is-a-class)
+* [📦 What is an Object?](#-what-is-an-object)
+* [🏗️ Java Constructors](#%ef%b8%8f-java-constructors)
+
+  * [Default Constructor](#default-constructor)
+  * [Parameterized Constructor](#parameterized-constructor)
+  * [Copy Constructor](#copy-constructor)
+* [🖁️ `this` Keyword in Java](#-this-keyword-in-java)
+* [🔧 Methods in Java](#-methods-in-java)
+
+  * [Instance Method](#instance-method)
+  * [Static Method](#static-method)
+  * [Method Overloading](#method-overloading)
+* [📚 Summary Table](#-summary-table)
+* [📁 Folder Structure](#-folder-structure)
+* [▶️ How to Run](#%e2%96%b6%ef%b8%8f-how-to-run)
+* [🙌 Author](#-author)
+* [📜 License](#-license)
+
+---
+
+## 📘 What is a Class?
+
+A **class** in Java is a user-defined blueprint or prototype from which objects are created. It contains fields (variables) and methods to define object behavior.
+
+```java
+public class Student {
+    int id;
+    String name;
+
+    void display() {
+        System.out.println(id + " " + name);
+    }
+}
+```
+
+---
+
+## 📦 What is an Object?
+
+An **object** is a real-world instance of a class. It holds actual data and can invoke class methods.
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Student s1 = new Student();    // Object created
+        s1.id = 101;
+        s1.name = "Chirag";
+        s1.display();  // Output: 101 Chirag
+    }
+}
+```
+
+---
+
+## 🏗️ Java Constructors
+
+A **constructor** is a special method used to initialize objects. It is invoked automatically when the object is created.
+
+### Default Constructor
+
+```java
+public class Student {
+    Student() {
+        System.out.println("Default constructor called.");
+    }
+}
+```
+
+### Parameterized Constructor
+
+```java
+public class Student {
+    int id;
+    String name;
+
+    Student(int i, String n) {
+        id = i;
+        name = n;
+    }
+
+    void display() {
+        System.out.println(id + " " + name);
+    }
+}
+```
+
+### Copy Constructor
+
+```java
+public class Student {
+    int id;
+    String name;
+
+    Student(Student s) {
+        id = s.id;
+        name = s.name;
+    }
+}
+```
+
+---
+
+## 🖁️ `this` Keyword in Java
+
+`this` refers to the **current object** in a class. Common uses include:
+
+### Referring to instance variables
+
+```java
+Student(int id, String name) {
+    this.id = id;
+    this.name = name;
+}
+```
+
+### Constructor chaining
+
+```java
+Student() {
+    this(0, "Default");
+}
+```
+
+---
+
+## 🔧 Methods in Java
+
+### Instance Method
+
+```java
+void greet() {
+    System.out.println("Hello from instance method");
+}
+```
+
+### Static Method
+
+```java
+static void showCollege() {
+    System.out.println("XYZ College");
+}
+```
+
+### Method Overloading
+
+```java
+int add(int a, int b) {
+    return a + b;
+}
+
+double add(double a, double b) {
+    return a + b;
+}
+```
+
+---
+
+## 📚 Summary Table
+
+| Concept        | Description                           |
+| -------------- | ------------------------------------- |
+| Class          | Blueprint/template for objects        |
+| Object         | Instance of a class                   |
+| Constructor    | Initializes objects                   |
+| `this` keyword | Refers to current class object        |
+| Method         | Function that defines object behavior |
+
+---
+
+## 📁 Folder Structure
+
+```
+JavaOOPsConcepts/
+│
+├── src/
+│   ├── Student.java
+│   ├── Main.java
+│
+├── README.md
+```
+
+---
+
+## ▶️ How to Run
+
+### Using Command Line:
+
+```bash
+javac Student.java
+javac Main.java
+java Main
+```
+
+### Using an IDE:
+
+* Open the project in IntelliJ IDEA, Eclipse, or VS Code.
+* Right-click on `Main.java` and click **Run**.
+
+---
+
+## 🙌 Author
+
+**Chirag Sankhe**
+🎓 Java | Spring Boot | Backend Developer
+📢 [LinkedIn](https://www.linkedin.com) | 🌐 Portfolio Coming Soon
+
+---
+
+## 📜 License
+
+This project is open-source and available under the [MIT License](LICENSE).
+
+
+
+# ☕ Java Polymorphism
+
+Polymorphism is one of the four main pillars of Object-Oriented Programming (OOP) in Java. It means "many forms" and allows a method or object to behave in different ways depending on the context.
+
+---
+
+## 📈 Types of Polymorphism
+
+| Type                      | Implemented Through | Compile Time / Run Time |
+| ------------------------- | ------------------- | ----------------------- |
+| Compile-time Polymorphism | Method Overloading  | Compile-time            |
+| Runtime Polymorphism      | Method Overriding   | Run-time                |
+
+---
+
+## 🔢 Compile-time Polymorphism (Method Overloading)
+
+### What is it?
+
+Method overloading allows multiple methods in the same class with the same name but different parameters.
+
+```java
+class Calculator {
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    double add(double a, double b) {
+        return a + b;
+    }
+
+    int add(int a, int b, int c) {
+        return a + b + c;
+    }
+}
+```
+
+---
+
+## ⏱️ Runtime Polymorphism (Method Overriding)
+
+### What is it?
+
+Method overriding means a subclass provides its own implementation of a method declared in the parent class.
+
+```java
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal a = new Dog();
+        a.sound(); // Output: Dog barks
+    }
+}
+```
+
+---
+
+## 📅 Overloading vs Overriding
+
+| Feature          | Overloading    | Overriding               |
+| ---------------- | -------------- | ------------------------ |
+| Same class       | ✅              | ❌ (requires inheritance) |
+| Method signature | Changes        | Must remain the same     |
+| Execution time   | Compile time   | Runtime                  |
+| Binding          | Static binding | Dynamic binding          |
+
+---
+
+## 🔐 Can We Override These?
+
+| Feature               | Can Be Overridden? |
+| --------------------- | ------------------ |
+| static methods        | ❌ No               |
+| private methods       | ❌ No               |
+| final methods/classes | ❌ No               |
+| constructors          | ❌ No               |
+
+---
+
+## 🧪 Real-world Example
+
+Think of a superclass `Vehicle` and subclasses like `Car`, `Bike`, `Truck`. Each subclass overrides a method `move()`:
+
+```java
+Vehicle v = new Bike();
+v.move(); // Bike-specific implementation
+```
+
+---
+
+## 📃 Polymorphism Interview Questions (For Freshers)
+
+### 1. What is polymorphism in Java?
+
+Polymorphism allows one method or object to behave differently based on context. It includes overloading and overriding.
+
+### 2. What is method overloading?
+
+Same method name with different parameters in the same class. Happens at compile-time.
+
+### 3. What is method overriding?
+
+Subclass provides specific implementation of a superclass method. Happens at runtime.
+
+### 4. Can we override static methods?
+
+No. Static methods are class-level, not instance-level.
+
+### 5. What is dynamic method dispatch?
+
+When a superclass reference calls a subclass overridden method at runtime.
+
+### 6. Can we overload or override constructors?
+
+Constructors can be overloaded, but not overridden (they are not inherited).
+
+### 7. What’s the difference between overloading and overriding?
+
+Overloading is compile-time, overriding is runtime. Overloading changes parameters, overriding keeps the same method signature.
+
+### 8. How does polymorphism support abstraction?
+
+By allowing abstract methods to be implemented differently in different subclasses.
+
+### 9. Example code output:
+
+```java
+class Parent {
+    void show() { System.out.println("Parent"); }
+}
+class Child extends Parent {
+    void show() { System.out.println("Child"); }
+}
+
+Parent p = new Child();
+p.show(); // Output: Child
+```
+
+---
+
+## 📊 Summary
+
+* Polymorphism = many forms
+* Overloading = same method name, different parameters (compile time)
+* Overriding = same method signature in subclass (runtime)
+* Helps in code flexibility, abstraction, and reusability 
+
+**Java Inheritance - Complete In-Depth Explanation**
+
+---
+
+### 1. Introduction to Inheritance
+
+Inheritance is a core concept of Object-Oriented Programming (OOP). In Java, inheritance allows a new class (called the **child class** or **subclass**) to acquire the properties and behaviors of an existing class (called the **parent class** or **superclass**).
+
+**Purpose of Inheritance:**
+
+* Promotes **code reuse** (write once, use multiple times)
+* Enables **polymorphism**
+* Supports **method overriding**
+* Facilitates code organization in a hierarchical structure
+
+### Key Terms:
+
+* **Superclass (Parent class):** The class being inherited from.
+* **Subclass (Child class):** The class that inherits from the superclass.
+* **`extends` keyword:** Used to declare inheritance in Java.
+
+---
+
+### 2. How Inheritance Works in Java
+
+When a subclass inherits from a superclass:
+
+* It **automatically gets access** to all `public` and `protected` members (fields and methods) of the superclass.
+* **Constructors are not inherited** but the subclass can call the constructor using `super()`.
+* The subclass can **override** the superclass methods.
+
+### Example:
+
+```java
+class Animal {
+    void eat() {
+        System.out.println("This animal eats food.");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("The dog barks.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.eat(); // Inherited method
+        dog.bark(); // Subclass method
+    }
+}
+```
+
+---
+
+### 3. Types of Inheritance in Java
+
+#### a) Single Inheritance
+
+A subclass inherits from a single superclass.
+
+```java
+class A {
+    void show() { System.out.println("Class A"); }
+}
+
+class B extends A {
+    void display() { System.out.println("Class B"); }
+}
+```
+
+#### b) Multilevel Inheritance
+
+A subclass inherits from a class, which itself is a subclass of another class.
+
+```java
+class A {
+    void showA() { System.out.println("Class A"); }
+}
+
+class B extends A {
+    void showB() { System.out.println("Class B"); }
+}
+
+class C extends B {
+    void showC() { System.out.println("Class C"); }
+}
+```
+
+#### c) Hierarchical Inheritance
+
+Multiple subclasses inherit from one superclass.
+
+```java
+class Parent {
+    void speak() { System.out.println("Parent speaks"); }
+}
+
+class Child1 extends Parent {
+    void cry() { System.out.println("Child1 cries"); }
+}
+
+class Child2 extends Parent {
+    void laugh() { System.out.println("Child2 laughs"); }
+}
+```
+
+#### ❌ d) Multiple Inheritance (Not supported via classes)
+
+Java does not support multiple inheritance with classes to avoid ambiguity (Diamond Problem).
+
+#### ✅ e) Interface-Based Multiple Inheritance
+
+Java allows multiple inheritance using interfaces.
+
+```java
+interface A {
+    void show();
+}
+
+interface B {
+    void display();
+}
+
+class C implements A, B {
+    public void show() { System.out.println("Show from A"); }
+    public void display() { System.out.println("Display from B"); }
+}
+```
+
+---
+
+### 4. `super` Keyword in Java
+
+The `super` keyword refers to the immediate parent class.
+
+#### Uses of `super`:
+
+* Call the **parent class constructor**
+* Call the **parent class method**
+* Access the **parent class variable**
+
+#### Example:
+
+```java
+class Animal {
+    String color = "White";
+    
+    Animal() {
+        System.out.println("Animal constructor called");
+    }
+    
+    void display() {
+        System.out.println("Animal eats food");
+    }
+}
+
+class Dog extends Animal {
+    String color = "Black";
+
+    Dog() {
+        super(); // Calls Animal constructor
+    }
+
+    void printColor() {
+        System.out.println(super.color); // Access parent class variable
+    }
+
+    void display() {
+        super.display(); // Call parent class method
+        System.out.println("Dog eats bones");
+    }
+}
+```
+
+---
+
+### 5. Access Modifiers in Inheritance
+
+#### a) `public`
+
+* Accessible from **anywhere**
+* Fully inheritable
+
+#### b) `protected`
+
+* Accessible within the **same package** or **subclass in other packages**
+* Inheritable
+
+#### c) `default` (no modifier)
+
+* Accessible only within the **same package**
+* Inheritable only if subclass is in the same package
+
+#### d) `private`
+
+* Accessible only within the **same class**
+* **Not inherited** by subclasses
+
+#### Access Table:
+
+| Modifier  | Same Class | Same Package | Subclass (same pkg) | Subclass (diff pkg) | Other Class |
+| --------- | ---------- | ------------ | ------------------- | ------------------- | ----------- |
+| public    | ✅          | ✅            | ✅                   | ✅                   | ✅           |
+| protected | ✅          | ✅            | ✅                   | ✅                   | ❌           |
+| default   | ✅          | ✅            | ✅                   | ❌                   | ❌           |
+| private   | ✅          | ❌            | ❌                   | ❌                   | ❌           |
+
+---
+
+### 6. Constructor Behavior in Inheritance
+
+* Constructors are **not inherited**.
+* The subclass constructor calls the superclass constructor using `super()`.
+* If no constructor is explicitly defined, Java inserts a default `super()` call.
+
+---
+
+### 7. Method Overriding in Inheritance
+
+* Subclass can override the method of its parent class using the same method signature.
+* Use `@Override` annotation.
+
+```java
+class Parent {
+    void message() {
+        System.out.println("Message from Parent");
+    }
+}
+
+class Child extends Parent {
+    @Override
+    void message() {
+        System.out.println("Message from Child");
+    }
+}
+```
+
+---
+
+### 8. Final Keyword and Inheritance
+
+* `final class`: cannot be extended.
+* `final method`: cannot be overridden.
+* `final variable`: value cannot be changed.
+
+```java
+final class A {
+    // Cannot be subclassed
+}
+
+class B {
+    final void show() {
+        System.out.println("Final method");
+    }
+}
+```
+
+---
+
+### 9. Interview Questions
+
+1. What is inheritance in Java and why is it used?
+2. Explain different types of inheritance in Java.
+3. Why multiple inheritance is not supported in Java?
+4. How is multiple inheritance achieved in Java?
+5. What is method overriding and how does it relate to inheritance?
+6. What is the role of `super` in inheritance?
+7. How do access modifiers affect inheritance?
+8. What happens if no constructor is defined in a subclass?
+9. Can constructors be inherited in Java?
+10. What is the purpose of the `final` keyword with respect to inheritance?
+
+---
+
+### 10. Conclusion
+
+Inheritance in Java promotes reusability, extensibility, and polymorphism. By understanding inheritance types, access modifiers, method overriding, and the use of the `super` keyword, developers can build robust, maintainable, and scalable Java applications.
 
 
 
