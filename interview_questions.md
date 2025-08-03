@@ -2307,16 +2307,118 @@ class B extends A {
 
 ---
 
-**End of Document**
 
+
+### Java Access Modifiers – Interview Questions & Answers
 
 ---
 
-### 10. Conclusion
+#### 1. What are Access Modifiers in Java?
 
-Inheritance in Java promotes reusability, extensibility, and polymorphism. By understanding inheritance types, access modifiers, method overriding, and the use of the `super` keyword, developers can build robust, maintainable, and scalable Java applications.
+**Answer:**
+Access modifiers in Java define the **scope and visibility** of classes, methods, and variables. They control where the members of a class can be accessed.
 
+Java provides four types of access modifiers:
 
+* `public`
+* `protected`
+* `default` (no keyword)
+* `private`
 
+---
 
+#### 2. What are the different types of access modifiers in Java?
+
+| Modifier    | Accessible within Class | Same Package | Subclass (any package) | Anywhere |
+| ----------- | ----------------------- | ------------ | ---------------------- | -------- |
+| `public`    | ✅                       | ✅            | ✅                      | ✅        |
+| `protected` | ✅                       | ✅            | ✅                      | ❌        |
+| (default)   | ✅                       | ✅            | ❌                      | ❌        |
+| `private`   | ✅                       | ❌            | ❌                      | ❌        |
+
+---
+
+#### 3. What is the default access modifier in Java?
+
+**Answer:**
+If no access modifier is specified, Java applies the **default (package-private)** access modifier, which means the member is accessible **only within the same package**.
+
+---
+
+#### 4. Can a class be declared private in Java?
+
+**Answer:**
+**Top-level classes** **cannot** be `private` or `protected`. They can only be:
+
+* `public` or
+* default (package-private)
+
+Only **nested (inner) classes** can be declared `private`.
+
+---
+
+#### 5. What is the difference between private and protected access modifiers?
+
+| `private`                         | `protected`                                   |
+| --------------------------------- | --------------------------------------------- |
+| Accessible only in the same class | Accessible in the same package and subclasses |
+| Cannot be inherited               | Can be inherited                              |
+
+---
+
+#### 6. Can private members be accessed in subclasses?
+
+**Answer:**
+No. **Private members are not inherited**, hence cannot be accessed directly in subclasses, even in the same package.
+
+---
+
+#### 7. What does the `protected` access modifier allow that default does not?
+
+**Answer:**
+`protected` members are accessible in:
+
+* the **same package**
+* **subclasses** even if they are in **different packages**
+
+Whereas default (package-private) is restricted to the **same package only**.
+
+---
+
+#### 8. Can we reduce the visibility of a method while overriding it?
+
+**Answer:**
+**No.** Java does **not allow reducing visibility** when overriding a method.
+For example:
+
+```java
+public class Parent {
+    public void show() {}
+}
+
+public class Child extends Parent {
+    // This would cause a compile-time error
+    private void show() {}
+}
+```
+
+---
+
+#### 9. Can constructors be `protected` or `private`?
+
+**Answer:**
+Yes:
+
+* A `private` constructor is used in **Singleton** or **Factory** patterns.
+* A `protected` constructor is often used in **inheritance control**.
+
+---
+
+#### 10. When would you use a `private` constructor?
+
+**Answer:**
+To prevent instantiation from outside the class, such as in:
+
+* Singleton pattern
+* Utility/helper classes
 
