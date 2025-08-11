@@ -1,0 +1,2727 @@
+## Java OOP(Object Oriented Programming) Concepts
+
++ Object-Oriented Programming or Java OOPs concept refers to programming languages that use objects in programming. They use objects as a primary source to implement what is to happen in the code. Objects are seen by the viewer or user, performing tasks you assign.
+
++ Object-oriented programming aims to implement real-world entities like inheritance, hiding, polymorphism, etc. in programming. The main aim of OOPs is to bind together the data and the functions that operate on them so that no other part of the code can access this data except that function.
+
++ Example:
+
+```
+// Use of Object and Classes in Java
+import java.io.*;
+
+class Numbers {
+    // Properties
+    private int a;
+    private int b;
+
+    // Methods
+    public void sum() { System.out.println(a + b); }
+
+    public void sub() { System.out.println(a - b); }
+
+    public static void main(String[] args)
+    {
+
+        // Creating Instance of Class
+        // Object
+        Numbers obj = new Numbers();
+
+        // Assigning Values to the Properties
+        obj.a = 1;
+        obj.b = 2;
+
+        // Using the Methods
+        obj.sum();
+        obj.sub();
+    }
+}
+```
+```
+Output
+3
+-1
+```
++ It is a simple example showing a class Numbers containing two variables which can be accessed and updated only by instance of the object created.
+
+## Java Class
++ A Class is a user-defined blueprint or prototype from which objects are created. It represents the set of properties or methods that are common to all objects of one type. Using classes, you can create multiple objects with the same behavior instead of writing their code multiple times. This includes classes for objects occurring more than once in your code. In general, class declarations can include these components in order: 
+
++ `Modifiers:` A class can be public or have default access (Refer to this for details).
++ `Class name:` The class name should begin with the initial letter capitalized by convention.
++ `Body:` The class body is surrounded by `braces, { }`.
+  
+## Java Object
++ An Object is a basic unit of Object-Oriented Programming that represents real-life entities. A typical Java program creates many objects, which as you know, interact by invoking methods. The objects are what perform your code, they are the part of your code visible to the viewer/user.
++  An object mainly consists of: 
+
++ `State:` It is represented by the attributes of an object. It also reflects the properties of an object.
++ `Behavior:` It is represented by the methods of an object. It also reflects the response of an object to other objects.
++ `Identity:` It is a unique name given to an object that enables it to interact with other objects.
++ `Method:` A method is a collection of statements that perform some specific task and return the result to the caller. A method can perform some specific task without returning anything. Methods allow us to reuse the code without retyping it, which is why they are considered time savers. In Java, every method must be part of some class, which is different from languages like C, C++, and Python. 
++ Example:
+```
+// Java Program to demonstrate
+// Use of Class and Objects
+
+// Class Declared
+public class GFG {
+    
+      // Properties Declared
+    static String Employee_name;
+    static float Employee_salary;
+
+      // Methods Declared
+    static void set(String n, float p) {
+        Employee_name  = n;
+        Employee_salary  = p;
+    }
+
+    static void get() {
+        System.out.println("Employee name is: " +Employee_name );
+        System.out.println("Employee CTC is: " + Employee_salary);
+    }
+
+      // Main Method
+    public static void main(String args[]) {
+        GFG.set("Rathod Avinash", 10000.0f);
+        GFG.get();
+    }
+}
+```
+```
+Output
+Employee name is: Rathod Avinash
+Employee CTC is: 10000.0
+For more information, please refer to the article – Classes and Object.
+```
+
+## Method and Method Passing
++ A method is a collection of statements that perform specific tasks and return a result to the caller. It can be declared with or without arguments, depending on the requirements. A method can take input values, perform operations, and return a result.
+
+### 1. Predefined Methods (Built-in Methods)
+ + These are methods that come with Java libraries (e.g., Math, String, ArrayList classes).
+```
+public class Main {
+    public static void main(String[] args) {
+        // Using built-in Math method
+        System.out.println(Math.sqrt(25)); // Output: 5.0
+        System.out.println(Math.max(10, 20)); // Output: 20
+    }
+}
+```
++  No need to define them, just use them directly.
+
+### 2. User-defined Methods
++ These are methods created by programmers inside a class to perform specific tasks.
+```
+class Calculator {
+    // User-defined method
+    int multiply(int a, int b) {
+        return a * b;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Calculator calc = new Calculator();
+        System.out.println(calc.multiply(4, 5)); // Output: 20
+    }
+}
+```
++ Defined by the user inside a class.
+
+### 3. Static Methods
++ Yes, that's `right`! In Java, if you define a `static `variable inside a class, it belongs to the class rather than any specific instance. This means you can access those static variables `anywhere inside the same class ``(including the main method)` using the class name or directly if they are in the `same class`.
+
+Example:
+```
+class Example {
+    // Defining static variables
+    static int a = 10;
+    static String name = "Java";
+    static double pi = 3.14;
+    static boolean flag = true;
+    static char ch = 'X';
+
+    public static void main(String[] args) {
+        // Accessing static variables directly
+        System.out.println(a);
+        System.out.println(name);
+        System.out.println(pi);
+        System.out.println(flag);
+        System.out.println(ch);
+        
+        // Accessing static variables using class name
+        System.out.println(Example.a);
+        System.out.println(Example.name);
+    }
+}
+```
+Output:
+```
+10
+Java
+3.14
+true
+X
+10
+Java
+```
+### Key Points:
++ Static variables are shared across all instances of the class.
++ They can be accessed directly within static methods of the same class (like main).
++ If accessing from another class, you must use ClassName.variableName.
++ Static variables are initialized only once at class loading time.
+
+
+### with 2 diffrent classs  how we use static variable access
+
++ If you define static variables in one class, you can `access` them in `another class using the class name followed by the variable name` `(ClassName.variableName)`.
+
++ ✅ Example: Accessing Static Variables from Another Class
+```
+// First class containing static variables
+class Data {
+    static int a = 100;
+    static String message = "Hello, Java!";
+}
+
+// Second class (contains main method)
+public class Main {
+    public static void main(String[] args) {
+        // Accessing static variables using class name
+        System.out.println(Data.a);         // Output: 100
+        System.out.println(Data.message);   // Output: Hello, Java!
+    }
+}
+```
++ ✅ Another Example: Accessing Static Variables with Static Methods
+```
+class Config {
+    static String database = "MySQL";
+
+    // Static method to return the database name
+    static String getDatabase() {
+        return database;
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        // Access static variable using class name
+        System.out.println(Config.database);
+
+        // Access static method using class name
+        System.out.println(Config.getDatabase());
+    }
+}
+```
++ 🔥 Key Points:
++ Static variables belong to the class and not to any object.
++ They can be accessed in another class using ClassName.variableName.
++ You don’t need to create an object to access static variables.
++ Static methods can also access static variables.
+
+
+### if we not use static then ?
+
++ If you do `not use static`, the variables will become `instance variables`, meaning you need to `create an object of the class to access them`. You cannot access non-static variables directly from a static context (like the main method).
+
++ ❌ Example (Without static, will cause an error)
+```
+class Data {
+    int a = 100;  // Instance variable (non-static)
+    String message = "Hello, Java!";
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // System.out.println(Data.a);  // ❌ Error: Non-static field cannot be referenced from a static context
+        // System.out.println(Data.message); // ❌ Error
+    }
+}
+```
++ ✅ Correct Way: Using Objects
+To access non-static variables, you must create an instance of the class:
+```
+class Data {
+    int a = 100;  // Instance variable (non-static)
+    String message = "Hello, Java!";
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create an object of Data class
+        Data obj = new Data();
+        
+        // Access instance variables using the object
+        System.out.println(obj.a);         // Output: 100
+        System.out.println(obj.message);   // Output: Hello, Java!
+    }
+}
+```
++ 🔥 Key Differences Between static and Non-static:
+  
+|Feature	|static (Class Variable)	|Non-static (Instance Variable)|
+|---------------|------------------------------|------------------------------|
+|Belongs to	|Class (shared across all instances)      |Each object (separate copies)|
+|Access in main()|Directly using `ClassName.variableName` |Requires `object (obj.variableName)`|
+|Memory allocation|At class loading time | When object is created|
+|Needs an object?|❌ No	|✅ Yes|
+
+### ✅ When to Use:
++ Use static when a variable/method belongs to the class (e.g., constants, utility methods).
++ Use non-static when a variable/method should be different for each object (e.g., user details in an app).
++ A static method belongs to the class rather than an object. It can be called directly using the class name.
+```
+class MathUtils {
+    static int square(int num) {
+        return num * num;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(MathUtils.square(6)); // Output: 36
+    }
+}
+```
++ Called using the class name, no need to create an object.
+
+### 4. Instance Methods
++ These methods belong to an object of a class and require an instance to be called.
+```
+class Person {
+    String name;
+
+    void display() {
+        System.out.println("Name: " + name);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person p = new Person();
+        p.name = "Prachi";
+        p.display(); // Output: Name: Prachi
+    }
+}
+```
++ Requires an object to call the method.
+
+### ✅ Example: Accessing Instance Variables Without static
+```
+class Student {
+    String name;  // Instance variable
+    int age;      // Instance variable
+
+    // Constructor to initialize instance variables
+    Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Non-static method can directly access instance variables
+    void display() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating an object of Student
+        Student s1 = new Student("Prachi", 22);
+
+        // Calling the instance method (no need for static)
+        s1.display();
+    }
+}
+```
+🔹 Output:
+```
+Name: Prachi, Age: 22
+```
+### ✅ How It Works:
++ Instance variables `(name, age) `are `non-static`.
++ The display() method is also `non-static`, so it can `directly access instance variables`.
++ You must create an object (s1) to call display(), as instance methods need an object.
+### ❌ What Happens If display() is Static?
+If you try to access non-static variables inside a static method, you’ll get an error:
+```
+class Student {
+    String name;
+    int age;
+
+    static void display() {
+        System.out.println(name);  // ❌ Error: Non-static variable cannot be referenced from a static context
+    }
+}
+```
+### 🔥 Solution:
++ Either remove static from display() (as shown earlier).
+OR use an object inside static:
+```
+static void display(Student s) {
+    System.out.println(s.name + ", " + s.age);
+}
+```
+### ✅ Final Rule:
++ Non-static methods can access instance variables directly.
++ Static methods must use an object to access instance variables.
+
+```
+class Student {
+    String name;  // Instance variable
+    int age;      // Instance variable
+
+    // Constructor to initialize values
+    Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Method to display details
+    void display() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating objects of Student
+        Student s1 = new Student("Aryan", 22);
+        Student s2 = new Student("Riya", 24);
+
+        // Assigning new values to instance variables
+        s1.name = "Prachi";  // ✅ Corrected string format
+        s2.age = 23;         // ✅ No NullPointerException since s2 is initialized
+
+        // Displaying updated values
+        s1.display();
+        s2.display();
+    }
+}
+
+```
+
+### 5. Getter and Setter Methods
+Used to get and set values of private variables (Encapsulation).
+```
+class Student {
+    private String name;
+
+    // Setter
+    void setName(String newName) {
+        name = newName;
+    }
+
+    // Getter
+    String getName() {
+        return name;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s = new Student();
+        s.setName("Prachi");
+        System.out.println(s.getName()); // Output: Prachi
+    }
+}
+```
++ Controls access to private variables.
+
+### Why Do We Use private for Variables in Getters and Setters?
++ We use private for instance variables in getter and setter methods to achieve `Encapsulation`, which is one of the four key principles of Object-Oriented Programming (OOP).
+
+### ✅ Reasons for Using private Variables:
+#### Encapsulation (Data Hiding)
+
++ By making variables private, we restrict direct access from `outside the class`.
++ Users can only modify values using setter methods, ensuring control over data.
++ Security & Data Control
+
++ Direct access `(obj.name = "something";) `can lead to unintended modifications.
++ Setters allow validation before setting values.
++ Flexibility for Future Changes
+
+If variable names or logic need to change, we can modify getters/setters without breaking existing code.
+Validation Before Assignment
+
+Example: We can prevent setting an invalid age (e.g., -5 is not a valid age).
++ ✅ Example Without Encapsulation (Direct Access)
+```
+class Student {
+    String name;  // Public variable (Bad practice)
+    int age;
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        s1.name = "Prachi";  // Direct access (No control)
+        s1.age = -5;  // Invalid age (No validation)
+
+        System.out.println("Name: " + s1.name);
+        System.out.println("Age: " + s1.age);  // Wrong value
+    }
+}
+```
+🔹 Problem: No control over data → age is negative, which is incorrect.
+
+
+#### ✅ Example With Encapsulation (Using Private + Getters & Setters)
+```
+class Student {
+    private String name;  // Private variables (Good practice)
+    private int age;
+
+    // Setter with validation
+    public void setAge(int newAge) {
+        if (newAge > 0) {  // Ensuring valid age
+            age = newAge;
+        } else {
+            System.out.println("Invalid age! Age must be positive.");
+        }
+    }
+
+    // Setter to update name
+    public void setName(String newName) {
+        name = newName;
+    }
+
+    // Getter methods
+    public int getAge() {
+        return age;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s1 = new Student();
+
+        s1.setName("Prachi");
+        s1.setAge(-5);  // Invalid value, won't be set
+
+        System.out.println("Name: " + s1.getName());
+        System.out.println("Age: " + s1.getAge());  // Correct output
+    }
+}
+```
+🔹 Output
+```
+Invalid age! Age must be positive.
+Name: Prachi
+Age: 0  // Default value, as -5 was rejected
+```
+##### ✅ Key Takeaways:
+| Feature	|Without Getters/Setters	|With Getters/Setters|
+|------------------|------------------------------|-------------------|
+|Encapsulation|	❌ No|	✅ Yes|
+|Direct Access to Data|	✅ Allowed|	❌ Restricted|
+|Validation Possible?	|❌ No|	✅ Yes|
+|Secure Data Handling?|	❌ No	|✅ Yes|
+###  🔥 Final Rule:
+Always make instance variables private and use getter and setter methods to control access. This ensures data security, validation, and flexibility in Java.
+
+### 6. Parameterized and Non-Parameterized Methods
++ `Parameterized Methods` take arguments.
++ `Non-Parameterized Methods` do not take any arguments.
+```
+class Example {
+    // Non-parameterized method
+    void greet() {
+        System.out.println("Hello!");
+    }
+
+    // Parameterized method
+    void greetUser(String name) {
+        System.out.println("Hello, " + name + "!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Example obj = new Example();
+        obj.greet(); // Output: Hello!
+        obj.greetUser("Prachi"); // Output: Hello, Prachi!
+    }
+}
+```
+### 7. Method Overloading (Compile-time Polymorphism)
++ Same method name but different parameters.
+```
+class MathOperations {
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    double add(double a, double b) {
+        return a + b;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MathOperations m = new MathOperations();
+        System.out.println(m.add(5, 3)); // Output: 8
+        System.out.println(m.add(2.5, 3.5)); // Output: 6.0
+    }
+}
+```
++ Decided at compile-time which method to execute.
+
+
+```
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+ class Laptop{
+
+		String model ;
+		int price ;
+
+      Laptop(String a , int b)
+		{
+			this.model= a ;
+			this.price = b  ;
+		}
+		
+
+		Laptop(Laptop dell)
+		{
+			this.model = dell.model;
+			this.price = dell.price;
+		}
+
+          
+		//    same name function but diffrent parameter 
+
+		void sell(String model)
+		{
+			System.out.println(model);
+		}
+
+		void sell(int price)
+		{
+			System.out.println(price);
+		}
+		void sell(String model , int price)
+		{
+			System.out.println(model);
+			System.out.println(price);
+
+		}
+
+
+	}
+
+public class Main
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner scn = new Scanner(System.in);
+		String a = scn.nextLine();
+		int b = scn.nextInt();
+
+		Laptop dell = new Laptop(a,b);
+
+		Laptop hp = new Laptop(dell);
+
+        //   parameter a,b 
+		dell.sell(a,b);
+
+		
+	}
+}
+
+```
+
+### 🔍 Code Explanation
++ This Java program demonstrates constructor overloading, method overloading, and object copying.
+
+###📌 Step-by-Step Breakdown
+### 1️⃣ Class Laptop `(Encapsulation of Laptop Details)`
++ `Instance Variables`:
+```
+String model;  // Stores laptop model name
+int price;     // Stores laptop price
+```
++ `Two Constructors` (Constructor Overloading):
+```
+Laptop(String a, int b)  // Constructor 1
+Laptop(Laptop dell)  // Constructor 2 (Copy Constructor)
+```
+### 2️⃣ Constructor Overloading (Initializing Objects in Different Ways)
++ `Constructor 1:`
+
+```
+Laptop(String a, int b) {
+    this.model = a;
+    this.price = b;
+}
+```
++ Accepts a string (a) and an integer (b) as arguments.
++ Assigns them to the instance variables model and price.
++ `Constructor 2` (Copy Constructor):
+```
+Laptop(Laptop dell) {
+    this.model = dell.model;
+    this.price = dell.price;
+}
+```
++ Accepts an existing Laptop object as a parameter.
++ Copies its model and price values into the new object.
+### 3️⃣ Method Overloading (Multiple sell Methods)
+Method overloading allows multiple methods with the same name but different parameters.
+```
+void sell(String model) {
+    System.out.println(model);
+}
+```
++ Prints only the model name.
+```
+void sell(int price) {
+    System.out.println(price);
+}
+```
++ Prints only the price.
+```
+void sell(String model, int price) {
+    System.out.println(model);
+    System.out.println(price);
+}
+```
++ Prints both the model and price.
++ 📝 main Method (Execution Starts Here)
+```
+Scanner scn = new Scanner(System.in);
+String a = scn.nextLine();  // Input for laptop model
+int b = scn.nextInt();  // Input for laptop price
+```
++ Takes user input for model and price.
+### 4️⃣ Creating Objects in main
+Creating First Laptop Object (Using Constructor 1)
+```
+Laptop dell = new Laptop(a, b);
+```
++ A Laptop object named dell is created.
++ a and b are assigned to model and price respectively.
++ Copying dell into hp (Using Copy Constructor)
+```
+Laptop hp = new Laptop(dell);
+```
+Creates a new object hp with the same values as dell.
+### 5️⃣ Calling Overloaded sell Method
+```
+dell.sell(a, b);
+```
+Calls the third sell method (sell(String, int)) because we passed two arguments (String and int).
+Prints the model name and price.
+#### 📌 Example Input/Output
+👩‍💻 Input:
+```
+HP Pavilion
+55000
+```
+📤 Output:
+```
+HP Pavilion
+55000
+```
+### 📝 Summary
+#### ✅ Concepts Used in the Code:
+
++ Constructor Overloading (Different constructors for initialization).
++ Copy Constructor (Creates an object by copying another object).
++ Method Overloading (Multiple sell methods with different parameters).
++ Scanner Class (Takes user input).
+
+### 8. Method Overriding (Run-time Polymorphism)
++ A child class provides a different implementation of a method from the parent class.
+
+```
+class Parent {
+    void show() {
+        System.out.println("Parent class method.");
+    }
+}
+
+class Child extends Parent {
+    @Override
+    void show() {
+        System.out.println("Child class method.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Parent obj = new Child(); // Runtime polymorphism
+        obj.show(); // Output: Child class method.
+    }
+}
+```
++ Decided at runtime which method to execute.
+
++ Summary Table
+  
+|Type of Method|	Description|	Example|
+|--------------|--------------|------------|
+|Predefined Methods	|Built-in Java methods| Math.sqrt(25)|
+|User-defined Methods|Created by programmers| void greet()|
+|Static Methods| Belongs to class, no object| needed static int square(int n)|
+|Instance Methods|	Belongs to object, requires an instance| void display()|
+|Getter/Setter Method|	Access private data  |setName(), getName()|
+|Parameterized Methods|	Accept parameters |void greetUser(String name)|
+|Method Overloading| Same name, different parameters| add(int, int), add(double, double)|
+|Method Overriding|	Same method, different implementation in child class|	@Override void show()|
+
+
+```
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Pen { // Class names should start with uppercase as per Java conventions
+    String name;
+    String color;
+    int price;
+
+    public void sell() {
+        System.out.println("Name: " + name + ", Color: " + color + ", Price: " + price);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+
+        // Taking user input
+        String name = scn.nextLine();
+        String color = scn.nextLine();
+        int price = scn.nextInt();
+
+        // Creating an object of Pen class
+        Pen pen1 = new Pen();
+
+        // Correctly assigning values
+        pen1.name = name;
+        pen1.color = color;
+        pen1.price = price;
+
+        // Calling the sell method
+        pen1.sell();
+
+        scn.close(); // Closing Scanner to prevent resource leak
+    }
+}
+```
+
+#### 🔹 1️⃣ Class
++ A class is a blueprint or template for creating objects. It defines properties (variables) and methods (functions) that objects of the class will have.
+
+```
+Edit
+class Car {  
+    String brand;  // Property (Instance Variable)
+    int speed;     
+
+    void drive() {  // Method
+        System.out.println(brand + " is driving at " + speed + " km/h.");
+    }
+}
+```
++ Here, Car is a class that defines properties (brand, speed) and a method (drive()).
+### 🔹 2️⃣ Object
++ An object is an instance of a class. It is a real entity created using the new keyword.
+```
+public class Main {
+    public static void main(String[] args) {
+        Car myCar = new Car();  // Object created
+        myCar.brand = "Tesla";
+        myCar.speed = 100;
+        myCar.drive();  // Output: Tesla is driving at 100 km/h.
+    }
+}
+```
++ myCar is an object of the Car class.
++ It has its own copy of brand and speed.
++ `Calling myCar.drive(); `executes the method.
+
++ 🔹 Multiple objects can be created from the same class!
+```
+Car car1 = new Car();  
+Car car2 = new Car();
+```
+#### 🔹 3️⃣ Constructor
++ A constructor is a special method that initializes an object when it is created.
+
++ It has the same name as the class.
++ It does not return any value (not even void).
++ It is called automatically when an object is created.
+```
+class Car {
+    String brand;
+    int speed;
+
+    // Constructor
+    Car(String b, int s) {  
+        brand = b;
+        speed = s;
+    }
+
+    void drive() {
+        System.out.println(brand + " is driving at " + speed + " km/h.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car myCar = new Car("Tesla", 120);  // Constructor is called automatically
+        myCar.drive();  // Output: Tesla is driving at 120 km/h.
+    }
+}
+```
++ 🔹 Without a constructor, you would have to assign values manually.
++ 🔹 With a constructor, values are assigned automatically when creating an object.
+#### ✅ Example: Manually and Automatically Assigned Values in Constructors
+```
+import java.util.Random;  // Import for generating random numbers
+
+class Laptop {
+    String model;
+    int price;
+
+    // ✅ 1. Manually Assigned Values (User-defined constructor)
+    Laptop(String model, int price) {
+        this.model = model;
+        this.price = price;
+    }
+
+    // ✅ 2. Automatically Assigned Values (Default constructor)
+    Laptop() {
+        String[] models = {"Dell", "HP", "Lenovo", "Apple", "Asus"};
+        Random rand = new Random();
+
+        this.model = models[rand.nextInt(models.length)]; // Picks a random model
+        this.price = rand.nextInt(50000) + 30000;  // Generates random price between 30000-80000
+    }
+
+    void display() {
+        System.out.println("Laptop Model: " + model);
+        System.out.println("Price: ₹" + price);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // ✅ Using manually assigned values
+        Laptop dell = new Laptop("Dell Inspiron", 55000);
+        System.out.println("Manually Assigned:");
+        dell.display();
+
+        // ✅ Using automatically assigned values
+        Laptop randomLaptop = new Laptop();
+        System.out.println("\nAutomatically Assigned:");
+        randomLaptop.display();
+    }
+}
+```
+📤 Example Output
+
+Manually Assigned:
+```
+Laptop Model: Dell Inspiron
+Price: ₹55000
+```
+Automatically Assigned:
+```
+Laptop Model: HP  // (This value changes randomly)
+Price: ₹68423  // (Random value between 30000-80000)
+```
+### 📝 Explanation
++ `Manually Assigned ` Constructor:
+
++ User explicitly provides values for model and price.
+```
+Laptop(String model, int price) { ... }
+```
++ Automatically Assigned Constructor:
+
++ Randomly selects a model from an array.
++ Randomly generates a price between ₹30,000 and ₹80,000.
+```
+Laptop() {
+    String[] models = {"Dell", "HP", "Lenovo", "Apple", "Asus"};
+    Random rand = new Random();
+    this.model = models[rand.nextInt(models.length)];
+    this.price = rand.nextInt(50000) + 30000;
+}
+```
+#### 🔹 When to Use These Approaches?
+|Approach	|Use Case|
+|Manually Assigned|	When values come from user input or fixed values.|
+|Automatically Assigned|	When we want default/random values without user input.|
+##### 🚀 Final Thoughts
++ Manually assigned constructors are useful when you want full control over object properties.
++ Automatically assigned constructors are useful when you want default/random values for testing or fallback cases.
+### 🔹 4️⃣ Instance
++ An instance is simply another word for an object of a class.
++ When you create an object using new, you create an instance of that class.
+```
+Car myCar = new Car("Tesla", 120);  // myCar is an instance of Car
+Car yourCar = new Car("BMW", 150);  // yourCar is another instance
+```
++ Each instance has its own values for brand and speed.
+
+|Instance (Object)	|brand	|speed|
+|----------------|---------|-----|
+|myCar|	"Tesla"	|120 km/h|
+|yourCar|	"BMW"	|150 km/h|
+
+#### 🔹 5️⃣ Method
+A method is a function inside a class that performs an action.
+It can be called (invoked) on an object.
+
+```
+class Car {
+    String brand;
+    int speed;
+
+    // Constructor
+    Car(String b, int s) {
+        brand = b;
+        speed = s;
+    }
+
+    // Method
+    void drive() {
+        System.out.println(brand + " is driving at " + speed + " km/h.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car myCar = new Car("Tesla", 120);
+        myCar.drive();  // Calling the method
+    }
+}
+```
++ 🔹 Methods can be called using objects:
+```
+myCar.drive();  // Tesla is driving at 120 km/h.
+```
++ 🔹 Methods can take parameters and return values too.
+```
+int getSpeed() {
+    return speed;
+}
+```
+✅ Summary Table
+
+|Concept	|Definition|
+|-----------|----------|
+|Class	|A blueprint/template that defines properties and methods for objects.|
+|Object	|A real-world entity created from a class.|
+|Constructor	|A special method that initializes an object when created.|
+|Instance	|Another word for an object of a class.|
+|Method	|A function inside a class that performs actions.|
+
+
++ 🔥 Example Using All Concepts Together
+```
+class Car {
+    String brand;
+    int speed;
+
+    // Constructor
+    Car(String brand, int speed) {
+        this.brand = brand;
+        this.speed = speed;
+    }
+
+    // Method
+    void drive() {
+        System.out.println(brand + " is driving at " + speed + " km/h.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating objects (instances) of Car class
+        Car myCar = new Car("Tesla", 120);
+        Car yourCar = new Car("BMW", 150);
+
+        // Calling methods
+        myCar.drive();   // Tesla is driving at 120 km/h.
+        yourCar.drive(); // BMW is driving at 150 km/h.
+    }
+}
+```
+
+## 📌 Types of Constructors in Java 🚀
++ In Java, a constructor is a special method used to initialize objects.
++ It must have the same name as the class and has no return type (not even void).
+
++ There are three types of constructors in Java:
+###### 1️⃣ Default Constructor
+###### 2️⃣ Parameterized Constructor
+###### 3️⃣ Copy Constructor
+
+### 1️⃣ Default Constructor (No-Argument Constructor)
++ A constructor with no parameters.
++ It assigns default values to instance variables.
++ If you don’t define any constructor, Java automatically provides a default constructor.
+```
+class Laptop {
+    String model;
+    int price;
+
+    // ✅ Default Constructor (No Parameters)
+    Laptop() {
+        model = "Unknown";
+        price = 0;
+    }
+
+    void display() {
+        System.out.println("Model: " + model + ", Price: " + price);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Laptop dell = new Laptop(); // ✅ Default constructor is called
+        dell.display();  // Output: Model: Unknown, Price: 0
+    }
+}
+```
+### 2️⃣ Parameterized Constructor
++ A constructor with parameters.
++ It allows passing values when creating an object.
+```
+class Laptop {
+    String model;
+    int price;
+
+    // ✅ Parameterized Constructor
+    Laptop(String model, int price) {
+        this.model = model;
+        this.price = price;
+    }
+
+    void display() {
+        System.out.println("Model: " + model + ", Price: " + price);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Laptop dell = new Laptop("Dell XPS", 50000);  // ✅ Passing values
+        dell.display();  // Output: Model: Dell XPS, Price: 50000
+    }
+}
+```
++ ✔ `this.model = model;` ensures that the instance variable model is assigned the constructor parameter.
+
+### 3️⃣ Copy Constructor
+A constructor that copies values from another object.
+It creates a new object with the same properties as an existing object.
+```
+class Laptop {
+    String model;
+    int price;
+
+    // ✅ Parameterized Constructor
+    Laptop(String model, int price) {
+        this.model = model;
+        this.price = price;
+    }
+
+    // ✅ Copy Constructor
+    Laptop(Laptop oldLaptop) {
+        this.model = oldLaptop.model;
+        this.price = oldLaptop.price;
+    }
+
+    void display() {
+        System.out.println("Model: " + model + ", Price: " + price);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Laptop original = new Laptop("MacBook", 100000); // ✅ Original object
+        Laptop copy = new Laptop(original); // ✅ Copy constructor is called
+
+        original.display();  // Output: Model: MacBook, Price: 100000
+        copy.display();      // Output: Model: MacBook, Price: 100000
+    }
+}
+```
++ ✔ The copy constructor ensures that copy has the same values as original.
+
++ 📌 Summary Table
+  
+|Type of Constructor	|Description	|Example|
+|-----------------|--------------|------------|
+|Default Constructor|	No parameters, assigns default values|	`Laptop() { model = "Unknown"; }`|
+|Parameterized Constructor	|Takes parameters to initialize values	|`Laptop(String model, int price) { this.model = model; }`|
+|Copy Constructor|	Creates a new object by copying an existing object	|Laptop(Laptop obj) { `this.model = obj.model;` }|
+
+#### 🚀 Quick Recap
++ ✔ If you don’t create a constructor, Java provides a default one.
++ ✔ Parameterized constructors help assign values while creating an object.
++ ✔ Copy constructors help duplicate an existing object’s properties.
+
+
+
+## 📌 Polymorphism in Java 🚀
++ Polymorphism means "many forms" and allows the same method to have different behaviors in Java.
+
++ There are two types of polymorphism:
+#### 1️⃣ Compile-time Polymorphism (Method Overloading)
+#### 2️⃣ Runtime Polymorphism (Method Overriding)
+
+### 1️⃣ Compile-time Polymorphism (Method Overloading)
++ Same method name, different parameters (number, type, or both).
++ Decided at compile time.
++ Java determines which method to call based on arguments passed.
+✅ Example of Method Overloading
+```
+class MathOperations {
+    // Method with two int parameters
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    // Overloaded method with three int parameters
+    int add(int a, int b, int c) {
+        return a + b + c;
+    }
+
+    // Overloaded method with double parameters
+    double add(double a, double b) {
+        return a + b;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MathOperations obj = new MathOperations();
+
+        System.out.println(obj.add(10, 20));       // Calls add(int, int)
+        System.out.println(obj.add(10, 20, 30));  // Calls add(int, int, int)
+        System.out.println(obj.add(5.5, 2.5));    // Calls add(double, double)
+    }
+}
+```
++ 🛠 Output
+```
+30
+60
+8.0
+```
++ ✔ Method name is the same (add) but works differently based on parameters.
+
+### 2️⃣ Runtime Polymorphism (Method Overriding)
++ Same method name, same parameters, but different behavior in child class.
++ Happens at runtime.
++ Requires inheritance (parent-child relationship).
++ Uses `@Override `annotation for clarity.
+✅ Example of Method Overriding
+```
+// Parent class
+class Animal {
+    void sound() {
+        System.out.println("Animals make sounds");
+    }
+}
+
+// Child class overriding method
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal myAnimal = new Animal();  // Parent class object
+        myAnimal.sound(); // Output: Animals make sounds
+
+        Animal myDog = new Dog();  // Upcasting - Runtime polymorphism
+        myDog.sound(); // Output: Dog barks
+    }
+}
+```
+🛠 Output
+```
+Animals make sounds
+Dog barks
+```
++ ✔ The `sound()` method behaves differently based on the object type.
+
++ 📌 Key Differences
+  
+| Feature	| Method Overloading  |Method Overriding |
+|---------------|---------------------|-----------------------|
+|Type	| Compile-time Polymorphism	|Runtime Polymorphism|
+|Method Signature	|Same name, different parameters	|Same name, same parameters|
+| Return Type	|Can be different	|Must be the same or covariant|
+| Inheritance	|Not required	|Required (Parent-Child Relationship)|
+| Binding	|Early binding (Compile-time)	|Late binding (Runtime)|
+| Modifiers	|Can be static|	Cannot override static methods|
+| Keyword	|Not required	|Uses @Override annotation|
+
++ 🚀 Real-world Example
+#### ATM Machine Example (Overriding)
+```
+class ATM {
+    void withdraw() {
+        System.out.println("Withdraw cash using card.");
+    }
+}
+
+class UPI extends ATM {
+    @Override
+    void withdraw() {
+        System.out.println("Withdraw cash using UPI.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ATM atm1 = new ATM();
+        atm1.withdraw(); // Output: Withdraw cash using card.
+
+        ATM atm2 = new UPI();
+        atm2.withdraw(); // Output: Withdraw cash using UPI.
+    }
+}
+```
+#### ✅ Using super to Call Parent Method
+If you want to call the parent class method inside the overridden method, use `super`.
+```
+class Animal {
+    void sound() {
+        System.out.println("Animals make sounds");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        super.sound();  // Calls parent method
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog myDog = new Dog();
+        myDog.sound();  // Calls overridden method (including parent method)
+    }
+}
+```
+📤 Output
+```
+Animals make sounds
+Dog barks
+```
++ ✅ Now, the Dog class uses both its own method and the parent's method.
+
+
+#### 🔎 When to Use Polymorphism?
++ `✔ Overloading:` When you need multiple versions of a method with different parameters.
++ `✔ Overriding:` When a child class needs to modify the behavior of a parent class method.
+
+## Inheritance in Java
+Inheritance is a fundamental concept in Object-Oriented Programming (OOP) that allows a class (child class) to inherit properties and behaviors (fields and methods) from another class (parent class). It promotes code reusability and establishes a relationship between classes.
+
+### 1. Why Use Inheritance?
++ `Code Reusability `– Avoids code duplication by using existing classes.
++ `Method Overriding `– Allows a subclass to provide a specific implementation of a method in the parent class.
++ `Hierarchical Organization` – Establishes relationships between classes in a structured way.33
+### 2. Types of Inheritance in Java
+Java supports the following types of inheritance:
+
+|Type	|Description|
+|-------|-------------|
+|Single Inheritance	|One class inherits from another class.|
+|Multilevel Inheritance|	A class inherits from a class, which in turn inherits from another class.|
+|Hierarchical Inheritance	|Multiple classes inherit from a single parent class.|
+
+##🚫 Java does not support multiple inheritance with classes (to avoid ambiguity), but it supports multiple inheritance through interfaces.
+
+### 3. Syntax of Inheritance
+We use the extends keyword for class inheritance.
+```
+// Parent Class
+class Animal {
+    void sound() {
+        System.out.println("Animals make sounds");
+    }
+}
+
+// Child Class (inherits from Animal)
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        d.sound(); // Inherited method
+        d.bark();  // Own method
+    }
+}
+```
+Output
+```
+Animals make sounds
+Dog barks
+```
+### 4. Multilevel Inheritance
+A class inherits from another class, which itself is inherited from another class.
+```
+// Grandparent Class
+class Animal {
+    void eat() {
+        System.out.println("Eating...");
+    }
+}
+
+// Parent Class
+class Mammal extends Animal {
+    void breathe() {
+        System.out.println("Breathing...");
+    }
+}
+
+// Child Class
+class Dog extends Mammal {
+    void bark() {
+        System.out.println("Barking...");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        d.eat();     // Inherited from Animal
+        d.breathe(); // Inherited from Mammal
+        d.bark();    // Own method
+    }
+}
+```
+Output
+```
+Eating...
+Breathing...
+Barking...
+```
+### 5. Hierarchical Inheritance
++ One parent class is inherited by multiple child classes.
+```
+// Parent Class
+class Animal {
+    void eat() {
+        System.out.println("Eating...");
+    }
+}
+
+// Child Class 1
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Barking...");
+    }
+}
+
+// Child Class 2
+class Cat extends Animal {
+    void meow() {
+        System.out.println("Meowing...");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        d.eat();  // Inherited method
+        d.bark(); // Own method
+
+        Cat c = new Cat();
+        c.eat();  // Inherited method
+        c.meow(); // Own method
+    }
+}
+```
+Output
+```
+Eating...
+Barking...
+Eating...
+Meowing...
+```
+### 6. Method Overriding in Inheritance
++ A child class can override a method of the parent class to provide its own implementation.
+```
+class Animal {
+    void sound() {
+        System.out.println("Animals make sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {  // Overriding the method
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        d.sound(); // Calls overridden method
+    }
+}
+```
+Output
+```
+Dog barks
+```
+### 7. super Keyword in Inheritance
++ Used to call the parent class constructor.
++ Used to access the parent class methods.
+```
+class Animal {
+    Animal() {
+        System.out.println("Animal constructor");
+    }
+
+    void sound() {
+        System.out.println("Animals make sound");
+    }
+}
+
+class Dog extends Animal {
+    Dog() {
+        super(); // Calls parent constructor
+        System.out.println("Dog constructor");
+    }
+
+    void sound() {
+        super.sound(); // Calls parent method
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        d.sound();
+    }
+}
+```
+Output
+```
+Animal constructor
+Dog constructor
+Animals make sound
+```
+Dog barks
+### 8. Final Keyword in Inheritance
++ `final class `→ Prevents a class from being inherited.
++ `final method `→ Prevents method overriding.
+```
+final class Animal {
+    void sound() {
+        System.out.println("Animals make sound");
+    }
+}
+// This will cause an error
+// class Dog extends Animal {} // ❌ Cannot inherit from a final class
+```
+```
+class Animal {
+    final void sound() {
+        System.out.println("Animals make sound");
+    }
+}
+
+class Dog extends Animal {
+    // void sound() {}  // ❌ Cannot override a final method
+}
+```
+### 9. Multiple Inheritance using Interfaces
++ Java doesn't support multiple inheritance with classes but allows it through interfaces.
+```
+interface A {
+    void methodA();
+}
+
+interface B {
+    void methodB();
+}
+
+// Multiple inheritance using interfaces
+class C implements A, B {
+    public void methodA() {
+        System.out.println("Method A");
+    }
+    public void methodB() {
+        System.out.println("Method B");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        C obj = new C();
+        obj.methodA();
+        obj.methodB();
+    }
+}
+```
++ Output
+```
+Method A
+Method B
+```
+### Conclusion
++ ✅ Inheritance enhances code reusability and maintainability.
++ ✅ Method overriding allows modifying behavior in subclasses.
++ ✅ The super keyword helps access parent class methods and constructors.
++ ✅ Java prevents multiple inheritance in classes to avoid ambiguity but supports it with interfaces.
+
+
+## Packages
+### Java Built-in Packages and User-defined Packages
++ In Java, packages are used to group related classes and interfaces together. They help in modularizing code, avoiding name conflicts, and improving maintainability.
+
+#### 1. Types of Packages in Java
++ `Built-in Packages` (Predefined Java Packages) – Provided by Java.
++ `User-defined Packages` – Created by developers.
+  
+#### 2. Built-in Packages in Java
++ Java comes with several built-in packages that provide essential functionalities.
+
+#### Common Java Built-in Packages:
+|Package	|Description|
+|---------------|------------------------------------------------------------------------|
+|java.lang	|Core classes like String, Math, Integer, System, Object (imported by default).|
+|java.util	|Utility classes like ArrayList, HashMap, Collections, Date, Random.|
+|java.io  	|Input and output operations (File, BufferedReader, PrintWriter).|
+|java.net	|Networking features (Socket, URL, HttpURLConnection).|
+|java.sql	|Database handling (Connection, Statement, ResultSet).|
+|javax.swing	|GUI components (JButton, JFrame, JLabel).|
+|java.awt	|Abstract Window Toolkit for GUI (Button, Color, Font).|
+|java.nio	|Non-blocking I/O operations.|
+|java.time	|Date and time API (LocalDate, LocalTime).|
+|java.security	|Security and encryption utilities.|
+
++ Example:` Using Built-in Packages`
++ 📝 Using `java.util.ArrayList`
+```
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Java");
+        list.add("Python");
+        list.add("C++");
+        System.out.println(list);
+    }
+}
+```
+Output
+```
+[Java, Python, C++]
+```
++ 📝 Using `java.time.LocalDate`
+
+```
+import java.time.LocalDate;
+
+public class Main {
+    public static void main(String[] args) {
+        LocalDate today = LocalDate.now();
+        System.out.println("Today's date: " + today);
+    }
+}
+```
+Output
+```
+Today's date: 2025-02-15
+```
+#### 3. `User-Defined Packages`
++ You can create your own packages to organize your code.
+
++ Steps to Create and Use a Package
++ `Create a Package:` Use the package keyword at the beginning of a file.
++ `Compile the Class:` `javac -d `. `FileName.java`
++ `Import and Use the Class:` `import package_name.ClassName`;
+  
+Example: Creating and Using a User-defined Package
+##### 📌 Step 1: Create a Package (mypackage)
+Create a file `MyClass.java` inside a folder `Mypackage/.`
+```
+package mypackage;  // Package declaration
+
+public class MyClass {
+    public void showMessage() {
+        System.out.println("Hello from MyClass inside mypackage!");
+    }
+}
+```
+#### 📌 Step 2: Compile the File
+Run this command in the terminal:
+```
+javac -d . MyClass.java
+```
+This will create a folder mypackage containing MyClass.class.
+
+#### 📌 Step 3: Create a Main Class to Use the Package
+Create another file Main.java outside the mypackage folder.
+```
+import mypackage.MyClass;  // Import user-defined package
+
+public class Main {
+    public static void main(String[] args) {
+        MyClass obj = new MyClass();
+        obj.showMessage();
+    }
+}
+```
+#### 📌 Step 4: Compile and Run the Main Class
+```
+javac Main.java
+java Main
+```
+Output
+```
+Hello from MyClass inside mypackage!
+```
+4. Access Modifiers and Packages
+   
+|Modifier	|Same Class	|Same Package	|Subclass (Different Package)	|Other Classes (Different Package)|
+|---------------|---------------|--------------|-------------------------------|----------------------------------|
+| public	| ✅	| ✅	| ✅	|✅|
+|protected	|✅	|✅	|✅	|❌|
+|default (no modifier)	|✅	|✅	|❌	|❌|
+|private	|✅	|❌	|❌	|❌|
+
+
+6. Importing Packages
+Types of Import Statements
++ Import a Specific Class
+```
+import java.util.ArrayList;
+```
++ Import the Whole Package
+```
+import java.util.*;
+```
++ Use Fully Qualified Name (No Import)
+```
+public class Main {
+    public static void main(String[] args) {
+        java.util.Scanner sc = new java.util.Scanner(System.in);
+        System.out.print("Enter name: ");
+        String name = sc.nextLine();
+        System.out.println("Hello, " + name);
+    }
+}
+```
+### Conclusion
++ ✅ Built-in packages (like java.util, java.io) provide ready-made functionalities.
++ ✅ User-defined packages help organize large projects.
++ ✅ Import statements help use classes from packages efficiently.
++ ✅ Access modifiers determine package-level visibility.
+
+
+## Access Modifiers
+
+### Access Modifiers in Java
+Access modifiers in Java control the visibility and accessibility of classes, methods, and variables. They help in encapsulation and ensure that only necessary parts of the code are exposed to other classes.
+
+1. Types of Access Modifiers in Java
+
+|Modifier	|Same Class	|Same Package	|Subclass (Different Package)	|Other Classes (Different Package)|
+------------------|-----------|-----------------|------------------------------|----------------------------------|
+|public|	✅ Yes	✅ Yes|✅ Yes	|✅ Yes|
+|protected	|✅ Yes|✅ Yes	|✅ Yes|❌ No|
+|default (no modifier)|	✅ Yes	|✅ Yes|❌ No	|❌ No|
+|private	|✅ Yes|❌ No|	❌ No	|❌ No|
+
+3. Explanation of Each Modifier
+#### 🔹 1. public (Most Accessible)
+Accessible from anywhere (same class, same package, subclass, and different packages).
+Used when a class or method should be available everywhere.
+
++ // File: PublicExample.java
+```
+package mypackage;
+
+public class PublicExample {
+    public void show() {
+        System.out.println("Public method can be accessed anywhere.");
+    }
+}
+```
++ // File: Main.java (Different Package)
+```
+import mypackage.PublicExample; 
+
+public class Main {
+    public static void main(String[] args) {
+        PublicExample obj = new PublicExample();
+        obj.show();  // ✅ Accessible
+    }
+}
+```
+✅ Output
+```
+Public method can be accessed anywhere.
+```
+#### 🚀 Difference Between class Main and public class Main in Java
+In Java, whether you write `public class Main` or just `class Main` affects the accessibility of the class. Let's break it down.
+
+#### ✅ public class Main (Accessible Everywhere)
++ If a class is declared as `public`, it must be saved with the same name as the filename `(i.e., Main.java)`.
++ The class is accessible from anywhere (inside and outside the package).
+```
+// File: Main.java
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+```
++ ✔ Compiles and runs successfully because the filename matches the class name.
+
+#### ✅ class Main (Package-Private, No Public Access)
++ If a class is not declared as public, it has default (package-private) access.
++ This means it can only be accessed within the same package.
++ No filename restriction—the file can have a different name.
+```
+// File: Test.java
+class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+```
++ ✔ Compiles and runs successfully because the class does not need to match the filename.
+
++ ❌ But this class cannot be accessed from another package.
+
++ ⛔ What Happens If a Public Class Name Doesn't Match the Filename?
+```
+// File: Test.java
+public class Main {  // ❌ ERROR! The filename is different
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+```
++ ❌ Compilation Error:
+
++ class Main is public, should be declared in a file named Main.java
++ 👉 A public class must always have the same name as the filename.
+
+
+##### 🚀 Key Takeaways
++ ✔ public class must match the filename and is accessible from everywhere.
++ ✔ class (without public) does not need to match the filename and is package-private.
++ ✔ Only one public class is allowed per .java file.
+
+
+### 🔹 2. protected (Limited to Subclasses and Same Package)
++ Accessible within the same package and subclasses in different packages.
++ Not accessible from non-subclass classes outside the package.
+
+package mypackage;
+```
+public class ProtectedExample {
+    protected void show() {
+        System.out.println("Protected method can be accessed within the same package and subclasses.");
+    }
+}
+```
+// Subclass in a different package
+```
+package anotherpackage;
+import mypackage.ProtectedExample;
+
+public class ChildClass extends ProtectedExample {
+    public static void main(String[] args) {
+        ChildClass obj = new ChildClass();
+        obj.show();  // ✅ Accessible (because it's a subclass)
+    }
+}
+```
+// File: Main.java (Different Package, Not a Subclass)
+```
+import mypackage.ProtectedExample;
+
+public class Main {
+    public static void main(String[] args) {
+        ProtectedExample obj = new ProtectedExample();
+        obj.show();  // ❌ ERROR: Not accessible
+    }
+}
+```
+✅ Output (For Subclass)
+```
+Protected method can be accessed within the same package and subclasses.
+```
+❌ Error for Non-Subclass
+```
+error: show() has protected access in ProtectedExample
+```
+### 🔹 3. default (Package-Private)
++ If no modifier is used, the default access modifier is applied.
++ Accessible only within the same package.
++ Not accessible outside the package, even in subclasses.
+```
+package mypackage;
+
+class DefaultExample {
+    void show() {  // Default access
+        System.out.println("Default method can be accessed within the same package only.");
+    }
+}
+```
+// File: Main.java (Same Package)
+```
+package mypackage;
+
+public class Main {
+    public static void main(String[] args) {
+        DefaultExample obj = new DefaultExample();
+        obj.show();  // ✅ Accessible
+    }
+}
+```
+// File: AnotherClass.java (Different Package)
+```
+package anotherpackage;
+import mypackage.DefaultExample;  
+
+public class AnotherClass {
+    public static void main(String[] args) {
+        DefaultExample obj = new DefaultExample();
+        obj.show();  // ❌ ERROR: Not accessible
+    }
+}
+```
+✅ Output (Same Package)
+```
+Default method can be accessed within the same package only.
+```
+❌ Error (Different Package)
+
+```
+error: DefaultExample is not public in mypackage; cannot be accessed from outside package
+```
+### 🔹 4. private (Most Restricted)
++ Accessible only within the same class.
++ Not accessible from subclasses, other classes, or even the same package.
+```
+package mypackage;
+
+public class PrivateExample {
+    private void show() {
+        System.out.println("Private method can only be accessed within the same class.");
+    }
+
+    public static void main(String[] args) {
+        PrivateExample obj = new PrivateExample();
+        obj.show();  // ✅ Accessible (inside same class)
+    }
+}
+```
+// File: Main.java (Same Package)
+```
+package mypackage;
+
+public class Main {
+    public static void main(String[] args) {
+        PrivateExample obj = new PrivateExample();
+        obj.show();  // ❌ ERROR: Not accessible
+    }
+}
+```
+✅ Output (Inside Same Class)
+```
+Private method can only be accessed within the same class.
+```
+❌ Error (Outside Class)
+```
+error: show() has private access in PrivateExample
+```
++ 3. Summary Table of Access Modifiers
+     
+|Modifier	|Within Class	|Same Package	|Subclass (Different Package)	|Other Package|
+|------------|----------------|-------------|--------------------------|-------------------|
+|public|✅ Yes|✅ Yes|	✅ Yes	|✅ Yes|
+|protected|✅ Yes|✅ Yes|✅ Yes|❌ No|
+|default (no modifier)	|✅ Yes|✅ Yes|❌ No|	❌ No|
+|private|✅ Yes|❌ No	|❌ No	|❌ No|
+
++ 4. Use Cases for Each Modifier
+     
+|Modifier|Use Case|
+|---------|---------|
+|public|	Use when a method/class should be accessible everywhere.|
+|protected|	Use when a method should be inherited but not freely accessed outside.|
+|default|	Use when access should be restricted to the same package.|
+|private|	Use when a method/variable should be hidden from other classes.|
+
+##### 5. Best Practices for Access Modifiers
++ ✔ Use private for data encapsulation (data hiding).
++ ✔ Use protected for methods meant to be inherited but not widely accessible.
++ ✔ Use public sparingly to prevent unnecessary exposure.
++ ✔ Use default to limit access within a package.
+
+## Encapsulation in Java
+Encapsulation is one of the four fundamental Object-Oriented Programming (OOP) principles (along with Abstraction, Inheritance, and Polymorphism). It is the practice of wrapping data (variables) and methods (functions) that operate on the data into a single unit, usually a class.
+
+#### Key Features of Encapsulation
++ `Data Hiding` → The class's internal details are hidden from the outside world.
++ `Access Control `→ Use access modifiers (private, public, protected, default) to control access to class members.
++ `Getter & Setter Methods `→ Provide controlled access to private fields.
++ `Improved Maintainability` → Helps in modifying code without affecting external code.
++ `Security `→ Prevents unauthorized access and modifications to data.
+Example of Encapsulation
+```
+// Encapsulated class
+class BankAccount {
+    private String accountHolderName;
+    private double balance;
+
+    // Constructor
+    public BankAccount(String name, double initialBalance) {
+        this.accountHolderName = name;
+        this.balance = initialBalance;
+    }
+
+    // Getter method
+    public double getBalance() {
+        return balance;
+    }
+
+    // Setter method (with validation)
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("Deposited: " + amount);
+        } else {
+            System.out.println("Invalid deposit amount.");
+        }
+    }
+
+    // Withdraw method with encapsulation logic
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            System.out.println("Withdrawn: " + amount);
+        } else {
+            System.out.println("Insufficient balance or invalid amount.");
+        }
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount("Prachi", 5000);
+
+        // Accessing data through methods
+        account.deposit(2000);
+        account.withdraw(1000);
+
+        System.out.println("Current Balance: " + account.getBalance());
+
+        // Direct access is not possible due to encapsulation
+        // account.balance = 10000; // ❌ Compilation Error
+    }
+}
+```
+### Why Use Encapsulation?
++ Prevents direct modification of critical data.
++ Ensures better control over data with validation logic.
++ modular programming, making code more readable and maintainable.
+
+#### Without Encapsulation (Direct Access)
+```
+class Student {
+    // Public variables (Not encapsulated)
+    public String name;
+    public int rollNumber;
+
+    // Constructor
+    public Student(String name, int rollNumber) {
+        this.name = name;
+        this.rollNumber = rollNumber;
+    }
+}
+
+public class WithoutEncapsulation {
+    public static void main(String[] args) {
+        // Creating an object
+        Student student = new Student("Prachi", 101);
+
+        // Directly accessing and modifying data
+        System.out.println("Student Name: " + student.name);
+        System.out.println("Roll Number: " + student.rollNumber);
+
+        // Changing values without any restriction
+        student.name = "Aarav"; 
+        student.rollNumber = -102;  // Invalid data, but no protection
+
+        System.out.println("Updated Name: " + student.name);
+        System.out.println("Updated Roll Number: " + student.rollNumber);
+    }
+}
+```
++ Problems Without Encapsulation
++ ❌ No Data Protection → Anyone can modify name and rollNumber without restrictions.
++ ❌ No Validation → Negative roll numbers or invalid names can be set.
++ ❌ Hard to Maintain → If the variable name changes, you must update it everywhere.
+
+#### With Encapsulation (Using Getters and Setters)
+By using private variables and providing getter and setter methods, we can control access and validate data before modifying it.
+```
+class Student {
+    private String name;
+    private int rollNumber;
+
+    // Constructor
+    public Student(String name, int rollNumber) {
+        this.name = name;
+        this.rollNumber = rollNumber;
+    }
+
+    // Getter method for name
+    public String getName() {
+        return name;
+    }
+
+    // Setter method for name
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Getter method for roll number
+    public int getRollNumber() {
+        return rollNumber;
+    }
+
+    // Setter method with validation
+    public void setRollNumber(int rollNumber) {
+        if (rollNumber > 0) {
+            this.rollNumber = rollNumber;
+        } else {
+            System.out.println("Invalid roll number. Must be positive.");
+        }
+    }
+}
+
+public class WithEncapsulation {
+    public static void main(String[] args) {
+        Student student = new Student("Prachi", 101);
+
+        // Accessing data safely
+        System.out.println("Student Name: " + student.getName());
+        System.out.println("Roll Number: " + student.getRollNumber());
+
+        // Trying to set invalid data
+        student.setRollNumber(-102);  // This will show an error message
+
+        // Setting valid data
+        student.setRollNumber(102);
+
+        System.out.println("Updated Roll Number: " + student.getRollNumber());
+    }
+}
+```
++ Benefits of Encapsulation
++ ✅ `Data Security` → Private variables prevent direct modification.
++ ✅ `Validation `→ We can check values before updating them.
++ ✅ `Maintainability `→ Changes in variables do not affect other code.
+
++ Thus, without encapsulation, data is unprotected and can be modified incorrectly. Using getters and setters ensures better control and security! 🚀
+
+
+
+##### No, getter and setter methods are not compulsory when using private variables. However, they are commonly used when we need controlled access to private data.
+
+#### When Do We Need Getters and Setters?
++ ✔ If we need to read private data → Use a getter method (getX()).
++ ✔ If we need to modify private data → Use a setter method (setX()).
++ ✔ If we want validation before updating → Use setters.
++ ✔ If we don’t want external modification → Don’t provide a setter.
+
+Example Without Getter and Setter (Encapsulation but No Access)
+```
+class Student {
+    private String name;  // Private variable
+
+    // Constructor
+    public Student(String name) {
+        this.name = name;
+    }
+
+    // No getter or setter provided
+    // Data cannot be accessed or modified outside the class
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student student = new Student("Prachi");
+        
+        // Cannot access private data (This will cause an error)
+        // System.out.println(student.name); // ❌ Error: name has private access
+
+        // Cannot modify private data
+        // student.name = "Aarav"; // ❌ Error: name has private access
+    }
+}
+```
++ 👉 In this case, name remains private and inaccessible from outside.
+
+#### Example With Only Getter (Read-Only)
+If we want the data to be readable but not modifiable, we provide only a getter.
+
+```
+class Student {
+    private String name;
+
+    public Student(String name) {
+        this.name = name;
+    }
+
+    // Getter (only reading allowed)
+    public String getName() {
+        return name;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student student = new Student("Prachi");
+        
+        // We can read the data
+        System.out.println("Student Name: " + student.getName()); // ✅ Works
+
+        // We cannot modify the data (No setter available)
+        // student.name = "Aarav"; // ❌ Error
+    }
+}
+```
++ 👉 The variable is private, but we can read it using getName(), and it remains unchangeable.
+
+#### Example With Only Setter (Write-Only)
+If we want the data to be modifiable but not readable, we provide only a setter.
+```
+class Student {
+    private String password;
+
+    // Setter (Only modification allowed)
+    public void setPassword(String password) {
+        this.password = password;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student student = new Student();
+        
+        // We can set the password
+        student.setPassword("secure@123"); // ✅ Works
+
+        // We cannot read the password (No getter available)
+        // System.out.println(student.password); // ❌ Error
+    }
+}
+```
++ 👉 This is useful for sensitive data like passwords, where reading is restricted.
+
+### Conclusion
++ If a variable is private, we do not have to use getters and setters unless we need them.
++ Without getters and setters → The variable is completely hidden.
++ With only a getter → Read-Only.
++ With only a setter → Write-Only.
++ With both → Full access with control.
+
+## Abstraction
+
+
+### Definition of Abstraction in Java
++ Abstraction is the process of hiding implementation details and showing only essential features of an object. It allows you to focus on what an object does rather than how it does it.
+
+#####  In Java, abstraction is achieved using:
++ `Abstract Classes `(abstract keyword)
++ `Interfaces `(interface keyword)
+  
+Simple Example of Abstraction
+```
+abstract class Shape {
+    abstract void draw(); // Abstract method (no implementation)
+}
+
+class Circle extends Shape {
+    @Override
+    void draw() {
+        System.out.println("Drawing a Circle...");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Shape myShape = new Circle();
+        myShape.draw(); // Output: Drawing a Circle...
+    }
+}
+```
+
+
+#### Abstraction in Java
+Abstraction is one of the four pillars of Object-Oriented Programming (OOP) in Java. It is the process of hiding implementation details from the user and only showing essential features.
+
+#### Key Features of Abstraction
++ `Hides implementation details `→ Only relevant details are exposed.
++ `Increases maintainability` → Code is easier to manage and modify.
++ `Supports modular programming` → Helps break a complex system into smaller, manageable parts.
++ `Achieved using Abstract Classes and Interfaces` in Java.
+### 1️⃣ Abstraction Using Abstract Class
++ An abstract class is a class that cannot be instantiated and can have both abstract (without body) and concrete (with body) methods.
+
+Example of Abstract Class
+```
+// Abstract class
+abstract class Vehicle {
+    abstract void start(); // Abstract method (No implementation)
+
+    void stop() {  // Concrete method (Has implementation)
+        System.out.println("Vehicle is stopping...");
+    }
+}
+
+// Concrete subclass
+class Car extends Vehicle {
+    @Override
+    void start() {
+        System.out.println("Car is starting with a key...");
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        Vehicle myCar = new Car(); // Upcasting
+        myCar.start();  // Calls overridden method from Car class
+        myCar.stop();   // Calls concrete method from Vehicle class
+    }
+}
+```
+### 🔹 Key Points:
+
++ The Vehicle class is abstract, so we cannot create an object of it.
++ The Car class extends Vehicle and provides implementation for the abstract method start().
++ The stop() method is a concrete method, so it can be used directly.
+  
+### 2️⃣ Abstraction Using Interface
++ An interface in Java is a blueprint of a class that contains only abstract methods (before Java 8).
++ 100% abstraction (before Java 8).
++ Can contain default and static methods (from Java 8 onwards).
++ Used to achieve multiple inheritance.
+Example of Interface
+```
+// Interface
+interface Animal {
+    void makeSound();  // Abstract method
+}
+
+// Implementing class
+class Dog implements Animal {
+    @Override
+    public void makeSound() {
+        System.out.println("Dog barks: Woof! Woof!");
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        Animal myDog = new Dog(); // Upcasting
+        myDog.makeSound();
+    }
+}
+```
+### 🔹 Key Points:
+
++ Animal is an interface with an abstract method makeSound().
++ Dog implements Animal and provides its own implementation.
++ An interface cannot have instance variables, only constants (public static final variables).
+### 🆚 Abstract Class vs Interface
+|Feature	|Abstract Class	|Interface|
+|---------------|---------------|----------|
+| Methods	|Can have both abstract and concrete methods	|Only abstract methods (before Java 8)|
+| Fields	|Can have instance variables	|Only constants (public static final)|
+| Inheritance	|Single inheritance (extends)	|Multiple inheritance (implements)|
+| Access Modifiers	|Can have any access modifier	|Methods are public by default|
+| Best Used For	|Code reuse, partial abstraction	|Total abstraction, multiple inheritance|
+
+###📌 When to Use What?
++ ✔ Use an abstract class when:
++ You want to provide some implementation but leave certain methods abstract.
++ You expect related classes to share code.
++ ✔ Use an interface when:
+
++ You want to enforce 100% abstraction.
++ You need multiple inheritance.
++ You are defining behavior that multiple unrelated classes can adopt (e.g., Flyable, Runnable).
++🚀 Real-World Example
+Think of a car:
++ `Abstraction: `You just use the steering, accelerator, and brakes—you don't need to know how the engine works internally.
++ `Encapsulation:` The engine is hidden inside the hood, and you interact with it through predefined controls.
+Would you like a more detailed real-world example or another concept explained? 😊
+
+
+🔹 Why Use Abstraction?
+
+Hides complexity and shows only the necessary details.
+Improves code maintainability and flexibility.
+Encourages modular programming.
+
+
+
+## Interface in Java
+An interface in Java is a blueprint of a class that contains only abstract methods (before Java 8) and can be used to achieve 100% abstraction. It is used to define a contract that multiple classes can implement.
+
+### Key Features of Interfaces in Java
++ ✅ Contains only abstract methods (before Java 8)
++ ✅ Supports multiple inheritance (unlike classes)
++ ✅ Methods are public and abstract by default
++ ✅ Variables are public, static, and final (constants) by default
++ ✅ Cannot have constructors (no object creation)
+
+#### Syntax of an Interface
+```
+// Defining an interface
+interface Animal {
+    void makeSound(); // Abstract method (no body)
+}
+
+// Implementing the interface in a class
+class Dog implements Animal {
+    @Override
+    public void makeSound() {
+        System.out.println("Dog barks: Woof! Woof!");
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        Animal myDog = new Dog(); // Upcasting
+        myDog.makeSound();
+    }
+}
+```
+Output:
+```
+Dog barks: Woof! Woof!
+```
+#### Interface with Multiple Implementations
+```
+interface Vehicle {
+    void start();
+}
+
+class Car implements Vehicle {
+    @Override
+    public void start() {
+        System.out.println("Car starts with a key.");
+    }
+}
+
+class Bike implements Vehicle {
+    @Override
+    public void start() {
+        System.out.println("Bike starts with a self-start button.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Vehicle myCar = new Car();
+        myCar.start(); // Output: Car starts with a key.
+
+        Vehicle myBike = new Bike();
+        myBike.start(); // Output: Bike starts with a self-start button.
+    }
+}
+```
+#### Interface with Default and Static Methods (Java 8+)
+From Java 8, interfaces can have default and static methods with implementation.
+```
+interface Printer {
+    void print();
+
+    // Default method with implementation
+    default void show() {
+        System.out.println("Default method in interface.");
+    }
+
+    // Static method in interface
+    static void staticMethod() {
+        System.out.println("Static method in interface.");
+    }
+}
+
+class InkjetPrinter implements Printer {
+    @Override
+    public void print() {
+        System.out.println("Printing using Inkjet Printer.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Printer myPrinter = new InkjetPrinter();
+        myPrinter.print();
+        myPrinter.show(); // Calling default method
+
+        Printer.staticMethod(); // Calling static method (using interface name)
+    }
+}
+```
+Output:
+```
+Printing using Inkjet Printer.
+Default method in interface.
+Static method in interface.
+```
+### Multiple Inheritance Using Interfaces
+Java does not support multiple inheritance with classes, but it supports multiple inheritance with interfaces.
+```
+interface Flyable {
+    void fly();
+}
+
+interface Swimmable {
+    void swim();
+}
+
+// A class implementing multiple interfaces
+class Duck implements Flyable, Swimmable {
+    @Override
+    public void fly() {
+        System.out.println("Duck is flying.");
+    }
+
+    @Override
+    public void swim() {
+        System.out.println("Duck is swimming.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Duck myDuck = new Duck();
+        myDuck.fly();
+        myDuck.swim();
+    }
+}
+```
+Output:
+```
+Duck is flying.
+Duck is swimming.
+```
+### Interface vs Abstract Class
+| Feature	| Interface	| Abstract Class |
+|---------------|---------------|----------------|
+| Methods	|Only abstract methods (before Java 8)|	Can have both abstract and concrete methods|
+| Fields	|Only constants (public static final)|	Can have instance variables|
+| Access Modifiers	|Methods are public by default|	Can have any access modifier|
+| Inheritance	|Supports multiple inheritance (implements)	|Single inheritance (extends)|
+| Constructors	|Cannot have constructors	|Can have constructors|
+| Default & Static Methods|	Supported from Java 8	|Supported|
+### When to Use an Interface?
++ ✔ Use an interface when you want to define a contract that multiple classes should follow.
++ ✔ Use interfaces when you need multiple inheritance in Java.
++ ✔ Use interfaces when you want a class to implement multiple behaviors.
+
+## static
+
+### static Keyword in Java
+The static keyword in Java is used for memory management. It can be applied to variables, methods, blocks, and nested classes. When a member is declared as static, it belongs to the class rather than instances of the class.
+
+### 1️⃣ Static Variables (Class Variables)
++ A static variable is shared among all instances of the class.
++ It belongs to the class and is stored in the method area (not heap).
++ Only one copy of a static variable exists, regardless of the number of objects created.
+Example:
+```
+class Student {
+    int rollNo; // Instance variable
+    String name;
+    static String college = "AccioJob"; // Static variable (shared)
+
+    // Constructor
+    Student(int r, String n) {
+        rollNo = r;
+        name = n;
+    }
+
+    // Method to display values
+    void display() {
+        System.out.println(rollNo + " " + name + " " + college);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s1 = new Student(101, "Prachi");
+        Student s2 = new Student(102, "Rahul");
+
+        s1.display();
+        s2.display();
+
+        // Changing the static variable affects all objects
+        Student.college = "IIT Delhi";
+
+        s1.display();
+        s2.display();
+    }
+}
+```
+Output:
+```
+101 Prachi AccioJob
+102 Rahul AccioJob
+101 Prachi IIT Delhi
+102 Rahul IIT Delhi
+```
++ 🔹 college is static, so changing it affects all objects.
+
+2️⃣ Static Methods
+A static method belongs to the class, not to instances.
+It can be called without creating an object.
+It cannot access non-static (instance) variables or methods.
+Example:
+```
+class Utility {
+    // Static method
+    static void showMessage() {
+        System.out.println("Hello, this is a static method!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Calling static method without creating an object
+        Utility.showMessage();
+    }
+}
+```
+Output:
+```
+Hello, this is a static method!
+```
++ 🔹 Restrictions of Static Methods:
+
++ Cannot access non-static variables or methods directly.
++ Cannot use this or super keywords.
+### 3️⃣ Static Block
++ A static block is used to initialize static data members.
++ It is executed only once when the class is loaded.
+Example:
+```
+class Test {
+    static int num;
+
+    // Static block
+    static {
+        num = 100;
+        System.out.println("Static block executed!");
+    }
+
+    // Constructor
+    Test() {
+        System.out.println("Constructor executed!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Test t1 = new Test();
+        Test t2 = new Test();
+    }
+}
+```
+Output:
+```
+Static block executed!
+Constructor executed!
+Constructor executed!
+```
++ 🔹 Key Points:
+
++ The static block executes once when the class is loaded.
++ The constructor executes every time an object is created.
+
+### 4️⃣ Static Nested Class
+A static nested class can be created inside another class.
+It can access only static members of the outer class.
+Example:
+```
+class Outer {
+    static int data = 50;
+
+    // Static nested class
+    static class Inner {
+        void show() {
+            System.out.println("Data: " + data);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Outer.Inner obj = new Outer.Inner(); // Creating object of static nested class
+        obj.show();
+    }
+}
+```
+Output:
+```
+Data: 50
+```
++ 🔹 A static nested class does not require an instance of the outer class.
+
+#### Summary Table
+|Feature	|static Behavior|
+|--------------|----------------|
+|Static Variable|	Shared among all objects of the class|
+|Static Method|	Belongs to the class, cannot access instance members directly|
+|Static Block|	Executes once when the class is loaded|
+\Static Nested Class|	Can access only static members of the outer class|
+### When to Use static?
++ ✔ When you need a shared variable or method for all objects.
++ ✔ When you want a utility method that doesn’t depend on instance variables.
++ ✔ When you want a nested class that doesn’t require an outer class instance.
