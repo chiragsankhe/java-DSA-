@@ -2800,6 +2800,212 @@ public class ArrayListExample {
 + ❌ Not thread-safe (use Collections.synchronizedList or CopyOnWriteArrayList for multi-threading)
 
 ---
+# Strings
+### 1. Basics of Strings
+
++ String is a `class` , `not a primitive `type.
+
+### Can be created in two ways:
+
++ String s1 = "Hello"; // String literal
++ String s2 = new String("Hello"); // Using 'new' keyword
+
+### 2. Immutability
+
++ Once created, a String cannot be changed.
+
++ Modifying a String creates a new object.
+
+```
+String s = "Java";
+s.concat(" World");
+System.out.println(s); // Still "Java"
+```
+### 3. String Pool
+
++ String literals are stored in a special memory area called the `String Constant Pool` (SCP).
+
+If a literal already exists, Java reuses it
+
+## Java String Methods Cheat Sheet
+
+## Creation
+- `String s = "Hello";`
+- `String s = new String("Hello");`
+
+## Length & Access
+- `length()` – number of characters  
+- `charAt(int index)` – character at given index  
+
+## Comparison
+- `equals(String)` – content equals (case-sensitive)  
+- `equalsIgnoreCase(String)` – ignores case  
+- `compareTo(String)` – lexicographical compare  
+- `compareToIgnoreCase(String)` – ignores case in compare  
+
+## Case Conversion
+- `toUpperCase()` – all caps  
+- `toLowerCase()` – all lowercase  
+
+## Substring & Search
+- `substring(int beginIndex)` – from index to end  
+- `substring(int beginIndex, int endIndex)` – range  
+- `indexOf(String)` – first occurrence  
+- `lastIndexOf(String)` – last occurrence  
+- `contains(CharSequence)` – true if found  
+- `startsWith(String)` – check prefix  
+- `endsWith(String)` – check suffix
+
+## Substring & Search
+
+### 1. `substring(int beginIndex)`
+Returns the substring from the given index to the end.
+```
+String str = "Java Programming";
+System.out.println(str.substring(5));
+```
++  Output: Programming
+### 2. substring(int beginIndex, int endIndex)
+Returns the substring between beginIndex (inclusive) and endIndex (exclusive).
+```
+
+String str = "Java Programming";
+System.out.println(str.substring(0, 4));
+```
+// Output: Java
+### 3. indexOf(String)
+Returns the index of the first occurrence, or -1 if not found.
+```
+String str = "Java Programming";
+System.out.println(str.indexOf("Pro"));
+```
+// Output: 5
+### 4. lastIndexOf(String)
+Returns the index of the last occurrence, or -1 if not found.
+```
+String str = "Java Programming Java";
+System.out.println(str.lastIndexOf("Java"));
+```
+// Output: 17
+### 5. contains(CharSequence)
+Checks if the String contains the given sequence.
+```
+String str = "Java Programming";
+System.out.println(str.contains("Java")); // true
+System.out.println(str.contains("Python")); // false
+```
+### 6. startsWith(String)
+Checks if the String starts with the given prefix.
+
+```
+String str = "Java Programming";
+System.out.println(str.startsWith("Java")); // true
+System.out.println(str.startsWith("Pro")); // false
+```
+### 7. endsWith(String)
+Checks if the String ends with the given suffix.
+```
+String str = "Java Programming";
+System.out.println(str.endsWith("ming")); // true
+System.out.println(str.endsWith("Java")); // false
+
+```
+
+## Modification (creates new String)
+- `concat(String)` – join strings  
+- `replace(char old, char new)` – replace chars  
+- `replace(CharSequence old, CharSequence new)` – replace words  
+- `replaceAll(String regex, String replacement)` – regex replace  
+- `replaceFirst(String regex, String replacement)` – regex replace first match  
+- `trim()` – remove spaces at start/end  
+- `strip()` – remove all Unicode whitespaces  
+- `stripLeading()` – remove leading spaces  
+- `stripTrailing()` – remove trailing spaces  
+
+### 1. concat(String) – join strings
+```
+String s1 = "Java";
+String s2 = " World";
+String result = s1.concat(s2);
+System.out.println(result); // Java World
+```
+
++ Joins two strings (creates a new one).
+
+### 2. replace(char old, char new) – replace characters
+```
+String str = "Java";
+String replaced = str.replace('a', 'o');
+System.out.println(replaced); // Jovo
+```
+
++ Replaces all occurrences of a character.
+
+### 3. replace(CharSequence old, CharSequence new) – replace words/substrings
+```
+String str = "Java is fun. Java is powerful.";
+String replaced = str.replace("Java", "Python");
+System.out.println(replaced); // Python is fun. Python is powerful.
+```
+
++ Replaces all occurrences of a word or substring.
+
+### 4. replaceAll(String regex, String replacement) – regex replace
+```
+String str = "Java123Programming456";
+String replaced = str.replaceAll("\\d+", " "); // replace digits with space
+System.out.println(replaced); // Java Programming
+```
+
++ Uses regular expressions for matching.
+
+### 5. replaceFirst(String regex, String replacement) – regex replace first match
+```
+String str = "one two one two";
+String replaced = str.replaceFirst("one", "ONE");
+System.out.println(replaced); // ONE two one two
+```
+
++ Replaces only the first match found.
+
+### 6. trim() – remove spaces at start/end (ASCII spaces only)
+```
+String str = "   Hello World   ";
+System.out.println(str.trim()); // "Hello World"
+```
+### 7. strip() – remove all Unicode whitespaces at start/end
+```
+String str = "\u2002\u2003Hello World\u2002"; // has Unicode spaces
+System.out.println(str.strip()); // "Hello World"
+```
+### 8. stripLeading() – remove leading (start) whitespaces
+```
+String str = "   Hello World   ";
+System.out.println(str.stripLeading()); // "Hello World   "
+```
+### 9. stripTrailing() – remove trailing (end) whitespaces
+```
+String str = "   Hello World   ";
+System.out.println(str.stripTrailing()); // "   Hello World"
+```
+## Splitting & Joining
+- `split(String regex)` – split into array  
+- `String.join(CharSequence delimiter, elements…)` – join elements  
+
+## Checking
+- `isEmpty()` – true if length == 0  
+- `isBlank()` – true if empty or whitespace only  
+- `matches(String regex)` – regex match  
+
+## Conversion
+- `valueOf(anyType)` – convert to String  
+- `toCharArray()` – convert to char[]  
+- `getBytes()` – byte representation  
+- `intern()` – put in String pool  
+"""
+
+
+---
 ## Recursion
 ### 1. What is Recursion?
 
