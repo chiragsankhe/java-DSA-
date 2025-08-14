@@ -3004,6 +3004,116 @@ System.out.println(str.stripTrailing()); // "   Hello World"
 - `intern()` – put in String pool  
 """
 
+### Java String Interview Questions & Answers
+### 1. What is a String in Java?
+
++ A String is an object of the String class that represents a sequence of characters.
++ It’s immutable, meaning once created, it cannot be changed.
+
+### 2. Difference between String, StringBuilder, and StringBuffer
+|Feature | 	String	 | StringBuilder | 	StringBuffer  |
+|---------|------------|------------|-----------------------|
+|Mutability |	No	 |Yes |	Yes |
+|Thread-safe |	Yes |	No	 |Yes |
+|Performance	 |Slow  |for changes	Fast |	Slower than StringBuilder |
+|Usage	 |When text is fixed |	When modifying often (single thread) |	When modifying often (multi-thread) |
+## 3. Why are Strings immutable in Java?
+
++ For security (used in passwords, URLs)
+
++ For thread safety (shared between threads)
+
++ For caching in String Pool (reuse without modification)
+
++ To allow safe use in hash-based collections (HashMap keys)
+
+## 4. What is the String Constant Pool (SCP)?
+
++ A special memory area where Java stores string literals to save memory.
++ If a literal already exists, Java reuses it instead of creating a new object.
+
+Example:
+```
+String s1 = "Java";
+String s2 = "Java";
+System.out.println(s1 == s2); // true (same SCP reference)
+```
+### 5. Difference between == and .equals() in Strings
+
++ == → compares references (memory addresses)
+
++ .equals() → compares content
+```
+String a = "Java";
+String b = new String("Java");
+System.out.println(a == b); // false
+System.out.println(a.equals(b)); // true
+```
+### 6. How to create a String in Java?
+
++ String literal (uses SCP)
+
++ String s = "Hello";
+
++ Using new keyword (creates a new object in heap)
+
++ String s = new String("Hello");
+
+### 7. What does .intern() do?
+
++ Moves the string to the SCP and returns its reference if not already present.
+```
+String s1 = new String("Java");
+String s2 = s1.intern();
+String s3 = "Java";
+System.out.println(s2 == s3); // true
+```
+### 8. How to reverse a String in Java?
+```
+String str = "Java";
+String reversed = new StringBuilder(str).reverse().toString();
+System.out.println(reversed); // avaJ
+```
+### 9. How to check if a String is a palindrome?
+```
+String str = "madam";
+boolean isPalindrome = str.equals(new StringBuilder(str).reverse().toString());
+System.out.println(isPalindrome); // true
+```
+### 10. Difference between replace() and replaceAll()
+
++ replace() → works with char or CharSequence (no regex)
+
++ replaceAll() → works with regex
+```
+System.out.println("Java123".replace("123", "")); // Java
+System.out.println("Java123".replaceAll("\\d+", "")); // Java
+```
+### 11. What is matches() in String?
+
++ Checks if the string matches a regex.
+```
+System.out.println("Java123".matches("Java\\d+")); // true
+```
+### 12. How to split a String in Java?
+```
+String csv = "apple,banana,grape";
+String[] fruits = csv.split(",");
+for (String f : fruits) {
+    System.out.println(f);
+}
+```
+
+### 13. How to convert between String and other types?
+// String to int
+```
+int num = Integer.parseInt("123");
+```
+// int to String
+```
+String numStr = String.valueOf(123);
+```
+
 
 ---
 ## Recursion
