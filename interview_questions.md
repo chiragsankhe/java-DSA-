@@ -2688,3 +2688,115 @@ Think of a **TV remote** – you can press buttons to change channels or adjust 
 10. **What happens if a subclass does not implement all abstract methods of the parent abstract class?**
 
 * Then the subclass must also be declared abstract.
+---
+# arrayList
+
+### 1. What is an ArrayList?
++ ArrayList is a resizable array in Java.
+
++ It belongs to the java.util package.
+
++ Unlike normal arrays, its size can grow and shrink dynamically when elements are added or removed.
+
++ It stores elements in order (insertion order) and allows duplicates.
+
+### 2. Array vs ArrayList
+|Feature|	Array	|ArrayList|
+|---------|----------|-----------|
+|Size |	Fixed|	Dynamic  (resizes automatically)|
+|Data |type	Can store primitives and objects |	Can only store objects (primitives are wrapped in wrapper classes)|
+|Performance|	Fast for fixed-size data |	Slightly slower due to resizing and shifting|
+|Memory	|Fixed	|May use extra memory for capacity growth|
+
+### 3. Internal Working of ArrayList
++ Internally, ArrayList uses a normal array (Object[]) to store elements.
+
++ Default capacity = 10.
+
++ When you add elements beyond its capacity:
+
++ It creates a new array with 1.5x the old capacity (in Java 8+).
+
++ Copies old elements into the new array.
+
++ Index-based access is O(1) (just like arrays).
+
++ Insertion/deletion in middle is O(n) (because elements must shift).
+
+### 4. Declaration & Initialization
+```
+import java.util.ArrayList;
+
+ArrayList<Integer> list1 = new ArrayList<>(); // Default capacity 10
+ArrayList<String> list2 = new ArrayList<>(20); // Custom capacity
+```
+### 5. Common Methods
+|Method |	Description|
+|--------|-----------|
+|add(E e) |	Adds element at end|
+|add(int index, E e) |	Adds at specific index|
+|get(int index) |	Returns element at index|
+|set(int index, E e) |	Replaces element at index|
+|remove(int index)	 |Removes element at index|
+|remove(Object o)	 |Removes first occurrence|
+|size()	|Returns number of elements|
+|contains(Object o) |	Checks if element exists|
+|clear()|	Removes all elements|
+|isEmpty()	|Checks if list is empty|
+
+#### 6. Example
+```
+import java.util.ArrayList;
+
+public class ArrayListExample {
+    public static void main(String[] args) {
+        ArrayList<String> fruits = new ArrayList<>();
+
+        // Add elements
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Mango");
+
+        // Insert at index
+        fruits.add(1, "Orange");
+
+        // Access
+        System.out.println(fruits.get(2)); // Mango
+
+        // Replace
+        fruits.set(2, "Grapes");
+
+        // Remove by index
+        fruits.remove(0);
+
+        // Remove by object
+        fruits.remove("Orange");
+
+        // Loop through
+        for (String fruit : fruits) {
+            System.out.println(fruit);
+        }
+    }
+}
+```
+### 7. Time Complexity
+|Operation	|Time Complexity|
+|---------|------------------|
+|Get / Set |	O(1)|
+|Add at end	|O(1) amortized|
+|Add at index	|O(n)|
+|Remove at index	|O(n)|
+|Search by index	|O(1)|
+|Search by value|	O(n)|
+
+### 8. Advantages
++ ✅ Dynamic resizing
++ ✅ Easy to use (many built-in methods)
++ ✅ Fast random access (O(1) time)
+
+### 9. Disadvantages
++ ❌ Slower for inserting/removing in middle (O(n) due to shifting)
++ ❌ Uses more memory than arrays (due to capacity buffer)
++ ❌ Not thread-safe (use Collections.synchronizedList or CopyOnWriteArrayList for multi-threading)
+
+
