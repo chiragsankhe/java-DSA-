@@ -2943,3 +2943,192 @@ Output:
 |-----------|----------|-----------------------|
 |Order of execution |	Processes after returning from recursive call |	Processes before next recursive call|
 |Output  |for print(5)	1, 2, 3, 4, 5 |	5, 4, 3, 2, 1|
+
+### 1. What is recursion?
+
+Recursion is when a function calls itself to solve a smaller instance of the same problem until a base case is reached.
+
+Example:
+```
+int factorial(int n) {
+    if (n <= 1) return 1; // base case
+    return n * factorial(n - 1); // recursive case
+}
+```
+
+### 2. Difference between recursion and iteration
+|Recursion |	Iteration |
+|----------|--------------|
+|Uses function calls & stack | 	Uses loops | 
+|Can be more readable for divide-and-conquer  |	Usually more memory efficient |
+|May cause StackOverflowError if too deep | 	No risk of stack overflow| 
+### 3. What is a base case? Why important?
+
++ Base case stops recursion to prevent infinite calls.
+
++ Without it, recursion continues until stack overflow.
+
+### 4. Types of recursion
+
++ Direct → function calls itself directly.
+
++ Indirect → function A calls B, B calls A.
+
++ Tail → recursive call is last statement.
+
++ Head → recursive call happens before other processing.
+
+### 5. Advantages & Disadvantages
+
++ ✅ Simple for problems like tree traversal, backtracking.
++ ❌ Higher memory use, slower than iteration for some problems.
+
+### 6. Factorial
+```
+int factorial(int n) {
+    if (n <= 1) return 1;
+    return n * factorial(n - 1);
+}
+```
+// factorial(5) → 120
+
+### 7. Fibonacci
+```
+int fib(int n) {
+    if (n <= 1) return n;
+    return fib(n - 1) + fib(n - 2);
+}
+```
+// fib(5) → 5
+
+### 8. Sum of first N natural numbers
+```
+int sum(int n) {
+    if (n == 0) return 0;
+    return n + sum(n - 1);
+}
+```
+// sum(5) → 15
+
+### 9. Reverse a string
+```
+String reverse(String s) {
+    if (s.isEmpty()) return s;
+    return reverse(s.substring(1)) + s.charAt(0);
+}
+```
+// reverse("abc") → "cba"
+
+### 10. Length of string
+```
+int length(String s) {
+    if (s.equals("")) return 0;
+    return 1 + length(s.substring(1));
+}
+```
+// length("hello") → 5
+
+### 11. Max element in array
+```
+int max(int[] arr, int n) {
+    if (n == 1) return arr[0];
+    return Math.max(arr[n - 1], max(arr, n - 1));
+}
+```
+// max([1,5,3,9], 4) → 9
+
+### 12. Print numbers head vs tail
+```
+void headPrint(int n) {
+    if (n == 0) return;
+    headPrint(n - 1);
+    System.out.print(n + " ");
+}
+
+void tailPrint(int n) {
+    if (n == 0) return;
+    System.out.print(n + " ");
+    tailPrint(n - 1);
+}
+```
+
+### 13. Palindrome check
+```
+boolean isPalindrome(String s, int start, int end) {
+    if (start >= end) return true;
+    return (s.charAt(start) == s.charAt(end)) &&
+           isPalindrome(s, start + 1, end - 1);
+}
+```
+// isPalindrome("madam", 0, 4) → true
+
+### 14. Binary search
+```
+int binarySearch(int[] arr, int left, int right, int key) {
+    if (left > right) return -1;
+    int mid = (left + right) / 2;
+    if (arr[mid] == key) return mid;
+    if (key < arr[mid]) return binarySearch(arr, left, mid - 1, key);
+    return binarySearch(arr, mid + 1, right, key);
+}
+```
+
+### 15. Count occurrences
+```
+int count(int[] arr, int n, int x) {
+    if (n == 0) return 0;
+    return (arr[n - 1] == x ? 1 : 0) + count(arr, n - 1, x);
+}
+// count([1,2,3,2], 4, 2) → 2
+
+16. Tower of Hanoi
+void hanoi(int n, char from, char to, char aux) {
+    if (n == 1) {
+        System.out.println("Move disk 1 from " + from + " to " + to);
+        return;
+    }
+    hanoi(n - 1, from, aux, to);
+    System.out.println("Move disk " + n + " from " + from + " to " + to);
+    hanoi(n - 1, aux, to, from);
+}
+```
+
+### 17. Subsets (Power set)
+```
+void subsets(String s, String current, int index) {
+    if (index == s.length()) {
+        System.out.println(current);
+        return;
+    }
+    subsets(s, current + s.charAt(index), index + 1);
+    subsets(s, current, index + 1);
+}
+```
+### 18. Permutations
+```
+void permute(String s, String ans) {
+    if (s.isEmpty()) {
+        System.out.println(ans);
+        return;
+    }
+    for (int i = 0; i < s.length(); i++) {
+        permute(s.substring(0, i) + s.substring(i + 1), ans + s.charAt(i));
+    }
+}
+
+```
+### 19. N-Queens
+
+(Backtracking + recursion, bit long — usually asked for conceptual understanding.)
+
+### 20. Maze paths
+```
+void maze(int row, int col, String path) {
+    if (row == 1 && col == 1) {
+        System.out.println(path);
+        return;
+    }
+    if (row > 1) maze(row - 1, col, path + "D");
+    if (col > 1) maze(row, col - 1, path + "R");
+}
+```
