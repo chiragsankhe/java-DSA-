@@ -2799,4 +2799,147 @@ public class ArrayListExample {
 + ❌ Uses more memory than arrays (due to capacity buffer)
 + ❌ Not thread-safe (use Collections.synchronizedList or CopyOnWriteArrayList for multi-threading)
 
+---
+## Recursion
+### 1. What is Recursion?
 
++ Recursion is when a function calls itself directly or indirectly to solve a problem.
+
+#### A recursive function must have:
+
++ `Base case` → condition to stop recursion.
+
++ `Recursive case` → function calls itself for a smaller problem.
+
+#### 2. How Recursion Works (Stack Concept)
+
++ Every time a function is called:
+
++ A new stack frame is created in memory.
+
++ The function execution is paused until the recursive call finishes.
+
++ After reaching the base case, the stack unwinds (returns back step-by-step).
+
+
+### 1. Direct Recursion
+
++ Definition: A function calls itself directly.
+
+Example:
+```
+public class DirectRecursion {
+    static void printNumbers(int n) {
+        if (n == 0) return; // Base case
+        System.out.println(n);
+        printNumbers(n - 1); // Directly calls itself
+    }
+
+    public static void main(String[] args) {
+        printNumbers(5);
+    }
+}
+```
+
+Output:
+```
+
+5
+4
+3
+2
+1
+```
+### 2. Indirect Recursion
+
+ + Definition: Function A calls function B, and function B calls function A.
+
+Example:
+```
+public class IndirectRecursion {
+    static void functionA(int n) {
+        if (n <= 0) return;
+        System.out.println("A: " + n);
+        functionB(n - 1); // Calls functionB
+    }
+
+    static void functionB(int n) {
+        if (n <= 0) return;
+        System.out.println("B: " + n);
+        functionA(n - 2); // Calls functionA
+    }
+
+    public static void main(String[] args) {
+        functionA(5);
+    }
+}
+
+```
+Output:
+```
+A: 5
+B: 4
+A: 2
+B: 1
+```
+### 3. Tail Recursion
+
++ Definition: The recursive call is the last statement in the function, and nothing happens after the recursive call returns.
+
++ Can be optimized in some languages to avoid extra stack frames (Java doesn’t do this automatically).
+
+Example:
+```
+public class TailRecursion {
+    static void tailPrint(int n) {
+        if (n == 0) return;
+        System.out.println(n);
+        tailPrint(n - 1); // Last action
+    }
+
+    public static void main(String[] args) {
+        tailPrint(5);
+    }
+}
+```
+
+Output:
+```
+5
+4
+3
+2
+1
+```
+### 4. Head Recursion
+
++ Definition: The recursive call happens before any other processing in the function.
+
+Example:
+```
+public class HeadRecursion {
+    static void headPrint(int n) {
+        if (n == 0) return;
+        headPrint(n - 1); // First action
+        System.out.println(n); // Runs after returning
+    }
+
+    public static void main(String[] args) {
+        headPrint(5);
+    }
+}
+```
+
+Output:
+```
+1
+2
+3
+4
+5
+```
+### Key Difference Between Head & Tail Recursion
+|Feature	 | Head Recursion |	Tail Recursion|
+|-----------|----------|-----------------------|
+|Order of execution |	Processes after returning from recursive call |	Processes before next recursive call|
+|Output  |for print(5)	1, 2, 3, 4, 5 |	5, 4, 3, 2, 1|
