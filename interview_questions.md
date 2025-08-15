@@ -3113,7 +3113,116 @@ int num = Integer.parseInt("123");
 ```
 String numStr = String.valueOf(123);
 ```
+### memory ,  intern() , new 
 
+### 1. String Storage Locations
+
++ Java stores Strings in two places:
+
+#### a) Heap Memory
+
++ All String objects (including those created with new String()) live in the heap.
+
++ Mutable objects like StringBuilder and StringBuffer are also in the heap.
+
+###  b) String Constant Pool (SCP)
+
++ A special part of the heap.
+
++ Stores string literals for reusability.
+
++ If the same literal exists, Java reuses the reference instead of creating a new object.
+
+2. Example
+```
+String s1 = "Java";            // Goes into SCP
+String s2 = "Java";            // Points to the same SCP object
+String s3 = new String("Java");// Creates a new object in heap (not in SCP)
+```
+
+### Memory diagram:
+```
+Heap:
+   [s3: Java]  ← new String("Java")
+
+SCP:
+   [Java] ← shared by s1 and s2
+
+```
+#### 3. Immutability and Memory
+
+Strings are immutable — any change creates a new object:
+```
+String s = "Hello";
+s.concat(" World");
+System.out.println(s); // Hello (unchanged)
+```
+
+Memory after concat:
+
+SCP:
+```
+   [Hello]
+   [Hello World] ← created new, but unused unless assigned
+```
+### 4. intern() Method
+
+Moves or returns a String from SCP:
+```
+String s1 = new String("Java");
+String s2 = s1.intern();
+String s3 = "Java";
+System.out.println(s2 == s3); // true
+```
+### 5. Performance Tip
+
++ String literals are faster and memory-efficient.
+
++ Use `StringBuilder` or `StringBuffer`  if you modify strings frequently (avoids creating many objects).
+
++ If you want, I can draw you a full
+
+
+### 1. == (Reference Comparison)
+
++ Checks whether two references point to the same object in memory.
+
++ Does not compare the content of the strings.
+
+Example:
+```
+String s1 = "Java";
+String s2 = "Java";
+System.out.println(s1 == s2); // true (same SCP reference)
+
+String s3 = new String("Java");
+System.out.println(s1 == s3); // false (different objects in memory)
+```
+### 2. .equals() (Content Comparison)
+
+Defined in String class to compare the actual text inside strings.
+
+Returns true if the sequence of characters matches, regardless of memory location.
+
+Example:
+```
+String s1 = "Java";
+String s3 = new String("Java");
+
+System.out.println(s1.equals(s3)); // true (content matches)
+```
+### 3. Combined Example
+```
+String a = "hello";
+String b = "hello";
+String c = new String("hello");
+
+System.out.println(a == b);       // true  (same SCP object)
+System.out.println(a.equals(b));  // true  (same content)
+
+System.out.println(a == c);       // false (different memory)
+System.out.println(a.equals(c));  // true  (same content)
+```
 
 ---
 ## Recursion
