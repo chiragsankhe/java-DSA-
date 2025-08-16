@@ -3389,6 +3389,7 @@ capacity after ensureCapacity: 50
 ```
 String → immutable, every change creates a new object.
 StringBuilder → mutable, modifies in place (faster for lots of changes).
+```
 ---
 ## Recursion
 ### 1. What is Recursion?
