@@ -3223,7 +3223,172 @@ System.out.println(a.equals(b));  // true  (same content)
 System.out.println(a == c);       // false (different memory)
 System.out.println(a.equals(c));  // true  (same content)
 ```
+##   immutability
 
+### 🔹 What does immutability mean?
+
++ `Immutable` = cannot be changed after creation.
+
++ In Java, String objects are immutable — once you create a String, its value cannot be modified.
+
++ Any "change" you do (like concatenation, replace, etc.) will actually create a new String object in memory.
+
+🔹 Example
+```
+String s1 = "Java";
+s1.concat(" World");
+
+System.out.println(s1);
+```
+// Output: Java
+
+
++ 👉 Even though we called concat(), s1 is still "Java" because a new string "Java World" was created, but s1 still points to "Java".
+
+### 🔹 Correct way to update
+```
+String s1 = "Java";
+s1 = s1.concat(" World"); // assign new object back to s1
+System.out.println(s1);   // Output: Java World
+```
+### 🔹 Why are Strings immutable?
+
+#### Security
+
++ Strings are often used for sensitive data (like usernames, passwords, URLs).
+
++ If mutable, someone could change your password string value after authentication.
+
+### String Pool (SCP)
+
+Because Strings are immutable, they can be shared in the String Constant Pool safely without risk of being changed by another reference.
+
+### Thread-safety
+
++ Immutable objects can be shared among multiple threads without synchronization issues.
+
++ Caching & Performance
+
++ Hashcode of a String is cached (since it won’t change), so Strings work faster as keys in HashMap, HashSet.
+
+🔹 Example: Why immutability is useful
+```
+String a = "Hello";
+String b = a;
+
+a = a.concat(" World");
+
+System.out.println(a); // Hello World
+System.out.println(b); // Hello
+````
+
++ 👉 b stays unchanged because "Hello" was not modified; a new object was created for "Hello World".
+
+✅ In summary:
+
++ Strings in Java are immutable.
+
++ Any modification creates a new object.
+
+## 📘 StringBuilder in Java
+
++ `StringBuilder` is a mutable sequence of characters.
+
++ Unlike String, you can change content without creating new objects.
+
++ Faster when you do lots of modifications (append, insert, delete, etc.).
+
++ Not thread-safe (for single-threaded performance).
+
++ 👉 For thread-safe version → use StringBuffer.
+
+### 🔹 Commonly Used StringBuilder Methods with Examples
+```
+public class StringBuilderDemo {
+    public static void main(String[] args) {
+        StringBuilder sb = new StringBuilder("Hello");
+
+        // 1. append() → add at the end
+        sb.append(" World");
+        System.out.println("append: " + sb);  // Hello World
+
+        // 2. insert() → insert at index
+        sb.insert(5, " Java");
+        System.out.println("insert: " + sb);  // Hello Java World
+
+        // 3. delete() → remove substring
+        sb.delete(5, 10); // removes " Java"
+        System.out.println("delete: " + sb);  // Hello World
+
+        // 4. deleteCharAt() → remove single char
+        sb.deleteCharAt(5);
+        System.out.println("deleteCharAt: " + sb);  // HelloWorld
+
+        // 5. replace() → replace part
+        sb.replace(5, 10, " Java");
+        System.out.println("replace: " + sb);  // Hello Java
+
+        // 6. setCharAt() → modify a single char
+        sb.setCharAt(0, 'h');
+        System.out.println("setCharAt: " + sb);  // hello Java
+
+        // 7. reverse() → reverse string
+        sb.reverse();
+        System.out.println("reverse: " + sb);  // avaJ olleh
+
+        // 8. length() & capacity()
+        System.out.println("length: " + sb.length());     // 10
+        System.out.println("capacity: " + sb.capacity()); // default 16 + original length
+
+        // 9. charAt() → get a character
+        System.out.println("charAt(2): " + sb.charAt(2));
+
+        // 10. substring() → get part (returns String, not StringBuilder)
+        String sub = sb.substring(0, 4);
+        System.out.println("substring: " + sub);
+
+        // 11. ensureCapacity() → increase buffer
+        sb.ensureCapacity(50);
+        System.out.println("capacity after ensureCapacity: " + sb.capacity());
+    }
+}
+
+```
+### 🔹 Output
+```
+append: Hello World
+insert: Hello Java World
+delete: Hello World
+deleteCharAt: HelloWorld
+replace: Hello Java
+setCharAt: hello Java
+reverse: avaJ olleh
+length: 10
+capacity: 21
+charAt(2): a
+substring: avaJ
+capacity after ensureCapacity: 50
+```
+### 🔹 Summary Table
+|Method	 | Description|
+|----------|------------------|
+|append(str) |	Add string at end|
+|insert(index, str)	| Insert string at index |
+|delete(start, end)	| Delete characters in range |
+|deleteCharAt(index)	| Delete single character |
+|replace(start, end, str)	|Replace part with new string|
+|setCharAt(index, ch) |	Change character at position|
+|reverse()	| Reverse the sequence|
+|length() |	Number of characters|
+|capacity()	|Buffer size (can grow)|
+|charAt(index)|	Get char at index|
+|substring(start, end)|	Extract substring (returns String)|
+|ensureCapacity(min) |	Ensure buffer size| 
+
+### ⚡ Key difference:
+```
+String → immutable, every change creates a new object.
+StringBuilder → mutable, modifies in place (faster for lots of changes).
 ---
 ## Recursion
 ### 1. What is Recursion?
