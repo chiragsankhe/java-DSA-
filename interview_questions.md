@@ -3391,6 +3391,8 @@ String → immutable, every change creates a new object.
 StringBuilder → mutable, modifies in place (faster for lots of changes).
 ```
 ---
+ChatGPT can
+---
 ## Recursion
 ### 1. What is Recursion?
 
@@ -3723,3 +3725,225 @@ void maze(int row, int col, String path) {
     if (col > 1) maze(row, col - 1, path + "R");
 }
 ```
+# 2D array 
+### 📌 1. What is a 2D Array in Java?
+
+A 2D array is like a matrix — a collection of data arranged in rows and columns.
+
+Declaration
+```
+int[][] arr;        // ✅ Preferred
+int arr[][];        // ✅ Also valid
+````
+Initialization
+```
+int[][] arr = new int[3][4]; // 3 rows, 4 columns
+```
+
+Here:
+
++ arr.length → 3 → number of rows
+
++ arr[0].length → 4 → number of columns
+
+### 📌 2. Ways to Initialize a 2D Array
+#### a) Static Initialization
+```
+int[][] arr = {
+    {1, 2, 3},
+    {4, 5, 6},
+    {7, 8, 9}
+};
+```
+
+### b) Dynamic Initialization (Using Loops)
+```
+int[][] arr = new int[2][3];
+arr[0][0] = 10;
+arr[0][1] = 20;
+arr[1][0] = 30;
+arr[1][1] = 40;
+```
+
+### 📌 3. Traversing a 2D Array
+Using Nested Loops
+```
+for (int i = 0; i < arr.length; i++) {
+    for (int j = 0; j < arr[i].length; j++) {
+        System.out.print(arr[i][j] + " ");
+    }
+    System.out.println();
+}
+```
+
+### 📌 4. Input from User
+```
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int r = sc.nextInt();
+        int c = sc.nextInt();
+        int[][] arr = new int[r][c];
+
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                arr[i][j] = sc.nextInt();
+            }
+        }
+
+        for (int[] row : arr) {
+            for (int num : row) {
+                System.out.print(num + " ");
+            }
+            System.out.println();
+        }
+
+        sc.close();
+    }
+}
+```
+
+### 📌 5. Common Interview Questions on 2D Arrays
+#### Q1. Find the Sum of All Elements
+```
+int sum = 0;
+for (int i = 0; i < arr.length; i++) {
+    for (int j = 0; j < arr[i].length; j++) {
+        sum += arr[i][j];
+    }
+}
+System.out.println("Sum = " + sum);
+```
+#### Q2. Search for an Element
+```
+int target = 5;
+boolean found = false;
+
+for (int i = 0; i < arr.length; i++) {
+    for (int j = 0; j < arr[i].length; j++) {
+        if (arr[i][j] == target) {
+            System.out.println("Found at: " + i + "," + j);
+            found = true;
+            break;
+        }
+    }
+}
+```
+if (!found) System.out.println("Not Found");
+
+#### Q3. Print Transpose of a Matrix
+
++ Transpose → Rows become columns and columns become rows.
+
++ int[][] transpose = new int[arr[0].length][arr.length];
+```
+for (int i = 0; i < arr.length; i++) {
+    for (int j = 0; j < arr[0].length; j++) {
+        transpose[j][i] = arr[i][j];
+    }
+}
+```
+#### Q4. Rotate Matrix by 90 Degrees
++ Approach
+
++ Take transpose
+
++ Reverse each row
+```
+// Step 1: Transpose
+
+for (int i = 0; i < arr.length; i++) {
+    for (int j = i; j < arr[0].length; j++) {
+        int temp = arr[i][j];
+        arr[i][j] = arr[j][i];
+        arr[j][i] = temp;
+    }
+}
+
+// Step 2: Reverse each row
+
+for (int i = 0; i < arr.length; i++) {
+    for (int j = 0; j < arr[0].length / 2; j++) {
+        int temp = arr[i][j];
+        arr[i][j] = arr[i][arr[0].length - j - 1];
+        arr[i][arr[0].length - j - 1] = temp;
+    }
+}
+```
+### Q5. Spiral Order Traversal
+
+Given a matrix, print elements in spiral order.
+```
+List<Integer> spiral = new ArrayList<>();
+int minr = 0, minc = 0;
+int maxr = arr.length - 1;
+int maxc = arr[0].length - 1;
+
+while (minr <= maxr && minc <= maxc) {
+    for (int j = minc; j <= maxc; j++) spiral.add(arr[minr][j]);
+    minr++;
+
+    for (int i = minr; i <= maxr; i++) spiral.add(arr[i][maxc]);
+    maxc--;
+
+    if (minr <= maxr) {
+        for (int j = maxc; j >= minc; j--) spiral.add(arr[maxr][j]);
+        maxr--;
+    }
+
+    if (minc <= maxc) {
+        for (int i = maxr; i >= minr; i--) spiral.add(arr[i][minc]);
+        minc++;
+    }
+}
+```
+System.out.println(spiral);
+
+#### Q6. Find Row with Maximum Sum
+int maxSum = Integer.MIN_VALUE;
+int rowIndex = -1;
+```
+for (int i = 0; i < arr.length; i++) {
+    int sum = 0;
+    for (int j = 0; j < arr[i].length; j++) {
+        sum += arr[i][j];
+    }
+    if (sum > maxSum) {
+        maxSum = sum;
+        rowIndex = i;
+    }
+}
+```
+System.out.println("Row " + rowIndex + " has max sum = " + maxSum);
+
+### Q7. Count Zeros and Ones in a Binary Matrix
+```
+int zeros = 0, ones = 0;
+
+for (int[] row : arr) {
+    for (int num : row) {
+        if (num == 0) zeros++;
+        else if (num == 1) ones++;
+    }
+}
+```
+System.out.println("Zeros = " + zeros + ", Ones = " + ones);
+
+📌 6. Frequently Asked Interview Questions
+|Question |	Concept Tested |
+|--------|-----------------------|
+|Find the sum of all elements |	Basic traversal |
+|Search for an element	 |Linear search in 2D array|
+|Transpose a matrix	|Index manipulation|
+|Rotate matrix 90 degrees	|Transpose + reverse|
+|Spiral order traversal |	Boundary management|
+|Find row column with max sum	|Nested loops and tracking max|
+|Count zeros and ones |in binary matrix	Simple traversal|
+|Diagonal sum in square | matrix	Index handling|
+
+Do you want me to prepare a PDF cheat sheet with 2D array theory + 20 important interview problems?
+It’ll be super handy for quick revision. Should I?
+
