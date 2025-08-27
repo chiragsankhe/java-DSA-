@@ -3932,8 +3932,15 @@ for (int[] row : arr) {
 ```
 System.out.println("Zeros = " + zeros + ", Ones = " + ones);
 
-
-
-Do you want me to prepare a PDF cheat sheet with 2D array theory + 20 important interview problems?
-It’ll be super handy for quick revision. Should I?
+📌 6. Frequently Asked Interview Questions
+|Question |	Concept Tested |
+|--------|-----------------------|
+|Find the sum of all elements |	Basic traversal |
+|Search for an element	 |Linear search in 2D array|
+|Transpose a matrix	|Index manipulation|
+|Rotate matrix 90 degrees	|Transpose + reverse|
+|Spiral order traversal |	Boundary management|
+|Find row column with max sum	|Nested loops and tracking max|
+|Count zeros and ones |in binary matrix	Simple traversal|
+|Diagonal sum in square | matrix	Index handling|
 
