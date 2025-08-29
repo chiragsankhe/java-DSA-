@@ -3944,3 +3944,486 @@ System.out.println("Zeros = " + zeros + ", Ones = " + ones);
 |Count zeros and ones |in binary matrix	Simple traversal|
 |Diagonal sum in square | matrix	Index handling|
 
+---
+
+## Types of Sorting in Java
+
++ There are mainly two categories:
+
+### A. Primitive Sorting (Arrays of int, char, etc.)
+
++ Sorting primitive data types like `int[]`,` double[]`,` char[]`.
+
+### Uses Arrays.sort().
+
+### B. Object Sorting (Strings, Objects, Lists, etc.)
+
++ Sorting objects using `Comparable` or `Comparator` interfaces.
+
+#### Uses Arrays.sort() or Collections.sort().
+
+### 2. Sorting an Array of Integers
+```
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {5, 2, 8, 1, 3};
+
+        Arrays.sort(arr); // Ascending order
+
+        System.out.println("Ascending: " + Arrays.toString(arr));
+
+        // Descending order
+        Integer[] arr2 = {5, 2, 8, 1, 3};
+        Arrays.sort(arr2, (a, b) -> b - a);
+
+        System.out.println("Descending: " + Arrays.toString(arr2));
+    }
+}
+```
+
+
+Output:
+```
+Ascending: [1, 2, 3, 5, 8]
+Descending: [8, 5, 3, 2, 1]
+```
+
+#### ✅ Key Point: For primitive arrays, use Arrays.sort(arr).
+ + For descending order, convert to Integer[] because primitive int doesn't support custom comparators.
+
+### 3. Sorting a String 
+```
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        String[] names = {"Chirag", "Rahul", "Aman", "Zara"};
+
+        Arrays.sort(names); // Ascending
+        System.out.println("Ascending: " + Arrays.toString(names));
+
+        Arrays.sort(names, (a, b) -> b.compareTo(a)); // Descending
+        System.out.println("Descending: " + Arrays.toString(names));
+    }
+}
+
+```
+Output:
+```
+Ascending: [Aman, Chirag, Rahul, Zara]
+Descending: [Zara, Rahul, Chirag, Aman]
+```
+### 4. Sorting an ArrayList
+```
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        List<Integer> list = new ArrayList<>(Arrays.asList(5, 2, 8, 1, 3));
+
+        Collections.sort(list);  // Ascending
+        System.out.println("Ascending: " + list);
+
+        Collections.sort(list, Collections.reverseOrder()); // Descending
+        System.out.println("Descending: " + list);
+    }
+}
+```
+
+Output:
+```
+Ascending: [1, 2, 3, 5, 8]
+Descending: [8, 5, 3, 2, 1]
+```
+### 5. Sorting Objects Using Comparable
+
+If you have a custom class, you can implement Comparable:
+```
+import java.util.*;
+
+class Student implements Comparable<Student> {
+    int id;
+    String name;
+
+    Student(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    // Sort by id (ascending)
+    @Override
+    public int compareTo(Student s) {
+        return this.id - s.id;
+    }
+
+    @Override
+    public String toString() {
+        return id + " - " + name;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        List<Student> list = new ArrayList<>();
+        list.add(new Student(3, "Chirag"));
+        list.add(new Student(1, "Rahul"));
+        list.add(new Student(2, "Aman"));
+
+        Collections.sort(list);
+        System.out.println(list);
+    }
+}
+```
+
+Output:
+```
+[1 - Rahul, 2 - Aman, 3 - Chirag]
+```
+### 6. Sorting Objects Using Comparator
+```
+import java.util.*;
+
+class Student {
+    int id;
+    String name;
+
+    Student(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return id + " - " + name;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        List<Student> list = new ArrayList<>();
+        list.add(new Student(3, "Chirag"));
+        list.add(new Student(1, "Rahul"));
+        list.add(new Student(2, "Aman"));
+
+        // Sort by name ascending
+        Collections.sort(list, (a, b) -> a.name.compareTo(b.name));
+        System.out.println("By Name Asc: " + list);
+
+        // Sort by id descending
+        Collections.sort(list, (a, b) -> b.id - a.id);
+        System.out.println("By ID Desc: " + list);
+    }
+}
+```
+### 7. Common Interview Questions on Sorting
+#### Q1. How do you sort an array in descending order in Java?
+ + Convert to Integer[] and use:
+
++ Arrays.sort(arr, Collections.reverseOrder());
+
+#### Q2. Difference between Comparable and Comparator?
++ Feature	Comparable	Comparator
++ Package	java.lang	java.util
++ Method	compareTo()	compare()
++ Sorting	Natural order (default)	Custom sorting
++ Multiple Sorts	❌ No	✅ Yes
+#### Q3. Time Complexity of Arrays.sort()?
+
++ Uses Dual-Pivot Quicksort → O(n log n) in average case.
+
+Summary Table
+| Task | 	Method | 
+|---------|-----------|
+| Sort int[] |  ascending	Arrays.sort(arr)| 
+| Sort int[] |  descending	Arrays.sort(arr, Collections.reverseOrder()) (use Integer[]) | 
+| Sort String[] | ascending	Arrays.sort(arr) | 
+| Sort String[] | descending	Arrays.sort(arr, (a,b)->b.compareTo(a))| 
+| Sort ArrayList  | ascending	Collections.sort(list) | 
+| Sort ArrayList  | descending	Collections.sort(list, Collections.reverseOrder()) | 
+| Sort custom objects	 |Implement Comparable or use Comparator | 
+
+## 1. Bubble Sort 🫧
+
++ Idea → Repeatedly compare adjacent elements and swap if they are in the wrong order.
+ +It “bubbles up” the largest element at the end after each pass.
+
+```
+import java.util.Arrays;
+
+public class BubbleSort {
+    public static void bubbleSort(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            boolean swapped = false;
+
+            for (int j = 0; j < n - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    // Swap
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    swapped = true;
+                }
+            }
+
+            // Optimization: If no swaps, array is sorted
+            if (!swapped) break;
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {5, 1, 4, 2, 8};
+        bubbleSort(arr);
+        System.out.println(Arrays.toString(arr));
+    }
+}
+```
+
+Output:
+```
+
+[1, 2, 4, 5, 8]
+
+```
+Time Complexity:
+```
+Worst & Average: O(n²)
+
+Best (sorted): O(n)
+
+Space: O(1)
+```
+## 2. Selection Sort 🎯
+
++ Idea → Find the minimum element in the unsorted part and place it at the beginning.
+```
+import java.util.Arrays;
+
+public class SelectionSort {
+    public static void selectionSort(int[] arr) {
+        int n = arr.length;
+
+        for (int i = 0; i < n - 1; i++) {
+            int minIndex = i;
+
+            // Find the minimum
+            for (int j = i + 1; j < n; j++) {
+                if (arr[j] < arr[minIndex]) {
+                    minIndex = j;
+                }
+            }
+
+            // Swap
+            int temp = arr[minIndex];
+            arr[minIndex] = arr[i];
+            arr[i] = temp;
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {64, 25, 12, 22, 11};
+        selectionSort(arr);
+        System.out.println(Arrays.toString(arr));
+    }
+}
+```
+
+Output:
+```
+[11, 12, 22, 25, 64]
+
+```
+Time Complexity:
+```
+Worst, Average, Best: O(n²)
+
+Space: O(1)
+```
+## 3. Insertion Sort 🧩
+
++ Idea → Build a sorted list one element at a time by inserting elements into their correct position.
+```
+import java.util.Arrays;
+
+public class InsertionSort {
+    public static void insertionSort(int[] arr) {
+        for (int i = 1; i < arr.length; i++) {
+            int key = arr[i];
+            int j = i - 1;
+
+            // Move greater elements ahead
+            while (j >= 0 && arr[j] > key) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+
+            arr[j + 1] = key;
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {12, 11, 13, 5, 6};
+        insertionSort(arr);
+        System.out.println(Arrays.toString(arr));
+    }
+}
+```
+
+Output:
+```
+[5, 6, 11, 12, 13]
+```
+
+Time Complexity:
+```
+Worst & Average: O(n²)
+
+Best (sorted): O(n)
+
+Space: O(1)
+```
+### 4. Merge Sort 🪄 (Divide and Conquer)
+
++ Idea → Divide array into halves, sort them recursively, and merge back.
+
+```
+import java.util.Arrays;
+
+public class MergeSort {
+    public static void mergeSort(int[] arr, int left, int right) {
+        if (left < right) {
+            int mid = left + (right - left) / 2;
+
+            mergeSort(arr, left, mid);
+            mergeSort(arr, mid + 1, right);
+
+            merge(arr, left, mid, right);
+        }
+    }
+
+    public static void merge(int[] arr, int left, int mid, int right) {
+        int n1 = mid - left + 1;
+        int n2 = right - mid;
+
+        int[] L = new int[n1];
+        int[] R = new int[n2];
+
+        for (int i = 0; i < n1; ++i)
+            L[i] = arr[left + i];
+        for (int j = 0; j < n2; ++j)
+            R[j] = arr[mid + 1 + j];
+
+        int i = 0, j = 0;
+        int k = left;
+
+        while (i < n1 && j < n2) {
+            if (L[i] <= R[j]) {
+                arr[k++] = L[i++];
+            } else {
+                arr[k++] = R[j++];
+            }
+        }
+
+        while (i < n1)
+            arr[k++] = L[i++];
+
+        while (j < n2)
+            arr[k++] = R[j++];
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {12, 11, 13, 5, 6, 7};
+        mergeSort(arr, 0, arr.length - 1);
+        System.out.println(Arrays.toString(arr));
+    }
+}
+```
+
+Output:
+```
+[5, 6, 7, 11, 12, 13]
+
+```
+Time Complexity:
+```
+Best, Average, Worst: O(n log n)
+
+Space: O(n)
+```
+## 5. Quick Sort ⚡ (Divide and Conquer)
+
++ Idea → Pick a pivot, partition array into two halves, sort recursively.
+```
+import java.util.Arrays;
+
+public class QuickSort {
+    public static void quickSort(int[] arr, int low, int high) {
+        if (low < high) {
+            int pi = partition(arr, low, high);
+
+            quickSort(arr, low, pi - 1);
+            quickSort(arr, pi + 1, high);
+        }
+    }
+
+    public static int partition(int[] arr, int low, int high) {
+        int pivot = arr[high];
+        int i = low - 1;
+
+        for (int j = low; j < high; j++) {
+            if (arr[j] < pivot) {
+                i++;
+                // Swap
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+
+        // Swap pivot to correct position
+        int temp = arr[i + 1];
+        arr[i + 1] = arr[high];
+        arr[high] = temp;
+
+        return i + 1;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {10, 7, 8, 9, 1, 5};
+        quickSort(arr, 0, arr.length - 1);
+        System.out.println(Arrays.toString(arr));
+    }
+}
+```
+
+Output:
+```
+[1, 5, 7, 8, 9, 10]
+```
+
+Time Complexity:
+```
+Best & Average: O(n log n)
+
+Worst (sorted array): O(n²)
+
+Space: O(log n)
+```
+6. Comparison Table
+Algorithm	Time Best	Time Average	Time Worst	Space	Stability
+Bubble	O(n)	O(n²)	O(n²)	O(1)	✅ Yes
+Selection	O(n²)	O(n²)	O(n²)	O(1)	❌ No
+Insertion	O(n)	O(n²)	O(n²)	O(1)	✅ Yes
+Merge	O(n log n)	O(n log n)	O(n log n)	O(n)	✅ Yes
+Quick	O(n log n)	O(n log n)	O(n²)	O(log n)	❌ No
+Heap	O(n log n)	O(n log n)	O(n log n)	O(1)	❌ No
+7. Most Asked Interview Questions
+
+Which sorting algorithm is fastest? → QuickSort (on average).
+
+Which is stable and efficient? → MergeSort.
+
+When to use Insertion Sort? → Small arrays, nearly sorted data.
+
+Why does Java’s Arrays.sort() use Dual-Pivot QuickSort? → Better average performance.
