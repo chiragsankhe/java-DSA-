@@ -4411,19 +4411,20 @@ Worst (sorted array): O(n²)
 Space: O(log n)
 ```
 6. Comparison Table
-Algorithm	Time Best	Time Average	Time Worst	Space	Stability
-Bubble	O(n)	O(n²)	O(n²)	O(1)	✅ Yes
-Selection	O(n²)	O(n²)	O(n²)	O(1)	❌ No
-Insertion	O(n)	O(n²)	O(n²)	O(1)	✅ Yes
-Merge	O(n log n)	O(n log n)	O(n log n)	O(n)	✅ Yes
-Quick	O(n log n)	O(n log n)	O(n²)	O(log n)	❌ No
-Heap	O(n log n)	O(n log n)	O(n log n)	O(1)	❌ No
-7. Most Asked Interview Questions
+| Algorithm | 	Time Best	 | Time Average	  |Time Worst	 | Space	 | Stability |
+|-----------|---------------|----------------|------|--------|--------------|
+| Bubble	| O(n) | 	O(n²)  |	O(n²) | 	O(1) | 	✅ Yes | 
+| Selection | 	O(n²) | 	O(n²)  |	O(n²)  | 	O(1)  |	❌ No  |
+| Insertion	 |O(n)	| O(n²)	| O(n²)	 |O(1)	| ✅ Yes |
+|Merge | 	O(n log n)	| O(n log n)	| O(n log n)| 	O(n)| 	✅ Yes| 
+| Quick	| O(n log n)	| O(n log n) | 	O(n²)| 	O(log n)	| ❌ No| 
+| Heap |	O(n log n)| 	O(n log n)	| O(n log n)	| O(1)  | 	❌ No | 
+### 8. Most Asked Interview Questions
 
-Which sorting algorithm is fastest? → QuickSort (on average).
++ Which sorting algorithm is fastest? → QuickSort (on average).
 
-Which is stable and efficient? → MergeSort.
++ Which is stable and efficient? → MergeSort.
 
-When to use Insertion Sort? → Small arrays, nearly sorted data.
++ When to use Insertion Sort? → Small arrays, nearly sorted data.
 
-Why does Java’s Arrays.sort() use Dual-Pivot QuickSort? → Better average performance.
++ Why does Java’s Arrays.sort() use Dual-Pivot QuickSort? → Better average performance.
