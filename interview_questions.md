@@ -4433,3 +4433,222 @@ Space: O(log n)
 + When to use Insertion Sort? → Small arrays, nearly sorted data.
 
 + Why does Java’s Arrays.sort() use Dual-Pivot QuickSort? → Better average performance.
+---
+
+
+# 🧠 Bit Manipulation in Java
+
+Bit manipulation allows us to perform operations directly on **binary representations** of integers.  
+Here are the **most important formulas** and **examples** you need to master.
+
+---
+
+## 📌 1. Get ith Bit
+**Formula:**
+```java
+(int)((num >> i) & 1)
+```
+**Explanation:** Right shift `num` by `i` and AND with `1`.
+
+**Example:**
+```java
+int num = 42;  // 101010
+int i = 3;
+System.out.println((num >> i) & 1); // Output: 1
+```
+
+---
+
+## 📌 2. Set ith Bit (Turn ON → 1)
+**Formula:**
+```java
+num = num | (1 << i);
+```
+**Explanation:** Shift `1` left by `i` and OR with `num`.
+
+**Example:**
+```java
+int num = 42;  // 101010
+int i = 1;
+num = num | (1 << i);
+System.out.println(num); // Output: 44 (101100)
+```
+
+---
+
+## 📌 3. Clear ith Bit (Turn OFF → 0)
+**Formula:**
+```java
+num = num & ~(1 << i);
+```
+**Explanation:** Create a mask with all `1`s except the `i-th` bit as `0`, then AND it.
+
+**Example:**
+```java
+int num = 42;  // 101010
+int i = 3;
+num = num & ~(1 << i);
+System.out.println(num); // Output: 34 (100010)
+```
+
+---
+
+## 📌 4. Toggle ith Bit (Flip 0 ↔ 1)
+**Formula:**
+```java
+num = num ^ (1 << i);
+```
+**Explanation:** XOR flips the ith bit.
+
+**Example:**
+```java
+int num = 42;  // 101010
+int i = 1;
+num = num ^ (1 << i);
+System.out.println(num); // Output: 40 (101000)
+```
+
+---
+
+## 📌 5. Check ith Bit (ON / OFF)
+**Formula:**
+```java
+if ((num & (1 << i)) != 0) {...}
+```
+**Example:**
+```java
+int num = 42;  // 101010
+int i = 4;
+if ((num & (1 << i)) != 0)
+    System.out.println("ON");
+else
+    System.out.println("OFF");
+// Output: ON
+```
+
+---
+
+## 📌 6. Update ith Bit (Set to `value`)
+**Formula:**
+```java
+num = (num & ~(1 << i)) | (value << i);
+```
+**Explanation:**
+1. Clear ith bit → `(num & ~(1 << i))`
+2. Set ith bit to `value` → `| (value << i)`
+
+**Example:**
+```java
+int num = 42;  // 101010
+int i = 1;
+int value = 1;
+num = (num & ~(1 << i)) | (value << i);
+System.out.println(num); // Output: 42
+```
+
+---
+
+## 📌 7. Clear All Bits from LSB to i
+**Formula:**
+```java
+num = num & (~((1 << i) - 1));
+```
+**Example:**
+```java
+int num = 42;  // 101010
+int i = 3;
+System.out.println(num & (~((1 << i) - 1))); // Output: 40 (101000)
+```
+
+---
+
+## 📌 8. Clear All Bits from MSB to i
+**Formula:**
+```java
+num = num & ((1 << (i + 1)) - 1);
+```
+**Example:**
+```java
+int num = 42;  // 101010
+int i = 3;
+System.out.println(num & ((1 << (i + 1)) - 1)); // Output: 10 (01010)
+```
+
+---
+
+## 📌 9. Check Power of 2
+**Formula:**
+```java
+(num & (num - 1)) == 0
+```
+**Example:**
+```java
+int num = 16;  // 10000
+System.out.println((num & (num - 1)) == 0); // Output: true
+```
+
+---
+
+## 📌 10. Count Set Bits (Number of 1s)
+**Formula:**
+```java
+Integer.bitCount(num);
+```
+**Example:**
+```java
+int num = 42;  // 101010
+System.out.println(Integer.bitCount(num)); // Output: 3
+```
+
+---
+
+## 📌 11. Remove Rightmost Set Bit
+**Formula:**
+```java
+num = num & (num - 1);
+```
+**Example:**
+```java
+int num = 42; // 101010
+num = num & (num - 1);
+System.out.println(num); // Output: 40 (101000)
+```
+
+---
+
+## 📌 12. Get Rightmost Set Bit
+**Formula:**
+```java
+num & -num;
+```
+**Example:**
+```java
+int num = 42;  // 101010
+System.out.println(num & -num); // Output: 2 (10)
+```
+
+---
+
+## 🧩 Quick Reference Table
+
+| **Operation**         | **Formula**                | **Example** |
+|------------------------|----------------------------|-------------|
+| Get ith Bit            | `(num >> i) & 1`           | 1           |
+| Set ith Bit            | `num | (1 << i)`           | 44          |
+| Clear ith Bit          | `num & ~(1 << i)`          | 34          |
+| Toggle ith Bit         | `num ^ (1 << i)`           | 40          |
+| Check ith Bit          | `(num & (1 << i)) != 0`    | true        |
+| Update ith Bit         | `(num & ~(1 << i)) | (value << i)` | 42 |
+| Clear LSB              | `num & (~((1 << i) - 1))`  | 40          |
+| Clear MSB              | `num & ((1 << (i + 1)) - 1)` | 10        |
+| Check Power of 2       | `(num & (num - 1)) == 0`   | true        |
+| Count Set Bits         | `Integer.bitCount(num)`    | 3           |
+| Remove Rightmost 1     | `num & (num - 1)`          | 40          |
+| Get Rightmost 1        | `num & -num`               | 2           |
+
+---
+
+### **Author:** Chirag Sankhe  
+**Topic:** Bit Manipulation in Java  
+**Level:** Beginner → Advanced 🚀
+
