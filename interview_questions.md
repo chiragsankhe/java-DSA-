@@ -244,7 +244,7 @@ Answer:
 Answer:
 
 |Type|	Default Value|
-|-----|-----|-------|
+|-----|------------|
 |int|	0|
 |boolean|	false|
 |char	|'\u0000'|
@@ -356,13 +356,14 @@ Used to combine multiple conditions.
 | Operator| 	Meaning| 	Example| 
 |----------|------|-----------|
 |&& |	Logical AND |	a > 5 && b < 10 |
-`		`
+| "||" |logical OR| |
 | !	 | Logical NOT | 	!(a > 5) | 
 
 🔹 4. Assignment Operations
 Used to assign values to variables.
 
 |Operator | 	Meaning | 	Example |
+|----------|------------|----------|
 | =	 |Assignment  |	a = 10 | 
 | += | 	Add and assign| 	a += 5 → a = a + 5 |
 | -= | 	Subtract and assign|	a -= 5|
