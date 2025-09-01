@@ -386,6 +386,7 @@ Operate on a single operand.
 Operate on bits and perform bit-by-bit operations.
 
 |Operator	| Meaning	| Example| 
+|---------|----------|---------|
 |&|	Bitwise AND|	a & b|
 | `	` | 	Bitwise OR  |  |
 | ^ |	Bitwise XOR| 	a ^ b| 
