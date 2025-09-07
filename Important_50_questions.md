@@ -2,3 +2,4 @@
 |name| link|
 |---|-----|
 | two sum |[ Link ]( leetcode.com/problems/two-sum/submissions/1762868710/) |
+| Best Time to Buy and Sell Stock| [Link](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/)|
