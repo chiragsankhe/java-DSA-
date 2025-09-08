@@ -9,4 +9,4 @@
 # String 
 |name| link|
 |---|-----|
-|Longest Palindromic|[Link](https://leetcode.com/problems/longest-palindromic-substring/submissions/1763448742/)|
+|Longest Palindromic Substring|[Link](https://leetcode.com/problems/longest-palindromic-substring/submissions/1763448742/)|
