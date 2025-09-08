@@ -19,6 +19,7 @@
 |name| link|
 |---|-----|
 |Min Staack|[Link](https://leetcode.com/problems/min-stack/)|
+|Valid Parentheses|[Link](https://leetcode.com/problems/valid-parentheses/submissions/1763545571/)|
 
 # String 
 |name| link|
