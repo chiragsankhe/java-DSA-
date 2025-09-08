@@ -10,3 +10,29 @@
 |name| link|
 |---|-----|
 |Longest Palindromic Substring|[Link](https://leetcode.com/problems/longest-palindromic-substring/submissions/1763448742/)|
+
+# LinkList
+|name| link|
+|---|-----|
+
+# Stack AND Queues
+|name| link|
+|---|-----|
+|Min Staack|[Link](https://leetcode.com/problems/min-stack/)|
+
+# String 
+|name| link|
+|---|-----|
+
+# String 
+|name| link|
+|---|-----|
+
+# String 
+|name| link|
+|---|-----|
+
+# String 
+|name| link|
+|---|-----|
+
