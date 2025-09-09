@@ -100,6 +100,26 @@ class LL {
         return size;
     }
 
+    public void reverseLink(){
+        if(head == null || head.next == null){
+            return;
+        }
+
+        Node pre = head;
+        Node currNode = head.next;
+        while(currNode != null){
+            Node nextNode = currNode.next;
+             currNode.next = pre;
+
+             pre = currNode;
+             currNode = nextNode;
+
+        }
+
+        head.next = null;
+        head = pre;
+    }
+
     // Main method to test
     public static void main(String args[]) {
         LL list = new LL();
@@ -141,6 +161,13 @@ class LL {
 
         // Print linked list
         list.printList();
+
+        list.reverseLink();
+
+        // Print linked list
+        list.printList();
+
+
 
         
     }
