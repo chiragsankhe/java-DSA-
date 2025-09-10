@@ -14,6 +14,7 @@
 # LinkList
 |name| link|
 |---|-----|
+|reverse LinkedList|[Link](https://leetcode.com/problems/reverse-linked-list/submissions/1766359012/)|
 
 # Stack AND Queues
 |name| link|
