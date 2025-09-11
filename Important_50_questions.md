@@ -17,7 +17,7 @@
 |reverse LinkedList|[Link](https://leetcode.com/problems/reverse-linked-list/submissions/1766359012/)|
 |Linked List Cycle Detection| [Link](https://leetcode.com/problems/linked-list-cycle/submissions/1766367369/) |
 | Remove Nth Node From End of List|[Link](https://leetcode.com/problems/remove-nth-node-from-end-of-list/submissions/1766457868/)|
-|Remove Nth Node From End of List|[Link](https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/submissions/1767458350/?envType=study-plan-v2&envId=top-interview-150)|
+|Remove Duplicates from Sorted List II|[Link](https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/submissions/1767458350/?envType=study-plan-v2&envId=top-interview-150)|
 |Palindrome Linked List|[Link](https://leetcode.com/problems/palindrome-linked-list/)|
 | Merge Two Sorted Lists|[Link](https://leetcode.com/problems/merge-two-sorted-lists/submissions/1767627097/)|
 
