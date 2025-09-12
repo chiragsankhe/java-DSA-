@@ -4647,6 +4647,208 @@ System.out.println(num & -num); // Output: 2 (10)
 | Get Rightmost 1        | `num & -num`               | 2           |
 
 ---
+# Java Collection Framework
+
+The **Java Collection Framework (JCF)** is a set of classes and interfaces that implement commonly reusable collection data structures. It provides a unified architecture to store, manipulate, and access data efficiently.
+
+---
+
+## Key Features
+- **Unified architecture** for storing and manipulating groups of objects.
+- **Dynamic resizing** (unlike arrays).
+- **Ready-made algorithms** like sorting and searching.
+- **Generics support** for type safety.
+- **Interfaces + Implementations** design.
+
+---
+
+## Hierarchy of Collection Framework
+
+1. **Iterable (root interface)**
+   - Collection
+     - **List**
+       - ArrayList
+       - LinkedList
+       - Vector
+       - Stack
+     - **Set**
+       - HashSet
+       - LinkedHashSet
+       - TreeSet
+     - **Queue**
+       - PriorityQueue
+       - ArrayDeque
+
+2. **Map (separate hierarchy)**
+   - HashMap
+   - LinkedHashMap
+   - TreeMap
+   - Hashtable
+
+---
+
+## Commonly Used Interfaces and Classes
+
+### 1. **List**
+- Ordered collection, allows duplicates.
+- Example classes: `ArrayList`, `LinkedList`, `Vector`.
+
+**Methods:**
+- `add(E e)`
+- `get(int index)`
+- `remove(int index)`
+- `set(int index, E e)`
+- `size()`
+
+---
+
+### 2. **Set**
+- Unordered, unique elements.
+- Example classes: `HashSet`, `LinkedHashSet`, `TreeSet`.
+
+**Methods:**
+- `add(E e)`
+- `remove(Object o)`
+- `contains(Object o)`
+- `size()`
+
+---
+
+### 3. **Queue**
+- FIFO (First-In-First-Out).
+- Example classes: `PriorityQueue`, `ArrayDeque`.
+
+**Methods:**
+- `add(E e)`
+- `offer(E e)`
+- `poll()`
+- `peek()`
+
+---
+
+### 4. **Map**
+- Key-value pairs, unique keys.
+- Example classes: `HashMap`, `TreeMap`, `LinkedHashMap`.
+
+**Methods:**
+- `put(K key, V value)`
+- `get(Object key)`
+- `remove(Object key)`
+- `containsKey(Object key)`
+- `entrySet()`
+
+---
+
+## Advantages of Collection Framework
+1. Reduces programming effort.
+2. Provides high-performance data structures.
+3. Increases software reusability.
+4. Provides algorithms like searching and sorting.
+
+---
+
+# Interview Questions & Answers
+
+### Q1. What is the Collection Framework in Java?
+**Answer:**  
+It is a set of classes and interfaces that implement commonly used data structures like lists, sets, queues, and maps. It provides algorithms and utilities for easy data manipulation.
+
+---
+
+### Q2. What is the difference between Collection and Collections?
+**Answer:**  
+- **Collection**: An interface in Java (`java.util.Collection`).  
+- **Collections**: A utility class in Java (`java.util.Collections`) that provides static methods like `sort()`, `reverse()`, `shuffle()`.
+
+---
+
+### Q3. Difference between List, Set, and Map?
+**Answer:**
+- **List**: Ordered, allows duplicates. Example: `ArrayList`.  
+- **Set**: Unordered, no duplicates. Example: `HashSet`.  
+- **Map**: Key-value pairs, unique keys. Example: `HashMap`.
+
+---
+
+### Q4. What is the difference between ArrayList and LinkedList?
+**Answer:**
+- **ArrayList**:  
+  - Backed by a dynamic array.  
+  - Faster random access.  
+  - Slower insertion/deletion in the middle.  
+- **LinkedList**:  
+  - Backed by doubly-linked list.  
+  - Faster insertion/deletion.  
+  - Slower random access.
+
+---
+
+### Q5. What is the difference between HashSet and TreeSet?
+**Answer:**
+- **HashSet**:  
+  - Stores elements in hash table.  
+  - No order guarantee.  
+  - Faster operations (O(1)).  
+- **TreeSet**:  
+  - Stores elements in Red-Black tree.  
+  - Maintains ascending order.  
+  - Slower operations (O(log n)).
+
+---
+
+### Q6. How is HashMap different from Hashtable?
+**Answer:**
+- **HashMap**:  
+  - Not synchronized.  
+  - Allows one null key and multiple null values.  
+  - Faster.  
+- **Hashtable**:  
+  - Synchronized.  
+  - Doesn’t allow null key or values.  
+  - Legacy class.
+
+---
+
+### Q7. Difference between fail-fast and fail-safe iterators?
+**Answer:**
+- **Fail-fast**: Throws `ConcurrentModificationException` if the collection is modified while iterating (e.g., `ArrayList`, `HashMap`).  
+- **Fail-safe**: Works on a copy of the collection, doesn’t throw exception (e.g., `CopyOnWriteArrayList`, `ConcurrentHashMap`).
+
+---
+
+### Q8. How does HashMap work internally?
+**Answer:**  
+- Uses an array of buckets.  
+- Each bucket is a linked list (or tree in case of high collisions).  
+- Hash function is applied on the key to determine the bucket index.  
+- Insertion, deletion, and lookup are O(1) on average.
+
+---
+
+### Q9. What is Comparable vs Comparator?
+**Answer:**
+- **Comparable**:  
+  - Used for natural ordering.  
+  - Implemented inside the class using `compareTo()`.  
+- **Comparator**:  
+  - Used for custom ordering.  
+  - Implemented externally using `compare()`.
+
+---
+
+### Q10. What is the difference between Iterator and ListIterator?
+**Answer:**
+- **Iterator**: Works with all collections, supports forward traversal.  
+- **ListIterator**: Works only with List, supports forward and backward traversal.
+
+---
+
+# 📌 Conclusion
+The **Java Collection Framework** simplifies data handling by providing ready-made data structures and algorithms. It is one of the most frequently asked topics in Java interviews.
+
+
+
+---
 
 # 📘 Linked List Complete Guide (Java)
 
