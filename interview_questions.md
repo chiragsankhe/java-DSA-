@@ -4845,19 +4845,33 @@ Steps:
 Output: `[1,2,3,4,5,6]`
 
 ---
-# 📘 Linked List Complete Guide (Java)
 
-## 1. Introduction
-A **Linked List** is a linear data structure where elements (nodes) are connected using pointers.  
-Unlike arrays, Linked Lists do not store data in contiguous memory blocks.  
 
-Each node contains:
-- `val` (data)
-- `next` (reference to the next node)
+---
 
-### Advantages
-- Dynamic size (no need to define size at start)
-- Easy insertion/deletion
+# 🔗 Linked List in Java
+
+## 📌 1. What is a Linked List?
+A **Linked List** is a **linear data structure** where elements (called **nodes**) are connected using **pointers**.  
+Unlike arrays, linked lists **don’t store elements in contiguous memory**.  
+
+Each **Node** has:  
+- **data** → stores the value  
+- **next** → reference (pointer) to the next node  
+
+---
+
+## 📌 2. Structure of a Node
+```java
+class Node {
+    int data;       // stores data
+    Node next;      // stores reference to next node
+
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
 
 ### Types
 1. **Singly Linked List** → Each node points to next
