@@ -4845,5 +4845,346 @@ Steps:
 Output: `[1,2,3,4,5,6]`
 
 ---
+# 📘 Linked List Complete Guide (Java)
+
+## 1. Introduction
+A **Linked List** is a linear data structure where elements (nodes) are connected using pointers.  
+Unlike arrays, Linked Lists do not store data in contiguous memory blocks.  
+
+Each node contains:
+- `val` (data)
+- `next` (reference to the next node)
+
+### Advantages
+- Dynamic size (no need to define size at start)
+- Easy insertion/deletion
+
+### Types
+1. **Singly Linked List** → Each node points to next
+2. **Doubly Linked List** → Each node has `next` and `prev`
+3. **Circular Linked List** → Last node connects back to head
+
+---
+
+## 2. Basic Operations
+
+### Traversal
+```java
+public void traverse(ListNode head) {
+    ListNode curr = head;
+    while (curr != null) {
+        System.out.print(curr.val + " -> ");
+        curr = curr.next;
+    }
+}
+```
+
+### Insert at Head
+```java
+ListNode newNode = new ListNode(5);
+newNode.next = head;
+head = newNode;
+```
+
+### Insert at Tail
+```java
+ListNode newNode = new ListNode(10);
+ListNode curr = head;
+while(curr.next != null){
+    curr = curr.next;
+}
+curr.next = newNode;
+```
+
+### Delete Node by Value
+```java
+public ListNode deleteNode(ListNode head, int val) {
+    if(head == null) return null;
+    if(head.val == val) return head.next;
+
+    ListNode curr = head;
+    while(curr.next != null && curr.next.val != val) {
+        curr = curr.next;
+    }
+    if(curr.next != null) {
+        curr.next = curr.next.next;
+    }
+    return head;
+}
+```
+
+---
+
+## 3. Important Problems
+
+### Remove Duplicates from Sorted List
+```java
+public ListNode deleteDuplicates(ListNode head) {
+    ListNode curr = head;
+    while(curr != null && curr.next != null){
+        if(curr.val == curr.next.val){
+            curr.next = curr.next.next;
+        } else {
+            curr = curr.next;
+        }
+    }
+    return head;
+}
+```
+
+### Merge Two Sorted Lists
+```java
+public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+    ListNode dummy = new ListNode(0);
+    ListNode tail = dummy;
+
+    while(l1 != null && l2 != null) {
+        if(l1.val <= l2.val){
+            tail.next = l1;
+            l1 = l1.next;
+        } else {
+            tail.next = l2;
+            l2 = l2.next;
+        }
+        tail = tail.next; // move tail forward
+    }
+
+    if(l1 != null) tail.next = l1;
+    if(l2 != null) tail.next = l2;
+
+    return dummy.next;
+}
+```
+
+**Key Idea:**  
+`tail = tail.next;` moves the tail pointer forward to always point to the last node in the merged list.
+
+---
+
+## 4. Advanced Problems
+
+### Find Middle of Linked List
+```java
+public ListNode middleNode(ListNode head) {
+    ListNode slow = head, fast = head;
+    while(fast != null && fast.next != null) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    return slow;
+}
+```
+
+### Reverse Linked List (Iterative)
+```java
+public ListNode reverseList(ListNode head) {
+    ListNode prev = null, curr = head;
+    while(curr != null) {
+        ListNode next = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = next;
+    }
+    return prev;
+}
+```
+
+### Reverse Linked List (Recursive)
+```java
+public ListNode reverseListRecursive(ListNode head) {
+    if(head == null || head.next == null) return head;
+    ListNode newHead = reverseListRecursive(head.next);
+    head.next.next = head;
+    head.next = null;
+    return newHead;
+}
+```
+
+### Detect Cycle (Floyd’s Algorithm)
+```java
+public boolean hasCycle(ListNode head) {
+    ListNode slow = head, fast = head;
+    while(fast != null && fast.next != null) {
+        slow = slow.next;
+        fast = fast.next.next;
+        if(slow == fast) return true;
+    }
+    return false;
+}
+```
+
+---
+
+## 5. Summary
+- Use **dummy nodes** to simplify insert/delete operations.  
+- **Tail pointer** helps build new lists step by step.  
+- **Fast & Slow pointers** help with middle and cycle detection.  
+- **Always dry run** with small examples to check pointer movements.  
+
+---
+
+## 6. Example Dry Run
+
+### Merge Two Lists Example
+
+Input:  
+`list1 = [1,3,5]`  
+`list2 = [2,4,6]`  
+
+Steps:
+1. Compare `1` and `2` → take `1`
+2. Compare `3` and `2` → take `2`
+3. Compare `3` and `4` → take `3`
+4. Compare `5` and `4` → take `4`
+5. Compare `5` and `6` → take `5`
+6. Append remaining `6`
+
+Output: `[1,2,3,4,5,6]`
+
+---
+
+## 7. Interview Questions with Answers
+
+### Q1: What is a Linked List? How is it different from an array?
+- **Array**: Fixed size, contiguous memory, fast random access (O(1)), insertion/deletion is costly.  
+- **Linked List**: Dynamic size, scattered memory, sequential access only, insertion/deletion is O(1) if pointer is known.
+
+---
+
+### Q2: How do you reverse a Linked List (iterative)?
+```java
+public ListNode reverseList(ListNode head) {
+    ListNode prev = null, curr = head;
+    while(curr != null) {
+        ListNode next = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = next;
+    }
+    return prev;
+}
+```
+
+---
+
+### Q3: How do you detect if a Linked List has a cycle?
+Use **Floyd’s Cycle Detection** (fast & slow pointer).  
+```java
+public boolean hasCycle(ListNode head) {
+    ListNode slow = head, fast = head;
+    while(fast != null && fast.next != null) {
+        slow = slow.next;
+        fast = fast.next.next;
+        if(slow == fast) return true;
+    }
+    return false;
+}
+```
+
+---
+
+### Q4: How do you find the middle node of a Linked List?
+```java
+public ListNode middleNode(ListNode head) {
+    ListNode slow = head, fast = head;
+    while(fast != null && fast.next != null) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    return slow;
+}
+```
+
+---
+
+### Q5: How do you merge two sorted Linked Lists?
+(Already explained in Section 3).
+
+---
+
+### Q6: How do you remove duplicates from a sorted Linked List?
+```java
+public ListNode deleteDuplicates(ListNode head) {
+    ListNode curr = head;
+    while(curr != null && curr.next != null) {
+        if(curr.val == curr.next.val){
+            curr.next = curr.next.next;
+        } else {
+            curr = curr.next;
+        }
+    }
+    return head;
+}
+```
+
+---
+
+### Q7: How do you delete a node given only that node (not the head)?
+```java
+public void deleteNode(ListNode node) {
+    node.val = node.next.val;
+    node.next = node.next.next;
+}
+```
+⚠️ Works only if node is not the last one.
+
+---
+
+### Q8: How do you find the nth node from the end?
+Use two pointers.  
+```java
+public ListNode nthFromEnd(ListNode head, int n) {
+    ListNode first = head, second = head;
+    for(int i=0; i<n; i++) first = first.next;
+    while(first != null) {
+        first = first.next;
+        second = second.next;
+    }
+    return second;
+}
+```
+
+---
+
+### Q9: How do you check if a Linked List is a palindrome?
+```java
+public boolean isPalindrome(ListNode head) {
+    if(head == null || head.next == null) return true;
+    // Find middle
+    ListNode slow = head, fast = head;
+    while(fast.next != null && fast.next.next != null) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    // Reverse second half
+    ListNode second = reverseList(slow.next);
+    ListNode p1 = head, p2 = second;
+    while(p2 != null) {
+        if(p1.val != p2.val) return false;
+        p1 = p1.next;
+        p2 = p2.next;
+    }
+    return true;
+}
+```
+
+---
+
+### Q10: How do you detect the intersection of two Linked Lists?
+```java
+public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+    if(headA == null || headB == null) return null;
+    ListNode a = headA, b = headB;
+    while(a != b) {
+        a = (a == null) ? headB : a.next;
+        b = (b == null) ? headA : b.next;
+    }
+    return a;
+}
+```
+
+---
+
+
 
 
