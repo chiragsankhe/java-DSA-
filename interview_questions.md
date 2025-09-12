@@ -4648,7 +4648,202 @@ System.out.println(num & -num); // Output: 2 (10)
 
 ---
 
-### **Author:** Chirag Sankhe  
-**Topic:** Bit Manipulation in Java  
-**Level:** Beginner → Advanced 🚀
+# 📘 Linked List Complete Guide (Java)
+
+## 1. Introduction
+A **Linked List** is a linear data structure where elements (nodes) are connected using pointers.  
+Unlike arrays, Linked Lists do not store data in contiguous memory blocks.  
+
+Each node contains:
+- `val` (data)
+- `next` (reference to the next node)
+
+### Advantages
+- Dynamic size (no need to define size at start)
+- Easy insertion/deletion
+
+### Types
+1. **Singly Linked List** → Each node points to next
+2. **Doubly Linked List** → Each node has `next` and `prev`
+3. **Circular Linked List** → Last node connects back to head
+
+---
+
+## 2. Basic Operations
+
+### Traversal
+```java
+public void traverse(ListNode head) {
+    ListNode curr = head;
+    while (curr != null) {
+        System.out.print(curr.val + " -> ");
+        curr = curr.next;
+    }
+}
+```
+
+### Insert at Head
+```java
+ListNode newNode = new ListNode(5);
+newNode.next = head;
+head = newNode;
+```
+
+### Insert at Tail
+```java
+ListNode newNode = new ListNode(10);
+ListNode curr = head;
+while(curr.next != null){
+    curr = curr.next;
+}
+curr.next = newNode;
+```
+
+### Delete Node by Value
+```java
+public ListNode deleteNode(ListNode head, int val) {
+    if(head == null) return null;
+    if(head.val == val) return head.next;
+
+    ListNode curr = head;
+    while(curr.next != null && curr.next.val != val) {
+        curr = curr.next;
+    }
+    if(curr.next != null) {
+        curr.next = curr.next.next;
+    }
+    return head;
+}
+```
+
+---
+
+## 3. Important Problems
+
+### Remove Duplicates from Sorted List
+```java
+public ListNode deleteDuplicates(ListNode head) {
+    ListNode curr = head;
+    while(curr != null && curr.next != null){
+        if(curr.val == curr.next.val){
+            curr.next = curr.next.next;
+        } else {
+            curr = curr.next;
+        }
+    }
+    return head;
+}
+```
+
+### Merge Two Sorted Lists
+```java
+public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+    ListNode dummy = new ListNode(0);
+    ListNode tail = dummy;
+
+    while(l1 != null && l2 != null) {
+        if(l1.val <= l2.val){
+            tail.next = l1;
+            l1 = l1.next;
+        } else {
+            tail.next = l2;
+            l2 = l2.next;
+        }
+        tail = tail.next; // move tail forward
+    }
+
+    if(l1 != null) tail.next = l1;
+    if(l2 != null) tail.next = l2;
+
+    return dummy.next;
+}
+```
+
+**Key Idea:**  
+`tail = tail.next;` moves the tail pointer forward to always point to the last node in the merged list.
+
+---
+
+## 4. Advanced Problems
+
+### Find Middle of Linked List
+```java
+public ListNode middleNode(ListNode head) {
+    ListNode slow = head, fast = head;
+    while(fast != null && fast.next != null) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    return slow;
+}
+```
+
+### Reverse Linked List (Iterative)
+```java
+public ListNode reverseList(ListNode head) {
+    ListNode prev = null, curr = head;
+    while(curr != null) {
+        ListNode next = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = next;
+    }
+    return prev;
+}
+```
+
+### Reverse Linked List (Recursive)
+```java
+public ListNode reverseListRecursive(ListNode head) {
+    if(head == null || head.next == null) return head;
+    ListNode newHead = reverseListRecursive(head.next);
+    head.next.next = head;
+    head.next = null;
+    return newHead;
+}
+```
+
+### Detect Cycle (Floyd’s Algorithm)
+```java
+public boolean hasCycle(ListNode head) {
+    ListNode slow = head, fast = head;
+    while(fast != null && fast.next != null) {
+        slow = slow.next;
+        fast = fast.next.next;
+        if(slow == fast) return true;
+    }
+    return false;
+}
+```
+
+---
+
+## 5. Summary
+- Use **dummy nodes** to simplify insert/delete operations.  
+- **Tail pointer** helps build new lists step by step.  
+- **Fast & Slow pointers** help with middle and cycle detection.  
+- **Always dry run** with small examples to check pointer movements.  
+
+---
+
+## 6. Example Dry Run
+
+### Merge Two Lists Example
+
+Input:  
+`list1 = [1,3,5]`  
+`list2 = [2,4,6]`  
+
+Steps:
+1. Compare `1` and `2` → take `1`
+2. Compare `3` and `2` → take `2`
+3. Compare `3` and `4` → take `3`
+4. Compare `5` and `4` → take `4`
+5. Compare `5` and `6` → take `5`
+6. Append remaining `6`
+
+Output: `[1,2,3,4,5,6]`
+
+---
+
 
