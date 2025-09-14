@@ -5312,3 +5312,94 @@ public ListNode middleNode(ListNode head) {
 ```
 
 ---
+---
+
+### Q5: How do you merge two sorted Linked Lists?
+(Already explained in Section 3).
+
+---
+
+### Q6: How do you remove duplicates from a sorted Linked List?
+```java
+public ListNode deleteDuplicates(ListNode head) {
+    ListNode curr = head;
+    while(curr != null && curr.next != null) {
+        if(curr.val == curr.next.val){
+            curr.next = curr.next.next;
+        } else {
+            curr = curr.next;
+        }
+    }
+    return head;
+}
+```
+
+---
+
+### Q7: How do you delete a node given only that node (not the head)?
+```java
+public void deleteNode(ListNode node) {
+    node.val = node.next.val;
+    node.next = node.next.next;
+}
+```
+⚠️ Works only if node is not the last one.
+
+---
+
+### Q8: How do you find the nth node from the end?
+Use two pointers.  
+```java
+public ListNode nthFromEnd(ListNode head, int n) {
+    ListNode first = head, second = head;
+    for(int i=0; i<n; i++) first = first.next;
+    while(first != null) {
+        first = first.next;
+        second = second.next;
+    }
+    return second;
+}
+```
+
+---
+
+### Q9: How do you check if a Linked List is a palindrome?
+```java
+public boolean isPalindrome(ListNode head) {
+    if(head == null || head.next == null) return true;
+    // Find middle
+    ListNode slow = head, fast = head;
+    while(fast.next != null && fast.next.next != null) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    // Reverse second half
+    ListNode second = reverseList(slow.next);
+    ListNode p1 = head, p2 = second;
+    while(p2 != null) {
+        if(p1.val != p2.val) return false;
+        p1 = p1.next;
+        p2 = p2.next;
+    }
+    return true;
+}
+```
+
+---
+
+### Q10: How do you detect the intersection of two Linked Lists?
+```java
+public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+    if(headA == null || headB == null) return null;
+    ListNode a = headA, b = headB;
+    while(a != b) {
+        a = (a == null) ? headB : a.next;
+        b = (b == null) ? headA : b.next;
+    }
+    return a;
+}
+```
+
+---
+
+🎯 These are the **top 10 Linked List interview questions** with **Java answers**.
