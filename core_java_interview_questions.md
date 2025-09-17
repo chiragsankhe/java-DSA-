@@ -383,4 +383,179 @@ Type casting is converting one data type into another.
 - String is a **class** in `java.lang` package.  
 - It provides many **methods (like length(), substring(), concat())** which primitive types do not.  
 - Being an object allows Strings to be immutable and powerful.  
-- Primitive types are stored in stack, but Strings are objects stored in heap.  
+- Primitive types are stored in stack, but Strings are objects stored in heap.
+---  
+## 3️⃣ Operators & Control Flow
+
+**Q1. What are different types of operators in Java?**\
+Java provides the following types of operators:\
+- Arithmetic (+, -, *, /, %)\
+- Relational (==, !=, \>, \<, \>=, \<=)\
+- Logical (&&, \|\|, !)\
+- Bitwise (&, \|, \^, \~, \<\<, \>\>, \>\>\>)\
+- Assignment (=, +=, -=, *=, /=, etc.)\
+- Unary (++ , --, +, -)\
+- Ternary (?:)\
+- Instanceof operator
+
+------------------------------------------------------------------------
+
+**Q2. Difference between `==` and `.equals()`.**\
+- `==`: Compares references (memory addresses) for objects. For
+primitives, it compares values.\
+- `.equals()`: Used to compare the actual content of objects (e.g., two
+Strings with same characters).
+
+------------------------------------------------------------------------
+
+**Q3. What is the ternary operator in Java?**\
+It is a shorthand for `if-else`.\
+Syntax: `condition ? value_if_true : value_if_false;`
+
+------------------------------------------------------------------------
+
+**Q4. Difference between break and continue.**\
+- `break`: Exits from the loop or switch completely.\
+- `continue`: Skips the current iteration and moves to the next.
+
+------------------------------------------------------------------------
+
+**Q5. What is a switch statement? Can we use String in switch?**\
+A switch statement allows multiple branching based on a variable's
+value.\
+Yes, since Java 7, `String` can be used in switch.
+
+------------------------------------------------------------------------
+
+**Q6. What is fall-through in switch-case?**\
+If a `case` does not have `break`, execution continues into the next
+case.
+
+------------------------------------------------------------------------
+
+**Q7. Can we use null in switch-case?**\
+No, `null` cannot be used in switch; it throws `NullPointerException`.
+
+------------------------------------------------------------------------
+
+## 4️⃣ OOPs Concepts
+
+**Q1. What is Object-Oriented Programming (OOP)?**\
+A programming paradigm based on objects that encapsulate data and
+behavior.
+
+------------------------------------------------------------------------
+
+**Q2. Explain the four pillars of OOP.**\
+1. **Encapsulation** -- Wrapping variables and methods into a single
+unit (class).\
+2. **Abstraction** -- Hiding implementation details and showing only
+functionality.\
+3. **Inheritance** -- Acquiring properties and behaviors of a parent
+class.\
+4. **Polymorphism** -- Ability to take many forms (method
+overloading/overriding).
+
+------------------------------------------------------------------------
+
+**Q3. What is the difference between class and object?**\
+- Class: Blueprint for creating objects.\
+- Object: Instance of a class.
+
+------------------------------------------------------------------------
+
+**Q4. What is constructor? Types of constructors.**\
+A constructor initializes objects.\
+Types:\
+- Default constructor (no parameters).\
+- Parameterized constructor (with parameters).
+
+------------------------------------------------------------------------
+
+**Q5. Difference between constructor and method.**\
+- Constructor: Initializes object, has no return type, same name as
+class.\
+- Method: Defines behavior, must have a return type.
+
+------------------------------------------------------------------------
+
+**Q6. Can constructors be inherited?**\
+No, constructors are not inherited but child classes can call parent
+constructor using `super()`.
+
+------------------------------------------------------------------------
+
+**Q7. What is this keyword in Java?**\
+`this` refers to the current object of the class.
+
+------------------------------------------------------------------------
+
+**Q8. What is super keyword in Java?**\
+`super` refers to the parent class object. It is used to call parent
+methods, variables, and constructors.
+
+------------------------------------------------------------------------
+
+**Q9. Difference between this() and super().**\
+- `this()`: Calls another constructor in the same class.\
+- `super()`: Calls parent class constructor.
+
+------------------------------------------------------------------------
+
+**Q10. What is method overloading vs overriding?**\
+- **Overloading**: Same method name but different parameter lists
+(compile-time polymorphism).\
+- **Overriding**: Subclass provides a specific implementation of a
+parent method (runtime polymorphism).
+
+------------------------------------------------------------------------
+
+**Q11. What is runtime polymorphism in Java?**\
+Achieved by method overriding, where the call is resolved at runtime.
+
+------------------------------------------------------------------------
+
+**Q12. Can static methods be overridden? Why?**\
+No, static methods belong to class, not object. They can be hidden, not
+overridden.
+
+------------------------------------------------------------------------
+
+**Q13. Can we overload main() method in Java?**\
+Yes, but JVM always calls the standard
+`public static void main(String[] args)` as entry point.
+
+------------------------------------------------------------------------
+
+**Q14. What is encapsulation in Java?**\
+Hiding internal details using private variables and providing controlled
+access via getters/setters.
+
+------------------------------------------------------------------------
+
+**Q15. What is abstraction in Java?**\
+Hiding implementation details using abstract classes and interfaces.
+
+------------------------------------------------------------------------
+
+**Q16. What is interface? How is it different from abstract class?**\
+- Interface: Collection of abstract methods (and default/static
+methods).\
+- Abstract class: Can have both abstract and non-abstract methods.
+
+------------------------------------------------------------------------
+
+**Q17. Can interface have default methods?**\
+Yes, since Java 8, interfaces can have default and static methods.
+
+------------------------------------------------------------------------
+
+**Q18. Can interface extend another interface?**\
+Yes, an interface can extend multiple interfaces.
+
+------------------------------------------------------------------------
+
+**Q19. Can abstract class have constructor?**\
+Yes, abstract classes can have constructors to initialize fields of the
+abstract class.
+
