@@ -558,4 +558,5 @@ Yes, an interface can extend multiple interfaces.
 **Q19. Can abstract class have constructor?**\
 Yes, abstract classes can have constructors to initialize fields of the
 abstract class.
+---
 
