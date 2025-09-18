@@ -33,6 +33,9 @@ class LL_using_collection_framwork {
         System.out.println("size " + ll.size());
 
 
+        
+
+
 
         
 

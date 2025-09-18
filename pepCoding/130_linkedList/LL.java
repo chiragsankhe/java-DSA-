@@ -120,6 +120,22 @@ class LL {
         head = pre;
     }
 
+    //recursive reverse
+
+    public Node recursivereverse(Node head){
+        if(head == null || head.next == null){
+            return head;
+        }
+
+        Node newhead = recursivereverse(head.next);
+        head.next.next = head;
+        head.next = null;
+
+        return newhead;
+        
+        
+    }
+
     // Main method to test
     public static void main(String args[]) {
         LL list = new LL();
@@ -162,7 +178,9 @@ class LL {
         // Print linked list
         list.printList();
 
-        list.reverseLink();
+        // list.reverseLink();
+        System.out.println("print reverse linkedList");
+     list.head = list.recursivereverse(list.head);
 
         // Print linked list
         list.printList();
